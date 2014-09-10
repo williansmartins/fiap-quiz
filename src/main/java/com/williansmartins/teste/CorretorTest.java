@@ -9,22 +9,23 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.williansmartins.dao.JpaGenericDao;
-import com.williansmartins.dao.entity.ImovelDaoImpl;
-import com.williansmartins.entity.ImovelEntity;
+import com.williansmartins.dao.entity.CorretorDaoImpl;
+import com.williansmartins.entity.CorretorEntity;
 
 @SuppressWarnings("deprecation")
-public class ImovelTest {
-	JpaGenericDao<ImovelEntity> dao = new ImovelDaoImpl();
+public class CorretorTest {
+	JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
 	
+	@Test
 	public void inserirSomente() {
-		ImovelEntity entityMockada = new ImovelEntity();
+		CorretorEntity entityMockada = new CorretorEntity();
 		entityMockada = popularEntity(entityMockada);
 		dao.insert(entityMockada);
 	}
 	
 	@Test
 	public void inserirERemoverEntity() {
-		ImovelEntity entityMockada = new ImovelEntity();
+		CorretorEntity entityMockada = new CorretorEntity();
 		entityMockada = popularEntity(entityMockada);
 		
 		dao.insert(entityMockada);
@@ -38,11 +39,11 @@ public class ImovelTest {
 	
 	@Test
 	public void listarEntities() {
-		List<ImovelEntity> listaEntities = new ArrayList<ImovelEntity>();
+		List<CorretorEntity> listaEntities = new ArrayList<CorretorEntity>();
 		
 		//Inserir 10 entities
 		for  (int cont = 0; cont < 10; cont++) {
-			ImovelEntity entityMockada = new ImovelEntity();
+			CorretorEntity entityMockada = new CorretorEntity();
 			entityMockada = popularEntity(entityMockada);
 			listaEntities.add(entityMockada);
 		}
@@ -55,7 +56,7 @@ public class ImovelTest {
 		Assert.assertNotNull( dao.findById(listaEntities.get(9).getId())  );
 		
 		//Remover as entities
-		for (ImovelEntity entity : listaEntities) {
+		for (CorretorEntity entity : listaEntities) {
 			dao.delete(entity.getId());
 		}
 		
@@ -65,21 +66,12 @@ public class ImovelTest {
 		
 	}
 	
-	public ImovelEntity popularEntity(ImovelEntity entity){
+	public CorretorEntity popularEntity(CorretorEntity entity){
 		
-		entity.setCidade("Cotia");
-		entity.setTitulo("Residencial Ametista");
-		entity.setDescricaoCarousel("Descricao carousel");
-		entity.setDescricaoCompleta("descricaoCompleta");
-		entity.setDescricaoQuadrante("descricaoQuadrante");
-		entity.setDormitorios(2);
-		entity.setEndereco("Amapa, 345, jd rosalina, cotia");
-		entity.setFita("sale");
-		entity.setFotoCarousel("imagem1.jpg");
-		entity.setMaps("url maps");
-		entity.setMetros(54.4);
-		entity.setVagas(1);
-		entity.setValor(new BigDecimal("150000"));
+		entity.setNome("Washington Luis Martins de Morais");
+		entity.setCelular("(11) 993-650-220");
+		entity.setTelefone("(11) 4148-4583");
+		entity.setEmail("contato@gmail.com");
 		
 		return entity;
 	}

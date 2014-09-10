@@ -6,15 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.williansmartins.dao.JpaGenericDao;
-import com.williansmartins.entity.ImovelEntity;
+import com.williansmartins.entity.CorretorEntity;
 
-public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImovelDao{
+public class CorretorDaoImpl extends JpaGenericDao<CorretorEntity> implements ICorretorDao{
 	
 	@PersistenceContext
 	private EntityManager entityManager;
-	List<ImovelEntity> lista;
+	List<CorretorEntity> lista;
 	
-	public ImovelDaoImpl() {
+	public CorretorDaoImpl() {
 		entityManager = getEntityManager();
 	}
 }
