@@ -1,0 +1,8 @@
+/build/
+node_modules
+.project
+.classpath
+.class
+.settings
+WebContent/dist/
+WebContent/dist/all.js
