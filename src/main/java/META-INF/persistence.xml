@@ -3,7 +3,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 	<persistence-unit name="manager-mysql" transaction-type="RESOURCE_LOCAL">
-		<class>com.williansmartins.model.PedidoEntity</class>
+		<class>com.williansmartins.entity.PedidoEntity</class>
+		<class>com.williansmartins.entity.ImovelEntity</class>
+		<class>com.williansmartins.entity.FotoEntity</class>
 		<properties>
 		    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 		    <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> <!-- driver do banco que ira usar -->

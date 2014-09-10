@@ -8,8 +8,8 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.williansmartins.dao.JpaGenericDao;
-import com.williansmartins.dao.PedidoDaoImpl;
-import com.williansmartins.model.PedidoEntity;
+import com.williansmartins.dao.entity.PedidoDaoImpl;
+import com.williansmartins.entity.PedidoEntity;
 
 public class PedidoTest {
 	JpaGenericDao<PedidoEntity> dao = new PedidoDaoImpl();

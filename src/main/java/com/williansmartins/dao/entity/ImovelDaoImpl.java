@@ -1,4 +1,4 @@
-package com.williansmartins.dao;
+package com.williansmartins.dao.entity;
 
 import java.util.List;
 
@@ -6,26 +6,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.williansmartins.model.PedidoEntity;
+import com.williansmartins.dao.JpaGenericDao;
+import com.williansmartins.entity.ImovelEntity;
 
-public class PedidoDaoImpl extends JpaGenericDao<PedidoEntity> implements IPedidoDao{
+public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImovelDao{
 	
 	@PersistenceContext
 	private EntityManager entityManager;
-	List<PedidoEntity> lista;
+	List<ImovelEntity> lista;
 	
-	public PedidoDaoImpl() {
+	public ImovelDaoImpl() {
 		entityManager = getEntityManager();
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<PedidoEntity> findEspecific(String s) {
+	public List<ImovelEntity> findEspecific(String s) {
 		entityManager = getEntityManager();
 		entityManager.getTransaction().begin();
 		
-		String jpql = "SELECT p FROM Pedido p WHERE p.nome like '%" + s + "%'";
+		String jpql = "SELECT p FROM Imovel p WHERE p.titulo like '%" + s + "%'";
 		Query query = entityManager.createQuery(jpql);
-		lista = (List<PedidoEntity>)query.getResultList();
+		lista = (List<ImovelEntity>)query.getResultList();
 		
 		
 		entityManager.flush();

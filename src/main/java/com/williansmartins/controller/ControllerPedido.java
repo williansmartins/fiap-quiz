@@ -6,8 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.williansmartins.dao.JpaGenericDao;
-import com.williansmartins.dao.PedidoDaoImpl;
-import com.williansmartins.model.PedidoEntity;
+import com.williansmartins.dao.entity.PedidoDaoImpl;
+import com.williansmartins.entity.PedidoEntity;
 
 @ManagedBean(name="pedidos")
 @SessionScoped

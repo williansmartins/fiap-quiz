@@ -1,4 +1,4 @@
-package com.williansmartins.model;
+package com.williansmartins.entity;
 
 import java.io.Serializable;
 
