@@ -4,5 +4,19 @@ node_modules
 .classpath
 .class
 .settings
+.DS_Store
+.metadata
+
 WebContent/dist/
 WebContent/dist/all.js
+target/
+
+*.class
+*.settings/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+
