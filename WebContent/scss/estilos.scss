@@ -1,0 +1,479 @@
+body{
+	background-color: #eaeaea!important;
+}
+.wrapper{
+	// outline:solid 1px 	red;
+	width: 924px;
+	height:1000px;
+	margin: 0 auto;
+}
+.topo{
+	height: 100px;
+	background-image: url('../img/filete-topo.jpg');
+	color: #757f87;
+	text-align: right;
+	padding-top: 27px;
+	padding-right: 12px;
+
+	z-index: 999999999;
+  	position: fixed; top: 0; left: 0; width: 100%;
+
+	.telefone{
+		display: block;
+	}
+	.email{
+		display: block;
+	}
+}
+.menu{
+	height: 48px;
+	background-image: url('../img/filete-menu.jpg');
+
+	margin-top: 100px;
+  	position: fixed;  top: 0; left: 0;  z-index: 999999999; width: 100%;
+
+	ul{
+		height: 40px;
+		width: 620px;
+		padding-top: 14px;
+		float: left;
+
+		li{
+			display: inline;
+			padding: 0px 7px;
+
+			a{
+				color: #635b50;
+				
+				&.selected{
+					color: #2c68b1;
+				}
+
+				&:before{
+					content: url('../img/separador-menu.jpg');
+					position: absolute;
+					margin-left: -11px;
+					margin-top: -12px;
+				}
+
+				&.first{
+					&:before{
+						content: "";
+					}
+				}
+				
+			}
+
+
+		}
+	}
+
+	.busca{
+		float: right;
+		width: 224px;
+		margin-top: 6px;
+		input{
+			width: 184px;
+			display: initial;
+		}
+		img{
+		}
+	}
+}
+.home{
+	.content{
+		background-color: #eaeaea;
+		height: auto;
+		margin-top: 140px;
+
+		.hero{
+			height: 380px;
+			padding-top: 20px;
+			// background-color: red;
+
+			.controls{
+				position: relative;
+
+				.geral{
+					height: 30px;
+					width: 29px;
+					text-indent: -999999999999px;
+					z-index: 999;
+					// outline: solid 1px red;
+					position: absolute;
+					top: 153px;
+					content: "   ";
+					cursor: pointer;
+				}
+				
+				.prevControl{
+					left: 7px;
+					background-image: url('../img/seta-esquerda.jpg');
+
+				}
+				.nextControl{
+					right: 300px;
+					background-image: url('../img/seta-direta.jpg');
+				}
+			}
+
+
+			.carousel{
+				width: 630px;
+				height: 100%;
+				// outline: solid 1px white;
+				float: left;
+
+
+				.cycle-overlay{
+					height: 77px;
+
+					// :first-child{
+					// 	color: rgb(0, 245, 255');
+					// 	font-size: 16px;
+					// }
+				}
+
+				.cycle-slideshow {
+
+					border-radius: 10px;
+   					border: solid 7px white; 
+    				width: 630px;
+
+					
+					.descricao{
+						width: 427px;
+						height: 40px;
+						// outline: solid 1px red;
+						overflow: hidden;
+						float: left;
+					}
+					.direita-carousel{
+						// height: 60px;
+						float: right;
+						width: 110px;
+						background-image: initial;
+						position: absolute;
+						right: 5px;
+						top: 7px;
+						font-size: 18px;
+						text-align: right;
+						padding-right: 14px;
+					}
+				}
+			}
+			.direita{
+				width: 286px;
+				height: 334px;
+				// outline: solid 1px green;
+				float: left;
+				background-image: url('../img/background-triped.png');
+				margin-top: 14px;
+				border-top-right-radius: 7px;
+
+				.slider-wrapper{
+					width: 220px;
+					height: 50px;
+					// outline: solid 1px red;
+					.slider{
+						margin-top: 9px;
+					}
+				}
+
+				.header{
+					height: 40px;
+					background-color: #373737;
+					color: white;
+					padding-left: 9px;
+					padding-top: 9px;
+					font-size: 16px;
+					border-top-right-radius: 7px;
+				}
+				.body{
+					padding-left: 9px;
+					height: 154px;
+
+					.pesquisar{
+						margin-left: 171px;
+						margin-top: -14px;
+					}
+					img{
+						float: left;
+						margin-right: 10px;
+					}
+
+					.combos{
+						width: 260px;
+						height: 40px;
+						// outline: solid 1px red;
+						
+						.tipo{
+							float: right;
+						}
+						.cidade{
+							float: right;
+							
+						}
+						
+					}
+				}
+			}
+		}
+
+		.novidades{
+			width: 100%;
+			height: 830px;
+
+			h1{
+				font-size: 21px;
+				color: #105dab;
+				padding-left: 8px;
+				margin-bottom: 6px;
+			}
+			.imovel{
+				// outline: solid 1px red;
+				padding-left: 3px;
+				padding-right: 3px;
+				width: 308px;
+				float: left;
+
+				.foto{
+					position: relative;
+
+					img{
+						// outline: solid 7px white;
+						width: 302px;
+						border-radius: 7px  ; 
+						border: 7px solid white ; 
+					}
+					.enfeite-cima{
+						position: absolute;
+						top: 12px;
+						right: -1px;
+						background-image: url('../img/enfeite-cima-azul.png');
+						background-repeat: no-repeat;
+						width: 144px;
+						height: 44px;
+						padding-top: 2px;
+						padding-right: 9px;
+
+						p{
+							color: white;
+							font-size: 10px;
+							float: right;
+							margin: 0px;
+						}
+
+						.valor{
+							font-size: 14px;
+							padding-top: 8px;
+							padding-right: 4px;
+						}
+					}
+					.enfeite-baixo{
+						position: absolute;
+						bottom: 7px;
+						left: 6px;
+						width: 89px;
+						height: 88px;
+						text-indent: -9999px;
+						background-repeat: no-repeat;
+
+						&.rent{
+							background-image: url('../img/enfeite-baixo-laranja.png');
+							
+						}
+						&.sale{
+							background-image: url('../img/enfeite-baixo-azul.png');
+							
+						}
+					}
+				}
+				.descricao{
+					background: white;
+					// outline: solid 7px white;
+					border-radius: 7px  ; 
+					border: 7px solid white ; 
+					// width: 302px;
+					height: 174px;
+					margin-bottom: 23px;
+					padding-top: 9px;
+					padding-left: 5px;
+					padding-right: 7px;
+					margin-top: 5px;
+
+					.titulo{
+						font-size: 14px;
+						font-weight: bold;
+						border-bottom: solid 1px rgb(231, 231, 231);
+					}
+
+					.descritivo{
+						padding-top: 5px;
+						height: 62px;
+						overflow: hidden;
+						text-align: justify;
+						font-size: 11px;
+						margin-bottom: 9px;
+					}
+
+					.detalhes{
+						p{
+							line-height: 23px;
+
+							img{
+								padding-right: 8px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+} 
+.interna{
+	.content{
+		background-color: #eaeaea;
+		height: auto;
+		margin-top: 160px;
+
+		h1{
+			color: #5c87bf;
+			font-size: 20px;
+		}
+		.hero{
+			height: 325px;
+			background-color: white;
+			border-radius: 9px;
+
+			.imagem-grande{
+				padding-top: 8px;
+				padding-left: 8px;
+			}
+			.dados{
+				float: right;
+				width: 482px;
+				padding-right: 12px;
+
+				.titulo{
+					font-size: 18px;
+					color: #5c87bf;
+					margin-top: 9px;
+				}
+				.descricao{
+					font-size: 14px;
+					color: #8b857e;
+					text-align: justify;
+					height: 147px;
+					overflow: hidden;
+				}
+
+				.detalhes{
+					position: relative;
+					p{
+						line-height: 23px;
+
+						img{
+							padding-right: 8px;
+						}
+					}
+					.btn{
+						right: 0px;
+						&.botao1{
+							position: absolute;
+							bottom: 56px;
+						}
+						&.botao2{
+							position: absolute;
+							bottom: 13px;
+						}
+					}
+				}
+			}
+
+		}
+		.carousel{
+			height: 85px;
+			background-color: white;
+			margin-top: 9px;
+			border-radius: 9px;
+			padding-top: 8px;
+
+			.bt{
+				background-repeat: no-repeat;
+				text-indent: 9999;
+				height: 22px;
+				width: 22px;
+				text-indent: -999999999999px;
+				z-index: 999;
+				content: " ";
+				cursor: pointer;
+				// outline: solid 1px red;
+				position: absolute;
+				
+				&#prev{
+					background-image: url("../img/carousel-seta-esquerda.jpg");
+					top: 30px;
+					left: 22px;
+				}
+
+				&#next{
+					background-image: url("../img/carousel-seta-direita.jpg");
+					top: 30px;
+					right: 22px;
+				}
+			}
+
+			.slideshow{
+				margin: 0 61px!important;
+
+			}
+		}
+		.itens{
+			height: 125px;
+			margin-top: 9px;
+
+			
+
+			ul{
+				background-color: #f2f2f2;
+				border: solid 1px white;
+				border-radius: 9px;
+				padding: 9px 15px;
+				list-style-image: url('../img/check.png');
+				height: 90px;
+				list-style-position: inside;
+				overflow: hidden;
+
+				li{
+					float:left;
+					width: 177px;
+					height: 25px;
+
+				}
+			}
+
+			&.caracteristicas{
+				// background-color: pink;
+			}
+			&.recursos{
+				// background-color: yellow;
+			}
+		}
+		.mapa{
+			height: 425px;
+			// background-color: green;
+			margin-top: 14px;
+
+			iframe{
+				width: 100%;
+				border: solid 1px white!important;
+			}
+			p{
+				color:#635b50;
+				margin-bottom: 20px;
+
+			}
+		}
+	}
+}
