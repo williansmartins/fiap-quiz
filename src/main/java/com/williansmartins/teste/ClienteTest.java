@@ -8,23 +8,23 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.williansmartins.dao.JpaGenericDao;
-import com.williansmartins.dao.entity.CorretorDaoImpl;
-import com.williansmartins.entity.CorretorEntity;
+import com.williansmartins.dao.entity.ClienteDaoImpl;
+import com.williansmartins.entity.ClienteEntity;
 
 @SuppressWarnings("deprecation")
-public class CorretorTest {
-	JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
+public class ClienteTest {
+	JpaGenericDao<ClienteEntity> dao = new ClienteDaoImpl();
 	
 	@Test
 	public void inserirSomente() {
-		CorretorEntity entityMockada = new CorretorEntity();
+		ClienteEntity entityMockada = new ClienteEntity();
 		entityMockada = popularEntity(entityMockada);
 		dao.insert(entityMockada);
 	}
 	
 	@Test
 	public void inserirERemoverEntity() {
-		CorretorEntity entityMockada = new CorretorEntity();
+		ClienteEntity entityMockada = new ClienteEntity();
 		entityMockada = popularEntity(entityMockada);
 		
 		dao.insert(entityMockada);
@@ -38,11 +38,11 @@ public class CorretorTest {
 	
 	@Test
 	public void listarEntities() {
-		List<CorretorEntity> listaEntities = new ArrayList<CorretorEntity>();
+		List<ClienteEntity> listaEntities = new ArrayList<ClienteEntity>();
 		
 		//Inserir 10 entities
 		for  (int cont = 0; cont < 10; cont++) {
-			CorretorEntity entityMockada = new CorretorEntity();
+			ClienteEntity entityMockada = new ClienteEntity();
 			entityMockada = popularEntity(entityMockada);
 			listaEntities.add(entityMockada);
 		}
@@ -55,7 +55,7 @@ public class CorretorTest {
 		Assert.assertNotNull( dao.findById(listaEntities.get(9).getId())  );
 		
 		//Remover as entities
-		for (CorretorEntity entity : listaEntities) {
+		for (ClienteEntity entity : listaEntities) {
 			dao.delete(entity.getId());
 		}
 		
@@ -65,12 +65,12 @@ public class CorretorTest {
 		
 	}
 	
-	public CorretorEntity popularEntity(CorretorEntity entity){
+	public ClienteEntity popularEntity(ClienteEntity entity){
 		
-		entity.setNome("Washington Luis Martins de Morais");
-		entity.setCelular("(11) 993-650-220");
-		entity.setTelefone("(11) 4148-4583");
-		entity.setEmail("contato@gmail.com");
+		entity.setNome("Ulisses Martins de Morais");
+		entity.setCelular("(11) 888-650-220");
+		entity.setTelefone("(11) 4707-4583");
+		entity.setEmail("uli@gmail.com");
 		
 		return entity;
 	}

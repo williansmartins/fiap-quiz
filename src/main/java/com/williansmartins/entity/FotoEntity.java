@@ -16,4 +16,16 @@ public class FotoEntity implements Serializable {
 	
 	String grande;
 	String thumb;
+	
+	public FotoEntity() {
+		super();
+	}
+
+	public FotoEntity(String grande, String thumb) {
+		super();
+		this.grande = grande;
+		this.thumb = thumb;
+	}
+	
+	
 }

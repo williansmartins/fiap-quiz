@@ -2,10 +2,16 @@ package com.williansmartins.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity(name="imovel")
 public class ImovelEntity implements Serializable {
@@ -29,9 +35,17 @@ public class ImovelEntity implements Serializable {
 	String descricaoCarousel;
 	String fotoCarousel;
 
-	//	List<FotoEntity> fotos;
-//	List<String> caracteristicas;
-//	List<String> recursos;
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+	List<FotoEntity> fotos;
+
+	@ElementCollection
+	@CollectionTable(name="recurso", joinColumns=@JoinColumn(name="id"))
+	List<String> recursos;
+	
+	@ElementCollection
+	@CollectionTable(name="caracteristica", joinColumns=@JoinColumn(name="id"))
+	List<String> caracteristicas;
 	
 	public ImovelEntity() {
 		
@@ -117,21 +131,21 @@ public class ImovelEntity implements Serializable {
 		this.endereco = endereco;
 	}
 
-//	public List<String> getCaracteristicas() {
-//		return caracteristicas;
-//	}
-//
-//	public void setCaracteristicas(List<String> caracteristicas) {
-//		this.caracteristicas = caracteristicas;
-//	}
-//
-//	public List<String> getRecursos() {
-//		return recursos;
-//	}
-//
-//	public void setRecursos(List<String> recursos) {
-//		this.recursos = recursos;
-//	}
+	public List<String> getCaracteristicas() {
+		return caracteristicas;
+	}
+
+	public void setCaracteristicas(List<String> caracteristicas) {
+		this.caracteristicas = caracteristicas;
+	}
+
+	public List<String> getRecursos() {
+		return recursos;
+	}
+
+	public void setRecursos(List<String> recursos) {
+		this.recursos = recursos;
+	}
 
 	public String getDescricaoCompleta() {
 		return descricaoCompleta;
@@ -165,12 +179,12 @@ public class ImovelEntity implements Serializable {
 		this.fotoCarousel = fotoCarousel;
 	}
 
-//	public List<FotoEntity> getFotos() {
-//		return fotos;
-//	}
-//
-//	public void setFotos(List<FotoEntity> fotos) {
-//		this.fotos = fotos;
-//	}
+	public List<FotoEntity> getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(List<FotoEntity> fotos) {
+		this.fotos = fotos;
+	}
 
 }
