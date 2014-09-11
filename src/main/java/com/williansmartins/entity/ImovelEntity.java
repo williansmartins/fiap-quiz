@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -34,6 +36,8 @@ public class ImovelEntity implements Serializable {
 	String descricaoQuadrante;
 	String descricaoCarousel;
 	String fotoCarousel;
+	@Enumerated(EnumType.STRING)
+	Tipo tipo;
 
 	@OneToMany(targetEntity = FotoEntity.class, cascade=CascadeType.ALL)
     @JoinColumn(name = "imovel_id")
@@ -117,6 +121,14 @@ public class ImovelEntity implements Serializable {
 
 	public String getMaps() {
 		return maps;
+	}
+	
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 
 	public void setMaps(String maps) {
