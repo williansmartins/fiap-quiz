@@ -27,12 +27,16 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 		entityManager = getEntityManager();
 		entityManager.getTransaction().begin();
 		
+<<<<<<< HEAD
 		String jpql = "SELECT p FROM imovel p WHERE p.titulo like '%" + s + 
 				"%' or p.cidade like '%" + s + 
 				"%' or p.descricaoCompleta like '%" + s +
 				"%' or p.endereco like '%" + s +
 				"%' or p.tipo like '%" + s + "%' ";
 		
+=======
+		String jpql = "SELECT p FROM imovel p WHERE p.titulo like '%" + s + "%'";
+>>>>>>> c77f91d46fa7a2cb26713140a26959f82a194dfa
 		Query query = entityManager.createQuery(jpql);
 		lista = (List<ImovelEntity>)query.getResultList();
 		

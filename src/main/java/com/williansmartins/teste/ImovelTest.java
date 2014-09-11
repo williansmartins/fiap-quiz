@@ -124,8 +124,11 @@ public class ImovelTest {
 		entity.setFotos(fotos);
 		
 		entity.setTipo(Tipo.APARTAMENTO);
+<<<<<<< HEAD
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
+=======
+>>>>>>> c77f91d46fa7a2cb26713140a26959f82a194dfa
 
 		return entity;
 	}
