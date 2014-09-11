@@ -56,6 +56,13 @@ public class ImovelTest {
 		//Testar se removeu a entidade	
 		dao.delete(entityMockada.getId());
 		Assert.assertNull(dao.findById(entityMockada.getId()));
+		
+		//Testar se insere somente com título
+		entityMockada = new ImovelEntity();
+		entityMockada.setTitulo( "Titulo" );
+		dao.insert(entityMockada);
+		Assert.assertNotNull(dao.findById(entityMockada.getId()));
+		
 
 	}
 

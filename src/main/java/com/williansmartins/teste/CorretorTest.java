@@ -23,6 +23,17 @@ public class CorretorTest {
 	}
 	
 	@Test
+	public void inserirMesmoSemOsOutrosDados() {
+		CorretorEntity entityMockada = new CorretorEntity();
+		entityMockada.setNome("willians");
+		dao.insert(entityMockada);
+		
+		//Testar se gravou
+		Assert.assertNotNull( dao.findById(entityMockada.getId()) );
+		
+	}
+	
+	@Test
 	public void inserirERemoverEntity() {
 		CorretorEntity entityMockada = new CorretorEntity();
 		entityMockada = popularEntity(entityMockada);

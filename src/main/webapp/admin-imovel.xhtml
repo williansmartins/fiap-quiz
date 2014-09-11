@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>Imobiliária</title>
+	    <link href="css/estilos.css" rel="stylesheet" />
+	    <link href="css/bootstrap.css" rel="stylesheet" />
+	    <link href="css/demo-slideshow.css" rel="stylesheet" />
+	    <link href="css/slider.css" rel="stylesheet" />
+	</h:head>
+	<body>
+		<h:form id="imovel-form">
+			<div class="topo">
+			  <p class="telefone">#{corretorBean.entity.telefone}</p>
+			  <p class="email">#{corretorBean.entity.email}</p>
+			</div>
+			<div class="menu">
+			  <ul>
+			    <li><a class="first" href="admin-corretor.xhtml">Corretor</a></li>
+			    <li><a href="admin-clientes.html">Clientes</a></li>
+			    <li><a href="admin-imoveis.html">Imóveis</a></li>
+			  </ul>
+			</div>
+		    <div class="wrapper">
+		      <div class="admin">
+		        <div class="content">
+		          <h1>Dados do imóvel</h1>
+		
+		          <ul class="nav nav-tabs" role="tablist" id="myTab">
+		            <li class="active"><a href="#home" role="tab" data-toggle="tab">Básico</a></li>
+		            <li><a href="#profile" role="tab" data-toggle="tab">Descrição</a></li>
+		            <li><a href="#messages" role="tab" data-toggle="tab">Fotos</a></li>
+		            <li><a href="#settings" role="tab" data-toggle="tab">Detalhes</a></li>
+		          </ul>
+		
+		          <div class="tab-content">
+		            <div class="tab-pane active" id="home">
+						<div class="row">
+			          		<div class="col-md-4">
+				                <label>Título:</label>
+								<h:inputText styleClass="form-control" id="titulo" maxlength="24" value="#{imovelBean.entity.titulo}" />
+			          		</div>	
+			          		<div class="col-md-4">
+			          			<label>Apresentar na Home?</label>
+			          			<br />
+								<div class="btn-group" data-toggle="buttons">
+								  <label class="btn btn-primary">
+								    <input type="radio" name="radio-home" id="option1" value="sim"/> Sim
+								  </label>
+								  <label class="btn btn-primary">
+								    <input type="radio" name="radio-home" id="option2" value="nao"/> Não
+								  </label>
+								</div>
+								<h:inputHidden id="radio1" value="#{imovelBean.entity.mostrarNaHome}" />
+								<h:inputHidden id="radio2" value="#{imovelBean.entity.mostrarNoCarousel}" />
+			          		</div>	
+			          		<div class="col-md-4">
+			          			<label>Apresentar no Carrousel?</label>
+								<div class="btn-group" data-toggle="buttons">
+								  <label class="btn btn-primary">
+								    <input type="radio" name="radio-carousel" id="option3" value="sim"/> Sim
+								  </label>
+								  <label class="btn btn-primary">
+								    <input type="radio" name="radio-carousel" id="option4" value="nao"/> Não
+								  </label>
+								</div>
+			          		</div>	
+			          </div>	
+		              <div class="row">
+		                <div class="col-md-3">
+		                  <label>Valor:</label>
+		                  <h:inputText styleClass="form-control" maxlength="9" id="valor" value="#{imovelBean.entity.valor}" />
+		                </div>
+		                <div class="col-md-3">
+		                  <label>Fita:</label>
+		                  <h:selectOneMenu value="#{imovelBean.entity.fita}" id="fita" class="form-control">
+							  <f:selectItem itemValue="0" itemLabel="Selecione"/>
+							  <f:selectItem itemValue="vendido" itemLabel="vendido"/>
+							  <f:selectItem itemValue="indisponível" itemLabel="indisponível"/>
+							  <f:selectItem itemValue="aluga" itemLabel="aluga"/>
+							  <f:selectItem itemValue="venda" itemLabel="à venda"/>
+						  </h:selectOneMenu>
+		                </div>
+		                <div class="col-md-3">
+		                  <label>Tipo:</label>
+		                  <h:selectOneMenu value="#{imovelBean.entity.tipo}" id="tipo" class="form-control">
+							  <f:selectItem itemValue="0" itemLabel="Selecione"/>
+							  <f:selectItem itemValue="APARTAMENTO" itemLabel="Apartamento"/>
+							  <f:selectItem itemValue="CASA" itemLabel="Casa"/>
+						  </h:selectOneMenu>
+		                </div>		                
+		                <div class="col-md-3">
+		                  <label>Metros:</label>
+		                  <h:inputText styleClass="form-control" maxlength="14" id="metros" value="#{imovelBean.entity.metros}" />
+		                </div>
+		              </div>
+		              
+		              <div class="row">
+		                <div class="col-md-4">
+		                  <label>Dormitórios:</label>
+		                  <h:inputText styleClass="form-control" type="number" id="dormitorios" min="0" value="#{imovelBean.entity.dormitorios}" />
+		                </div>
+		                <div class="col-md-4">
+		                  <label>Vagas na garagem:</label>
+		                  <h:inputText styleClass="form-control" type="number" id="vagas" min="0" value="#{imovelBean.entity.vagas}" />
+		                </div>
+		                <div class="col-md-4">
+		                  <label>Cidade:</label>
+		                  <h:inputText styleClass="form-control" type="text" id="cidade" value="#{imovelBean.entity.cidade}" />
+		                </div>
+		              </div>
+		            </div>
+		            <div class="tab-pane" id="profile">
+		              <label>descricao-completa:</label>
+		              <h:inputTextarea maxlength="558" styleClass="form-control" id="descricaoCompleta" style="height: 117px;" value="#{imovelBean.entity.descricaoCompleta}" />
+		              <label>descricao-quadrante:</label>
+		              <h:inputTextarea maxlength="213" styleClass="form-control" id="descricaoQuadrante" value="#{imovelBean.entity.descricaoQuadrante}" />
+		              <label>descricao-carousel:</label>
+		              <h:inputTextarea maxlength="140" styleClass="form-control" id="descricaoCarousel" value="#{imovelBean.entity.descricaoCarousel}" />
+		            </div>
+		            <div class="tab-pane" id="messages">
+		              <label>foto - Grande:</label>
+		              <input type="file" class="form-control"/>
+		              <label>foto - Carousel:</label>
+		              <input type="file" class="form-control"/>
+		              <label>foto - Quadrante:</label>
+		              <input type="file" class="form-control"/>
+		              <label>foto - Thumb:</label>
+		              <input type="file" class="form-control"/>
+		            </div>
+		            <div class="tab-pane" id="settings">
+		              <label>caracteristicas:</label>
+		              <h:inputText styleClass="form-control" maxlength="14" id="caracteristicas" />
+		              <label>recursos:</label>
+		              <h:inputText styleClass="form-control" maxlength="14" id="recursos" />
+		              <label>url maps:</label>
+		              <h:inputText styleClass="form-control" maxlength="14" id="maps" value="#{imovelBean.entity.maps}" />
+		              <label>endereço:</label>
+		              <h:inputText styleClass="form-control" maxlength="14" id="endereco" value="#{imovelBean.entity.endereco}" />
+		            </div>
+		          </div>
+		
+		          <br />
+		          <h:commandButton styleClass="btn btn-success" value="salvar" action="#{imovelBean.save}" />
+		          <a href="admin-imoveis.html" class="btn btn-success"> voltar</a>
+		          <a href="#" class="popularImovel btn btn-danger">Popular imóvel</a>
+		        </div>
+		      </div>  
+		    </div>
+		</h:form>
+		
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.cycle2.js"></script>
+		<script src="js/bootstrap-slider.js"></script>
+		<script src="js/dropdown.js"></script>
+		<script src="js/scripts.js"></script>
+		<script src="js/jquery.cycle2.carousel.js"></script>
+		<script src="js/tab.js"></script>
+		<script src="js/button.js"></script>
+		<script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
+	</body>
+</html>

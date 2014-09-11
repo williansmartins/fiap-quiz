@@ -153,12 +153,10 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T>{
 		}
 	}
 
-	@Override
 	public List<T> find(String search) {
 		return null;
 	}
 	
-	@Override
 	public List<T> find(Tipo apartamento, String cidade, BigDecimal min, BigDecimal max) {
 		return null;
 	}

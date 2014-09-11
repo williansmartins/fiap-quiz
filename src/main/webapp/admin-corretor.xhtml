@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>Imobiliária</title>
+	    <link href="css/estilos.css" rel="stylesheet" />
+	    <link href="css/bootstrap.css" rel="stylesheet" />
+	    <link href="css/demo-slideshow.css" rel="stylesheet" />
+	    <link href="css/slider.css" rel="stylesheet" />
+	</h:head>
+	<body>
+		<h:form>
+			<div class="topo">
+			  <p class="telefone">#{corretorBean.entity.telefone}</p>
+			  <p class="email">#{corretorBean.entity.email}</p>
+			</div>
+			<div class="menu">
+			  <ul>
+			    <li><a class="first" href="admin-corretor.xhtml">Corretor</a></li>
+			    <li><a href="admin-clientes.html">Clientes</a></li>
+			    <li><a href="admin-imoveis.html">Imóveis</a></li>
+			  </ul>
+			</div>
+			<div class="wrapper">
+			  <div class="admin">
+			    <div class="content">
+			      <h1>Gerenciando dados do Corretor</h1>
+			      <label>Nome:</label>
+			      <h:inputText styleClass="form-control" maxlength="30" value="#{corretorBean.entity.nome}" />
+			      <label>Celular:</label>
+			      <h:inputText styleClass="form-control" maxlength="19" value="#{corretorBean.entity.celular}" />
+			      <label>Fixo:</label>
+			      <h:inputText styleClass="form-control" maxlength="19" value="#{corretorBean.entity.telefone}" />
+			      <label>Email:</label>
+			      <h:inputText styleClass="form-control" maxlength="30" value="#{corretorBean.entity.email}" />
+			      <br />
+			      <h:commandButton styleClass="btn btn-success" value="salvar" action="#{corretorBean.save}" />
+			    </div>
+			  </div>  
+			</div>
+		</h:form>
+		
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.cycle2.js"></script>
+		<script src="js/bootstrap-slider.js"></script>
+		<script src="js/dropdown.js"></script>
+		<script src="js/scripts.js"></script>
+		<script src="js/jquery.cycle2.carousel.js"></script>
+		<script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
+	</body>
+</html>
