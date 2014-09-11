@@ -35,8 +35,8 @@ public class ImovelEntity implements Serializable {
 	String descricaoCarousel;
 	String fotoCarousel;
 
-	@OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="id")
+	@OneToMany(targetEntity = FotoEntity.class, cascade=CascadeType.ALL)
+    @JoinColumn(name = "imovel_id")
 	List<FotoEntity> fotos;
 
 	@ElementCollection

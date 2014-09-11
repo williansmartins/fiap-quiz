@@ -42,9 +42,9 @@ public class ImovelTest {
 		Assert.assertFalse(  entityBanco.getCaracteristicas().size() == 4 );
 		
 		//Testar se as fotos foram inseridas
-//		Assert.assertEquals(true, entityBanco.getFotos().size() == 2);
-//		Assert.assertEquals(false, entityBanco.getFotos().size() == 1);
-//		Assert.assertEquals(false, entityBanco.getFotos().size() == 3);
+		Assert.assertEquals(true, entityBanco.getFotos().size() == 3);
+		Assert.assertEquals(false, entityBanco.getFotos().size() == 2);
+		Assert.assertEquals(false, entityBanco.getFotos().size() == 4);
 
 		//Testar se removeu a entidade	
 		dao.delete(entityMockada.getId());
