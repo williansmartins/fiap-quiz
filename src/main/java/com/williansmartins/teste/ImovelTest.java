@@ -12,6 +12,7 @@ import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
+import com.williansmartins.entity.Tipo;
 
 @SuppressWarnings("deprecation")
 public class ImovelTest {
@@ -45,6 +46,12 @@ public class ImovelTest {
 		Assert.assertEquals(true, entityBanco.getFotos().size() == 3);
 		Assert.assertEquals(false, entityBanco.getFotos().size() == 2);
 		Assert.assertEquals(false, entityBanco.getFotos().size() == 4);
+		
+		//Testar se cadastrou o "mostrar no carousel"
+		Assert.assertTrue( entityBanco.isMostrarNoCarousel() );
+		
+		//Testar se cadastrou o "mostrar na home"
+		Assert.assertTrue( entityBanco.isMostrarNaHome() );
 
 		//Testar se removeu a entidade	
 		dao.delete(entityMockada.getId());
@@ -109,7 +116,92 @@ public class ImovelTest {
 		fotos.add(new FotoEntity("grande3.jpg", "thumb3.jpg"));
 		entity.setFotos(fotos);
 		
+		entity.setTipo(Tipo.APARTAMENTO);
+		entity.setMostrarNoCarousel(true);
+		entity.setMostrarNaHome(true);
 
 		return entity;
+	}
+
+	@Test
+	public void buscarPorTudo( ){
+		ImovelEntity entityMockada = new ImovelEntity();
+		List<ImovelEntity> lista;
+				
+		entityMockada = popularEntity( entityMockada );
+
+		dao.insert( entityMockada );
+
+		ImovelEntity entityBanco = dao.findById( entityMockada.getId() );
+		
+		//Testar se inseriu mesmo
+		Assert.assertNotNull( entityBanco );
+		
+		//Teste passa porque existe
+		lista = dao.find(Tipo.APARTAMENTO, "cotia", new BigDecimal(120000), new BigDecimal(160000));
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Teste passa raspando no preço
+		lista = dao.find(Tipo.APARTAMENTO, "cotia", new BigDecimal(150000), new BigDecimal(150000));
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testa falha por tipo 
+		lista = dao.find(Tipo.CASA, "cotia", new BigDecimal(120000), new BigDecimal(160000) );
+		Assert.assertNull( lista );
+		
+		//Testa falha por cidade 
+		lista = dao.find(Tipo.APARTAMENTO, "jaguariuna", new BigDecimal(120000), new BigDecimal(160000) );
+		Assert.assertNull( lista );
+		
+		//Testa falha por preco
+		lista = dao.find(Tipo.APARTAMENTO, "cotia", new BigDecimal(120000), new BigDecimal(100000) );
+		Assert.assertNull( lista );
+		
+		//Testa passa com cidade nulla
+		lista = dao.find(Tipo.APARTAMENTO, "", new BigDecimal(120000), new BigDecimal(150000) );
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testa passa com cidade nulla
+		lista = dao.find(Tipo.APARTAMENTO, null, new BigDecimal(120000), new BigDecimal(150000) );
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testa passa com tipo nulla
+		lista = dao.find( null, "cotia", new BigDecimal(120000), new BigDecimal(150000) );
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testa passa com tipo e cidade forem null
+		lista = dao.find( null, null, new BigDecimal(120000), new BigDecimal(150000) );
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testar se removeu a entidade	
+		dao.delete(entityMockada.getId());
+		Assert.assertNull( dao.findById(entityMockada.getId()) );
+	}
+	
+	@Test
+	public void buscarPorTitulo( ){
+		ImovelEntity entityMockada = new ImovelEntity();
+		List<ImovelEntity> lista;
+		
+		entityMockada = popularEntity( entityMockada );
+		
+		dao.insert( entityMockada );
+		
+		ImovelEntity entityBanco = dao.findById( entityMockada.getId() );
+		
+		//Testar se inseriu mesmo
+		Assert.assertNotNull( entityBanco );
+		
+		//Testar se existe encontra o item procurado
+		lista = dao.find("Ametista");
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testar inverso
+		lista = dao.find("asdfg" );
+		Assert.assertNull( lista );
+		
+		//Testar se removeu a entidade	
+		dao.delete(entityMockada.getId());
+		Assert.assertNull( dao.findById(entityMockada.getId()) );
 	}
 }

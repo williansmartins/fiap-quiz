@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -34,6 +36,8 @@ public class ImovelEntity implements Serializable {
 	String descricaoQuadrante;
 	String descricaoCarousel;
 	String fotoCarousel;
+	@Enumerated(EnumType.STRING)
+	Tipo tipo;
 
 	@OneToMany(targetEntity = FotoEntity.class, cascade=CascadeType.ALL)
     @JoinColumn(name = "imovel_id")
@@ -46,6 +50,9 @@ public class ImovelEntity implements Serializable {
 	@ElementCollection
 	@CollectionTable(name="caracteristica", joinColumns=@JoinColumn(name="id"))
 	List<String> caracteristicas;
+	
+	boolean mostrarNoCarousel;
+	boolean mostrarNaHome;
 	
 	public ImovelEntity() {
 		
@@ -118,6 +125,14 @@ public class ImovelEntity implements Serializable {
 	public String getMaps() {
 		return maps;
 	}
+	
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 
 	public void setMaps(String maps) {
 		this.maps = maps;
@@ -185,6 +200,22 @@ public class ImovelEntity implements Serializable {
 
 	public void setFotos(List<FotoEntity> fotos) {
 		this.fotos = fotos;
+	}
+
+	public boolean isMostrarNoCarousel() {
+		return mostrarNoCarousel;
+	}
+
+	public void setMostrarNoCarousel(boolean mostrarNoCarousel) {
+		this.mostrarNoCarousel = mostrarNoCarousel;
+	}
+
+	public boolean isMostrarNaHome() {
+		return mostrarNaHome;
+	}
+
+	public void setMostrarNaHome(boolean mostrarNaHome) {
+		this.mostrarNaHome = mostrarNaHome;
 	}
 
 }

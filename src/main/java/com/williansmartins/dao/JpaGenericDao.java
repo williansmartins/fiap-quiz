@@ -2,6 +2,7 @@ package com.williansmartins.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,9 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
+
+import com.williansmartins.entity.ImovelEntity;
+import com.williansmartins.entity.Tipo;
 
 public class JpaGenericDao<T extends Serializable> implements Dao<T>{
 
@@ -147,6 +151,15 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T>{
 		for (T t : entities) {
 			insert(t);
 		}
-		
+	}
+
+	@Override
+	public List<T> find(String search) {
+		return null;
+	}
+	
+	@Override
+	public List<T> find(Tipo apartamento, String cidade, BigDecimal min, BigDecimal max) {
+		return null;
 	}
 }
