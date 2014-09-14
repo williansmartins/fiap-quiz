@@ -788,6 +788,7 @@ standard deployment descriptor.
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
+  	<welcome-file>index.html</welcome-file>
   	<welcome-file>index.xhtml</welcome-file>
   </welcome-file-list>
 </web-app>

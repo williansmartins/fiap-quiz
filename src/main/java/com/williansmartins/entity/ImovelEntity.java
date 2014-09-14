@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,6 +34,11 @@ public class ImovelEntity implements Serializable {
 	String descricaoQuadrante;
 	String descricaoCarousel;
 	String fotoCarousel;
+	String recursos;
+	String caracteristicas;
+	boolean mostrarNoCarousel;
+	boolean mostrarNaHome;
+
 	@Enumerated(EnumType.STRING)
 	Tipo tipo;
 
@@ -43,16 +46,6 @@ public class ImovelEntity implements Serializable {
     @JoinColumn(name = "imovel_id")
 	List<FotoEntity> fotos;
 
-	@ElementCollection
-	@CollectionTable(name="recurso", joinColumns=@JoinColumn(name="id"))
-	List<String> recursos;
-	
-	@ElementCollection
-	@CollectionTable(name="caracteristica", joinColumns=@JoinColumn(name="id"))
-	List<String> caracteristicas;
-	
-	boolean mostrarNoCarousel;
-	boolean mostrarNaHome;
 	
 	public ImovelEntity() {
 		
@@ -146,22 +139,6 @@ public class ImovelEntity implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public List<String> getCaracteristicas() {
-		return caracteristicas;
-	}
-
-	public void setCaracteristicas(List<String> caracteristicas) {
-		this.caracteristicas = caracteristicas;
-	}
-
-	public List<String> getRecursos() {
-		return recursos;
-	}
-
-	public void setRecursos(List<String> recursos) {
-		this.recursos = recursos;
-	}
-
 	public String getDescricaoCompleta() {
 		return descricaoCompleta;
 	}
@@ -216,6 +193,22 @@ public class ImovelEntity implements Serializable {
 
 	public void setMostrarNaHome(boolean mostrarNaHome) {
 		this.mostrarNaHome = mostrarNaHome;
+	}
+
+	public String getRecursos() {
+		return recursos;
+	}
+
+	public void setRecursos(String recursos) {
+		this.recursos = recursos;
+	}
+
+	public String getCaracteristicas() {
+		return caracteristicas;
+	}
+
+	public void setCaracteristicas(String caracteristicas) {
+		this.caracteristicas = caracteristicas;
 	}
 
 }

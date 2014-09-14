@@ -10,25 +10,18 @@ import org.junit.Test;
 
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
-import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
 import com.williansmartins.entity.Tipo;
+import com.williansmartins.massa.ImovelMassa;
 
 @SuppressWarnings("deprecation")
 public class ImovelTest {
 	JpaGenericDao<ImovelEntity> dao = new ImovelDaoImpl();
 
 	@Test
-	public void inserirSomente() {
-		ImovelEntity entityMockada = new ImovelEntity();
-		entityMockada = popularEntity(entityMockada);
-		dao.insert(entityMockada);
-	}
-
-	@Test
 	public void inserirERemoverEntity() {
 		ImovelEntity entityMockada = new ImovelEntity();
-		entityMockada = popularEntity(entityMockada);
+		entityMockada = new ImovelMassa().getImovel1();
 
 		dao.insert(entityMockada);
 
@@ -38,9 +31,7 @@ public class ImovelTest {
 		Assert.assertNotNull(entityBanco );
 		
 		//Testar se as caracteristicas foram inseridas
-		Assert.assertTrue(  entityBanco.getCaracteristicas().size() == 3 );
-		Assert.assertFalse(  entityBanco.getCaracteristicas().size() == 2 );
-		Assert.assertFalse(  entityBanco.getCaracteristicas().size() == 4 );
+		Assert.assertTrue(  entityBanco.getCaracteristicas().equals("caracteristica1;caracteristica2;caracteristica3;") );
 		
 		//Testar se as fotos foram inseridas
 		Assert.assertEquals(true, entityBanco.getFotos().size() == 3);
@@ -62,6 +53,10 @@ public class ImovelTest {
 		entityMockada.setTitulo( "Titulo" );
 		dao.insert(entityMockada);
 		Assert.assertNotNull(dao.findById(entityMockada.getId()));
+
+		//Testar se removeu a entidade	
+		dao.delete(entityMockada.getId());
+		Assert.assertNull(dao.findById(entityMockada.getId()));
 		
 
 	}
@@ -73,7 +68,7 @@ public class ImovelTest {
 		// Inserir 10 entities
 		for (int cont = 0; cont < 10; cont++) {
 			ImovelEntity entityMockada = new ImovelEntity();
-			entityMockada = popularEntity(entityMockada);
+			entityMockada = new ImovelMassa().getImovel1();
 			listaEntities.add(entityMockada);
 		}
 
@@ -95,47 +90,12 @@ public class ImovelTest {
 
 	}
 
-	public ImovelEntity popularEntity(ImovelEntity entity) {
-
-		entity.setCidade("Cotia");
-		entity.setTitulo("Residencial Ametista");
-		entity.setDescricaoCarousel("Descricao carousel");
-		entity.setDescricaoCompleta("descricaoCompleta");
-		entity.setDescricaoQuadrante("descricaoQuadrante");
-		entity.setDormitorios(2);
-		entity.setEndereco("Amapa, 345, jd rosalina, cotia");
-		entity.setFita("sale");
-		entity.setFotoCarousel("imagem1.jpg");
-		entity.setMaps("url maps");
-		entity.setMetros(54.4);
-		entity.setVagas(1);
-		entity.setValor(new BigDecimal("150000"));
-
-		List<String> caracteristicas = new ArrayList<String>();
-		caracteristicas.add("caracteristica1");
-		caracteristicas.add("caracteristica2");
-		caracteristicas.add("caracteristica3");
-		entity.setCaracteristicas(caracteristicas);
-		
-		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
-		fotos.add(new FotoEntity("grande1.jpg", "thumb1.jpg"));
-		fotos.add(new FotoEntity("grande2.jpg", "thumb2.jpg"));
-		fotos.add(new FotoEntity("grande3.jpg", "thumb3.jpg"));
-		entity.setFotos(fotos);
-		
-		entity.setTipo(Tipo.APARTAMENTO);
-		entity.setMostrarNoCarousel(true);
-		entity.setMostrarNaHome(true);
-
-		return entity;
-	}
-
 	@Test
 	public void buscarPorTudo( ){
 		ImovelEntity entityMockada = new ImovelEntity();
 		List<ImovelEntity> lista;
 				
-		entityMockada = popularEntity( entityMockada );
+		entityMockada = new ImovelMassa().getImovel1();
 
 		dao.insert( entityMockada );
 
@@ -190,7 +150,7 @@ public class ImovelTest {
 		ImovelEntity entityMockada = new ImovelEntity();
 		List<ImovelEntity> lista;
 		
-		entityMockada = popularEntity( entityMockada );
+		entityMockada = new ImovelMassa().getImovel1();
 		
 		dao.insert( entityMockada );
 		
