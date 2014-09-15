@@ -1,25 +1,30 @@
 package com.williansmartins.controller;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.CorretorDaoImpl;
 import com.williansmartins.entity.CorretorEntity;
 
 @ManagedBean(name="corretorBean")
-@SessionScoped
-public class ControllerCorretor {
-	
+@ViewScoped
+public class ControllerCorretor implements Serializable{
+
+	private static final long serialVersionUID = 2L;
 	private CorretorEntity entity;
 	private JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
+	private final int NUMERO_DO_CONTADOR = 3;
 	
 	public ControllerCorretor(){
-		entity = dao.findById(1);
+		System.out.println("corretor");
+		entity = dao.findById(NUMERO_DO_CONTADOR);
 	}
 	
 	public String save(){
-		entity.setId(1);
+		entity.setId(NUMERO_DO_CONTADOR);
 		dao.update(entity);
 		return "admin-corretor.xhtml";
 	}

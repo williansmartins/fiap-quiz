@@ -59,7 +59,7 @@ public class ImovelMassa {
 		entity.setDescricaoQuadrante("descricaoQuadrante - casa de jandiradescricaoQuadrante - casa de jandiradescricaoQuadrante - casa de jandiradescricaoQuadrante - casa de jandiradescricaoQuadrante - casa de ante - casa de jandiradescricaoQuadrante - casa de jandira");
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
-		entity.setFita("aluguel");
+		entity.setFita("rent");
 		entity.setFotoCarousel("carousel-jandira.jpg");
 		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
 		entity.setMetros(500);

@@ -55,10 +55,12 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 		
 		cidade = cidade == null ? "" : cidade;
 		String tipoS = tipo == null ? "" : tipo.toString();
+		String minimoS = minimo == null ? "0" : minimo.toString();
+		String maximoS = maximo == null ? "99999999999999999" : maximo.toString();
 		
-		String jpql = "SELECT p FROM imovel p WHERE p.cidade like '%" + cidade +
-				"%' and p.tipo like '%%" + tipoS + 
-				"%%' and p.valor >= " + minimo + " and p.valor <= " + maximo + "";
+		String jpql = "SELECT p FROM imovel p WHERE p.cidade like '%%" + cidade +
+				"%%' and p.tipo like '%%" + tipoS + 
+				"%%' and p.valor >= " + minimoS + " and p.valor <= " + maximoS + "";
 		Query query = entityManager.createQuery(jpql);
 		lista = (List<ImovelEntity>)query.getResultList();
 		

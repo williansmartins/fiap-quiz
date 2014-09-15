@@ -157,7 +157,7 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T>{
 		return null;
 	}
 	
-	public List<T> find(Tipo apartamento, String cidade, BigDecimal min, BigDecimal max) {
+	public List<T> find(Tipo tipo, String cidade, BigDecimal min, BigDecimal max) {
 		return null;
 	}
 }

@@ -1,17 +1,42 @@
 $(document).ready( function(){
-	$('#slider').slider({
-      formater: function(value) {
-        return value + ' Reais';
-      }
-    });
+	
+	if($("body").hasClass("home")){
+	    
+		//Permite o clique no quadrante chamando a tela do imovel especifico
+		$(".imovel.quadrante").css( "cursor", "pointer" );
+		$(".imovel.quadrante").click(function (){
+			console.info($(this).attr("data-imovel-id"));
+			window.location.replace("imovel.xhtml?imovel_id=" + $(this).attr("data-imovel-id") );
+		});
+		
+		$('#slider').slider({
+			formater: function(value) {
+				return value + ' Reais';
+			}
+		});
+	}
+		
+	if($("body").hasClass("imovel")){
+		//$('.dropdown-toggle').dropdown();
+		
+		$('.show-image').click(function(){
+			$('.imagem-grande').attr( 'src', 'img/' + $(this).attr('data-url') );
+		});
+		
+	    var arr = $("#caracteristicas").attr("data-valor").split(";").slice(0,-1);
+	    for(var i = 0; i<arr.length; i++){
+	    	$("#caracteristicas").append( "<li>" + arr[i] + "</li>" );
+	    }
+	    
+	    var arr = $("#recursos").attr("data-valor").split(";").slice(0,-1);
+	    for(var i = 0; i<arr.length; i++){
+	    	$("#recursos").append( "<li>" + arr[i] + "</li>" );
+	    }
+	    
+	}
 
-    $('.dropdown-toggle').dropdown();
 
-    $('.show-image').click(function(){
-    	$('.imagem-grande').attr( 'src', 'img/' + $(this).attr('data-url') );
-    });
-
-    $('#myTab a:first').tab('show');
+    //$('#myTab a:first').tab('show');
     
     $("input[name=radio-home]").prop("checked", true).trigger("click");
     $("input[name=radio-carousel]").prop("checked", true).trigger("click");
@@ -52,5 +77,7 @@ $(document).ready( function(){
     	$('#imovel-form\\:endereco').val("Rua Amapá, 345 - Jardim Rosalina - Cotia - SP - 06608-430")
     });
     
+
     
+
 });

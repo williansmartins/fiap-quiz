@@ -48,7 +48,7 @@ public class ImovelTest {
 		dao.delete(entityMockada.getId());
 		Assert.assertNull(dao.findById(entityMockada.getId()));
 		
-		//Testar se insere somente com título
+		//Testar se insere somente com tï¿½tulo
 		entityMockada = new ImovelEntity();
 		entityMockada.setTitulo( "Titulo" );
 		dao.insert(entityMockada);
@@ -84,7 +84,7 @@ public class ImovelTest {
 			dao.delete(entity.getId());
 		}
 
-		// Verificar se elas realmente não estão no banco
+		// Verificar se elas realmente nï¿½o estï¿½o no banco
 		Assert.assertNull(dao.findById(listaEntities.get(0).getId()));
 		Assert.assertNull(dao.findById(listaEntities.get(9).getId()));
 
@@ -108,7 +108,7 @@ public class ImovelTest {
 		lista = dao.find(Tipo.APARTAMENTO, "cotia", new BigDecimal(120000), new BigDecimal(160000));
 		Assert.assertTrue( lista.size() > 0 );
 		
-		//Teste passa raspando no preço
+		//Teste passa raspando no preco
 		lista = dao.find(Tipo.APARTAMENTO, "cotia", new BigDecimal(150000), new BigDecimal(150000));
 		Assert.assertTrue( lista.size() > 0 );
 		
@@ -139,6 +139,23 @@ public class ImovelTest {
 		//Testa passa com tipo e cidade forem null
 		lista = dao.find( null, null, new BigDecimal(120000), new BigDecimal(150000) );
 		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testa se passa com somente tipo
+		lista = dao.find( Tipo.CASA, null, null, null );
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testa se passa com somente cidade
+		lista = dao.find( null, "cotia", null, null );
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testa se passa com somente max
+		lista = dao.find( null, null, new BigDecimal(200000), null );
+		Assert.assertTrue( lista.size() > 0 );
+		
+		//Testa se passa com somente mmin
+		lista = dao.find( null, null, null, new BigDecimal(200000) );
+		Assert.assertTrue( lista.size() > 0 );
+		
 		
 		//Testar se removeu a entidade	
 		dao.delete(entityMockada.getId());
