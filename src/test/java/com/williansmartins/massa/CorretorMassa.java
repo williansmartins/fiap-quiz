@@ -5,6 +5,7 @@ import org.junit.Test;
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.CorretorDaoImpl;
 import com.williansmartins.entity.CorretorEntity;
+import com.williansmartins.entity.ImovelEntity;
 
 public class CorretorMassa {
 	
@@ -18,11 +19,16 @@ public class CorretorMassa {
 	}
 	
 	public CorretorEntity popularEntity(CorretorEntity entity){
-		entity.setId(33);
 		entity.setNome("Washington L. M. de Morais");
 		entity.setCelular("(11) 993-650-220");
 		entity.setTelefone("(11) 4148-4583");
 		entity.setEmail("contato@gmail.com");
 		return entity;
+	}
+
+	public void removerCorretor() {
+		for (CorretorEntity o : dao.findAll()) {
+			dao.delete( o.getId() );
+		}
 	}
 }

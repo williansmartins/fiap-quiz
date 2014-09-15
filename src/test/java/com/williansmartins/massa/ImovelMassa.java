@@ -17,7 +17,7 @@ public class ImovelMassa {
 	JpaGenericDao<ImovelEntity> dao = new ImovelDaoImpl();
 
 	@Test
-	public void inserirSomente() {
+	public void inserirImovel() {
 		dao.insert(getImovel1());
 		dao.insert(getImovel2());
 	}
@@ -26,9 +26,9 @@ public class ImovelMassa {
 		ImovelEntity entity = new ImovelEntity();
 		entity.setCidade("Cotia");
 		entity.setTitulo("Residencial Ametista");
-		entity.setDescricaoCarousel("Um apartamento maravilhoso, com vista para o morro do macaco, em frente ao mercado DIA. Próximo de tudo, mercado, padaria, cabelereiro, parque, raposo tavares, escolas, empresas, açougue, hort-fruit, bazar, mercearia, lava-rápidos, posto de saúde, mecânico de autos e de motos, mercado de atacados, etc. Dois quartos, um utilizado como escritório, com 54 m² de puro lazer e diversão, com 1 vaga na garagem, uma área de gourmet para festas e recreações, mini campo de futebol para as crianças. Com acesso aos mais variados comércios da região.");
-		entity.setDescricaoCompleta("Um apartamento maravilhoso, com vista para o morro do macaco, em frente ao mercado DIA. Próximo de tudo, mercado, padaria, cabelereiro, parque, raposo tavares, escolas, empresas, açougue, hort-fruit, bazar");
-		entity.setDescricaoQuadrante("Um apartamento maravilhoso, com vista para o morro do macaco, em frente ao mercado DIA. Próximo de tudo, mercado, padaria, cabelereiro.");
+		entity.setDescricaoCompleta("Um apartamento maravilhoso, com vista para o morro do macaco, em frente ao mercado DIA. Próximo de tudo, mercado, padaria, cabelereiro, parque, raposo tavares, escolas, empresas, açougue, hort-fruit, bazar, mercearia, lava-rápidos, posto de saúde, mecânico de autos e de motos, mercado de atacados, etc. Dois quartos, um utilizado como escritório, com 54 m² de puro lazer e diversão, com 1 vaga na garagem, uma área de gourmet para festas e recreações, mini campo de futebol para as crianças. Com acesso aos mais variados comércios da região.");
+		entity.setDescricaoQuadrante("Um apartamento maravilhoso, com vista para o morro do macaco, em frente ao mercado DIA. Próximo de tudo, mercado, padaria, cabelereiro, parque, raposo tavares, escolas, empresas, açougue, hort-fruit, bazar");
+		entity.setDescricaoCarousel("Um apartamento maravilhoso, com vista para o morro do macaco, em frente ao mercado DIA. Próximo de tudo, mercado, padaria, cabelereiro.");
 		entity.setDormitorios(2);
 		entity.setEndereco("Amapa, 345, jd rosalina, cotia");
 		entity.setFita("sale");
@@ -54,8 +54,8 @@ public class ImovelMassa {
 		ImovelEntity entity = new ImovelEntity();
 		entity.setCidade("Jandira");
 		entity.setTitulo("Grande Família");
-		entity.setDescricaoCarousel("3 casas em uma só, próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim, escritório e varanda.");
 		entity.setDescricaoCompleta("Um terreno muito grande, com 3 casas construídas, a primeira casa é a principal com 130 m², as outras 2 possuem 54 m². A localização é ótima, ao lado de Minimercado, próximo à estação de trem, padarias, possui uma escola no mesmo quarteirão, uma visão totalmente panorâmica da área chamada de Chácara dos Padres. Possui 2 vagas de garagem, escritório e banheiro reservado na primeira casa, um jardim lindo, com plantas, árvores frutíferas, hortas de legumes. Uma ampla varanda com mais de 20 m², uma área  para festas, balanço para crianças e muito mais.");
+		entity.setDescricaoCarousel("3 casas em uma só, próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim, escritório e varanda.");
 		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Cora�‹o, Jandira");
@@ -76,6 +76,12 @@ public class ImovelMassa {
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
 		return entity;
+	}
+
+	public void removerImovel() {
+		for (ImovelEntity o : dao.findAll()) {
+			dao.delete( o.getId() );
+		}
 	}
 
 }
