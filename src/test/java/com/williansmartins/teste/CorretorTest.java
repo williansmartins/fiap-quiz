@@ -10,17 +10,11 @@ import org.junit.Test;
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.CorretorDaoImpl;
 import com.williansmartins.entity.CorretorEntity;
+import com.williansmartins.massa.CorretorMassa;
 
 @SuppressWarnings("deprecation")
 public class CorretorTest {
 	JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
-	
-	@Test
-	public void inserirSomente() {
-		CorretorEntity entityMockada = new CorretorEntity();
-		entityMockada = popularEntity(entityMockada);
-		dao.insert(entityMockada);
-	}
 	
 	@Test
 	public void inserirMesmoSemOsOutrosDados() {
@@ -31,12 +25,15 @@ public class CorretorTest {
 		//Testar se gravou
 		Assert.assertNotNull( dao.findById(entityMockada.getId()) );
 		
+		//Testar se removeu a entidade	
+		dao.delete(entityMockada.getId());
+		Assert.assertNull(dao.findById(entityMockada.getId()));
 	}
 	
 	@Test
 	public void inserirERemoverEntity() {
 		CorretorEntity entityMockada = new CorretorEntity();
-		entityMockada = popularEntity(entityMockada);
+		entityMockada = new CorretorMassa().popularEntity(entityMockada);
 		
 		dao.insert(entityMockada);
 		
@@ -54,7 +51,7 @@ public class CorretorTest {
 		//Inserir 10 entities
 		for  (int cont = 0; cont < 10; cont++) {
 			CorretorEntity entityMockada = new CorretorEntity();
-			entityMockada = popularEntity(entityMockada);
+			entityMockada = new CorretorMassa().popularEntity(entityMockada);
 			listaEntities.add(entityMockada);
 		}
 		
@@ -74,15 +71,5 @@ public class CorretorTest {
 		Assert.assertNull( dao.findById(listaEntities.get(0).getId())  );
 		Assert.assertNull( dao.findById(listaEntities.get(9).getId())  );
 		
-	}
-	
-	public CorretorEntity popularEntity(CorretorEntity entity){
-		
-		entity.setNome("Washington Luis Martins de Morais");
-		entity.setCelular("(11) 993-650-220");
-		entity.setTelefone("(11) 4148-4583");
-		entity.setEmail("contato@gmail.com");
-		
-		return entity;
 	}
 }

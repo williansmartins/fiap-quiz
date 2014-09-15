@@ -47,20 +47,15 @@
 		                >
 		                <!-- empty element for overlay -->
 		                <div class="cycle-overlay"></div>
-		
-		                <img src="img/banner1.jpg" 
-		                    data-cycle-title="1200 Anastasia Ave Coral Gables, FL" 
-		                    data-cycle-desc="&lt;p class='descricao'&gt;descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao &lt;/p&gt;
-		                    &lt;p class='direita-carousel'&gt;R$ 320.000
-		                    &lt;a href='#' class='btn btn-success'&gt;Leia Mais&lt;/a&gt;
-		                    &lt;/p&gt;" />
-		                <img src="img/banner1.jpg" 
-		                    data-cycle-title="Apartamento - Fernando Nobre - Cotia" 
-		                    data-cycle-desc="&lt;p class='descricao'&gt;lorem ipsum colum dolor, lorem ipsum colum dolor, lorem ipsum colum dolor, lorem ipsum colum dolor, lorem ipsum colum dolor, lorem ipsum colum dolor, lorem ipsum colum dolor, lorem ipsum colum dolor, lorem ipsum colum dolor,  &lt;/p&gt;
-		                    &lt;p class='direita-carousel'&gt;R$ 750.000
-		                    &lt;a href='#' class='btn btn-success'&gt;Leia Mais&lt;/a&gt;
-		                    &lt;/p&gt;" />
-		                
+						
+						<ui:repeat value="#{imovelBean.novidades}" var="o"  varStatus="status">
+			                <img src="img/banner1.jpg" 
+			                    data-cycle-title="#{o.titulo}" 
+			                    data-cycle-desc="&lt;p class='descricao'&gt;#{o.descricaoCarousel}&lt;/p&gt;
+			                    &lt;p class='direita-carousel'&gt;R$ #{o.valor}
+			                    &lt;a href='imovel.xhtml?imovel_id=#{o.id}' class='btn btn-success'&gt;Leia Mais&lt;/a&gt;
+			                    &lt;/p&gt;" />
+						</ui:repeat>
 		            </div>
 		            </div>
 		            <div class="direita">
@@ -87,7 +82,7 @@
 		                          <option>Qualquer</option>
 		                          <option>Cidade1</option>
 		                          <option>Cidade2</option>
-		                          <option>Pindamonhangabaa</option>
+		                          <option>Pindam</option>
 		                      </select>
 		                    </div>
 		                  </div>
@@ -125,29 +120,27 @@
 		          <div class="novidades">
 		            <h1>Nossas novidades</h1>
 		            <ui:repeat value="#{imovelBean.novidades}" var="o"  varStatus="status">
-			            <h:column>
-				            <div class="imovel quadrante" data-imovel-id="#{o.id}">
-				                <div class="foto">
-				                  <img src="img/casa1.jpg" />
-				                  <div class="enfeite-cima">
-				                    <p class="valor">R$ #{o.valor}</p>
-				                  </div>
-				                  <div class="enfeite-baixo #{o.fita}"></div>
-				                </div>
-				                <div class="descricao">
-				                  <div class="titulo">
-				                    #{o.titulo}
-				                  </div>  
-				                  <div class="descritivo">
-				                    #{o.descricaoQuadrante}
-				                  </div>
-				                  <div class="detalhes">
-				                    <p class="cidade"><img src="img/city.png" />Cidade:<span> #{o.cidade}</span></p>
-				                    <p class="tamanho"><img src="img/home.png" />Tamanho:<span> #{o.metros} metros</span></p>
-				                  </div>
-				                </div>
-				            </div>
-			            </h:column>
+			            <div class="imovel quadrante" data-imovel-id="#{o.id}">
+			                <div class="foto">
+			                  <img src="img/casa1.jpg" />
+			                  <div class="enfeite-cima">
+			                    <p class="valor">R$ #{o.valor}</p>
+			                  </div>
+			                  <div class="enfeite-baixo #{o.fita}"></div>
+			                </div>
+			                <div class="descricao">
+			                  <div class="titulo">
+			                    #{o.titulo}
+			                  </div>  
+			                  <div class="descritivo">
+			                    #{o.descricaoQuadrante}
+			                  </div>
+			                  <div class="detalhes">
+			                    <p class="cidade"><img src="img/city.png" />Cidade:<span> #{o.cidade}</span></p>
+			                    <p class="tamanho"><img src="img/home.png" />Tamanho:<span> #{o.metros} metros</span></p>
+			                  </div>
+			                </div>
+			            </div>
 		            </ui:repeat>
 		          </div>
 		        </div>

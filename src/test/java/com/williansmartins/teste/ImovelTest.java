@@ -17,15 +17,17 @@ import com.williansmartins.massa.ImovelMassa;
 @SuppressWarnings("deprecation")
 public class ImovelTest {
 	JpaGenericDao<ImovelEntity> dao = new ImovelDaoImpl();
+	ImovelEntity entityMockada1;
+	ImovelEntity entityMockada2;
 
 	@Test
 	public void inserirERemoverEntity() {
-		ImovelEntity entityMockada = new ImovelEntity();
-		entityMockada = new ImovelMassa().getImovel1();
+		ImovelEntity entityMockada1 = new ImovelEntity();
+		entityMockada1 = new ImovelMassa().getImovel1();
 
-		dao.insert(entityMockada);
+		dao.insert(entityMockada1);
 
-		ImovelEntity entityBanco = dao.findById(entityMockada.getId());
+		ImovelEntity entityBanco = dao.findById(entityMockada1.getId());
 		
 		//Testar se inseriu mesmo
 		Assert.assertNotNull(entityBanco );
@@ -45,18 +47,18 @@ public class ImovelTest {
 		Assert.assertTrue( entityBanco.isMostrarNaHome() );
 
 		//Testar se removeu a entidade	
-		dao.delete(entityMockada.getId());
-		Assert.assertNull(dao.findById(entityMockada.getId()));
+		dao.delete(entityMockada1.getId());
+		Assert.assertNull(dao.findById(entityMockada1.getId()));
 		
 		//Testar se insere somente com t�tulo
-		entityMockada = new ImovelEntity();
-		entityMockada.setTitulo( "Titulo" );
-		dao.insert(entityMockada);
-		Assert.assertNotNull(dao.findById(entityMockada.getId()));
+		entityMockada1 = new ImovelEntity();
+		entityMockada1.setTitulo( "Titulo" );
+		dao.insert(entityMockada1);
+		Assert.assertNotNull(dao.findById(entityMockada1.getId()));
 
 		//Testar se removeu a entidade	
-		dao.delete(entityMockada.getId());
-		Assert.assertNull(dao.findById(entityMockada.getId()));
+		dao.delete(entityMockada1.getId());
+		Assert.assertNull(dao.findById(entityMockada1.getId()));
 		
 
 	}
@@ -67,9 +69,9 @@ public class ImovelTest {
 
 		// Inserir 10 entities
 		for (int cont = 0; cont < 10; cont++) {
-			ImovelEntity entityMockada = new ImovelEntity();
-			entityMockada = new ImovelMassa().getImovel1();
-			listaEntities.add(entityMockada);
+			ImovelEntity entityMockada1 = new ImovelEntity();
+			entityMockada1 = new ImovelMassa().getImovel1();
+			listaEntities.add(entityMockada1);
 		}
 
 		dao.insertAll(listaEntities);
@@ -92,17 +94,19 @@ public class ImovelTest {
 
 	@Test
 	public void buscarPorTudo( ){
-		ImovelEntity entityMockada = new ImovelEntity();
 		List<ImovelEntity> lista;
 				
-		entityMockada = new ImovelMassa().getImovel1();
+		entityMockada1 = new ImovelMassa().getImovel1();
+		dao.insert( entityMockada1 );
+		entityMockada2 = new ImovelMassa().getImovel2();
+		dao.insert( entityMockada2 );
 
-		dao.insert( entityMockada );
-
-		ImovelEntity entityBanco = dao.findById( entityMockada.getId() );
+		ImovelEntity entityBanco1 = dao.findById( entityMockada1.getId() );
+		ImovelEntity entityBanco2 = dao.findById( entityMockada2.getId() );
 		
 		//Testar se inseriu mesmo
-		Assert.assertNotNull( entityBanco );
+		Assert.assertNotNull( entityBanco1 );
+		Assert.assertNotNull( entityBanco2 );
 		
 		//Teste passa porque existe
 		lista = dao.find(Tipo.APARTAMENTO, "cotia", new BigDecimal(120000), new BigDecimal(160000));
@@ -141,7 +145,7 @@ public class ImovelTest {
 		Assert.assertTrue( lista.size() > 0 );
 		
 		//Testa se passa com somente tipo
-		lista = dao.find( Tipo.CASA, null, null, null );
+		lista = dao.find( Tipo.APARTAMENTO, null, null, null );
 		Assert.assertTrue( lista.size() > 0 );
 		
 		//Testa se passa com somente cidade
@@ -158,20 +162,22 @@ public class ImovelTest {
 		
 		
 		//Testar se removeu a entidade	
-		dao.delete(entityMockada.getId());
-		Assert.assertNull( dao.findById(entityMockada.getId()) );
+		dao.delete(entityMockada1.getId());
+		dao.delete(entityMockada2.getId());
+		Assert.assertNull( dao.findById(entityMockada1.getId()) );
+		Assert.assertNull( dao.findById(entityMockada2.getId()) );
 	}
 	
 	@Test
 	public void buscarPorTitulo( ){
-		ImovelEntity entityMockada = new ImovelEntity();
+		ImovelEntity entityMockada1 = new ImovelEntity();
 		List<ImovelEntity> lista;
 		
-		entityMockada = new ImovelMassa().getImovel1();
+		entityMockada1 = new ImovelMassa().getImovel1();
 		
-		dao.insert( entityMockada );
+		dao.insert( entityMockada1 );
 		
-		ImovelEntity entityBanco = dao.findById( entityMockada.getId() );
+		ImovelEntity entityBanco = dao.findById( entityMockada1.getId() );
 		
 		//Testar se inseriu mesmo
 		Assert.assertNotNull( entityBanco );
@@ -185,7 +191,7 @@ public class ImovelTest {
 		Assert.assertNull( lista );
 		
 		//Testar se removeu a entidade	
-		dao.delete(entityMockada.getId());
-		Assert.assertNull( dao.findById(entityMockada.getId()) );
+		dao.delete(entityMockada1.getId());
+		Assert.assertNull( dao.findById(entityMockada1.getId()) );
 	}
 }

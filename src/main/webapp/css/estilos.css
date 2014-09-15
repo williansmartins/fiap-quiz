@@ -94,13 +94,13 @@ body {
         border: solid 7px white;
         width: 630px; }
         .home .content .hero .carousel .cycle-slideshow .descricao {
-          width: 427px;
+          width: 430px;
           height: 40px;
           overflow: hidden;
           float: left; }
         .home .content .hero .carousel .cycle-slideshow .direita-carousel {
           float: right;
-          width: 110px;
+          width: 146px;
           background-image: initial;
           position: absolute;
           right: 5px;

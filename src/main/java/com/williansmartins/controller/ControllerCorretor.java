@@ -16,7 +16,7 @@ public class ControllerCorretor implements Serializable{
 	private static final long serialVersionUID = 2L;
 	private CorretorEntity entity;
 	private JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
-	private final int NUMERO_DO_CONTADOR = 3;
+	private final int NUMERO_DO_CONTADOR = 33;
 	
 	public ControllerCorretor(){
 		System.out.println("corretor");
