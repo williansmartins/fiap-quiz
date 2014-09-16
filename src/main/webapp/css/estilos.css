@@ -339,3 +339,13 @@ body {
 .slider.slider-horizontal .slider-track{
 	width: 87%!important;
 }
+.casa-nao-encontrada{
+	margin: 0 auto;	
+	display: block;
+}
+.texto-nao-encontrado{
+	font-size: 20px;
+	margin: 0 auto;
+display: block;
+width: 620px;
+}

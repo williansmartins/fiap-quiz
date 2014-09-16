@@ -12,7 +12,7 @@
 	    <link href="css/demo-slideshow.css" rel="stylesheet" />
 	    <link href="css/slider.css" rel="stylesheet" />
 	</h:head>
-	<h:body>
+	<h:body styleClass="resultado">
 		<h:form>
 		    <div class="topo">
 		      <p class="telefone">#{corretorBean.entity.telefone}</p>
@@ -30,7 +30,7 @@
 		            <h1>Resultado da busca</h1>
 		            <ui:repeat value="#{imovelBean.lista}" var="o"  varStatus="status">
 			            <h:column>
-				            <div class="imovel" data-imovel-id="#{o.id}">
+				            <div class="imovel quadrante" data-imovel-id="#{o.id}">
 				                <div class="foto">
 				                  <img src="img/casa1.jpg" />
 				                  <div class="enfeite-cima">
@@ -53,6 +53,8 @@
 				            </div>
 			            </h:column>
 		            </ui:repeat>
+	          		<h2><h:outputText rendered="#{imovelBean.lista == null}" class="texto-nao-encontrado" value="Não encontrei nenhum imóvel com os dados que você me passou..."></h:outputText></h2>
+		          	<h:graphicImage rendered="#{imovelBean.lista == null}" url="img/casa.png" class="casa-nao-encontrada" />
 		          </div>
 		        </div>
 		      </div>  

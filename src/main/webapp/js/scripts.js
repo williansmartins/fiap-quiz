@@ -1,6 +1,6 @@
 $(document).ready( function(){
 	
-	if($("body").hasClass("home")){
+	if($("body").hasClass("home") ){
 	    
 		//Permite o clique no quadrante chamando a tela do imovel especifico
 		$(".imovel.quadrante").css( "cursor", "pointer" );
@@ -14,6 +14,17 @@ $(document).ready( function(){
 				return value + ' Reais';
 			}
 		});
+	}
+
+	if($("body").hasClass("resultado")){
+		
+		//Permite o clique no quadrante chamando a tela do imovel especifico
+		$(".imovel.quadrante").css( "cursor", "pointer" );
+		$(".imovel.quadrante").click(function (){
+			console.info($(this).attr("data-imovel-id"));
+			window.location.replace("imovel.xhtml?imovel_id=" + $(this).attr("data-imovel-id") );
+		});
+		
 	}
 		
 	if($("body").hasClass("imovel")){
