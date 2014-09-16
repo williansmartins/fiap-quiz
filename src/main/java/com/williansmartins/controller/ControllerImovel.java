@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +16,7 @@ import com.williansmartins.entity.ImovelEntity;
 import com.williansmartins.entity.Tipo;
 
 @ManagedBean(name="imovelBean")
-@RequestScoped
+@SessionScoped
 public class ControllerImovel implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -28,8 +28,14 @@ public class ControllerImovel implements Serializable{
 	BigDecimal min;
 	BigDecimal max;
 	Tipo tipo; 
+	String busca;
 	
 	public ControllerImovel(){
+	}
+
+	public String buscar(){
+		lista = dao.find( busca );
+		return "resultado2.xhtml?faces-redirect=true&includeViewParams=true";
 	}
 	
 	public void buscarImovel(){
@@ -41,14 +47,24 @@ public class ControllerImovel implements Serializable{
 	
 	public void buscarImoveis(){
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		if( request.getParameter("min") != null){
+		
+		if( request.getParameter("min") != null && !request.getParameter("min").equalsIgnoreCase("")){
 			min = new BigDecimal(request.getParameter("min"));
 		}
-		if( request.getParameter("max") != null){
+		if( request.getParameter("max") != null && !request.getParameter("max").equalsIgnoreCase("")){
 			max = new BigDecimal(request.getParameter("max"));
 		}
 		if( request.getParameter("tipo") != null){
-			tipo = request.getParameter("tipo").equalsIgnoreCase("casa") ? Tipo.CASA : Tipo.APARTAMENTO;
+			if( request.getParameter("tipo").equalsIgnoreCase("casa") ){
+				tipo = Tipo.CASA;
+			}
+			if( request.getParameter("tipo").equalsIgnoreCase("apartamento") ){
+				tipo = Tipo.APARTAMENTO;
+			}
+			if( request.getParameter("tipo").equalsIgnoreCase("qualquer") || request.getParameter("tipo").equalsIgnoreCase("") ){
+				tipo = Tipo.QUALQUER;
+			}
+			
 		}
 		
 		String cidade = request.getParameter("cidade");
@@ -118,6 +134,14 @@ public class ControllerImovel implements Serializable{
 
 	public void setLista(List<ImovelEntity> lista) {
 		this.lista = lista;
+	}
+
+	public String getBusca() {
+		return busca;
+	}
+
+	public void setBusca(String busca) {
+		this.busca = busca;
 	}
 	
 }

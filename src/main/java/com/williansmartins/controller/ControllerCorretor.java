@@ -18,8 +18,7 @@ public class ControllerCorretor implements Serializable{
 	private JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
 	
 	public ControllerCorretor(){
-		System.out.println("corretor");
-		entity = dao.findAll().get(0);
+		entity = dao.findAll().size() > 0 ? dao.findAll().get(0) : new CorretorEntity();
 	}
 	
 	public String save(){

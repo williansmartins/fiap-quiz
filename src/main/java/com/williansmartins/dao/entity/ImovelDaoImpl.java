@@ -53,8 +53,8 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 		entityManager = getEntityManager();
 		entityManager.getTransaction().begin();
 		
-		cidade = cidade == null ? "" : cidade;
-		String tipoS = tipo == null ? "" : tipo.toString();
+		cidade = cidade == null || cidade.equalsIgnoreCase("qualquer") ? "" : cidade;
+		String tipoS = tipo == null || tipo == Tipo.QUALQUER ? "" : tipo.toString();
 		String minimoS = minimo == null ? "0" : minimo.toString();
 		String maximoS = maximo == null ? "99999999999999999" : maximo.toString();
 		

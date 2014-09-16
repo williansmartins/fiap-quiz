@@ -146,6 +146,7 @@ body {
             float: right; }
   .home .content .novidades {
     width: 100%;
+    padding-top: 10px;
     height: 830px; }
     .home .content .novidades h1 {
       font-size: 21px;
@@ -334,3 +335,7 @@ body {
     .interna .content .mapa p {
       color: #635b50;
       margin-bottom: 20px; }
+
+.slider.slider-horizontal .slider-track{
+	width: 87%!important;
+}

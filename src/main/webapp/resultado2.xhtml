@@ -12,7 +12,7 @@
 	    <link href="css/demo-slideshow.css" rel="stylesheet" />
 	    <link href="css/slider.css" rel="stylesheet" />
 	</h:head>
-	<h:body onload="#{imovelBean.buscarImoveis()}">
+	<h:body>
 		<h:form>
 		    <div class="topo">
 		      <p class="telefone">#{corretorBean.entity.telefone}</p>
@@ -22,14 +22,6 @@
 		      <ul>
 		        <li class=""><a class="selected first" href="index.xhtml">Home</a></li>
 		      </ul>
-		      <div class="busca">
-		        <h:form>
-			        <h:inputText styleClass="form-control" id="busca2" placeholder="busca" value="#{imovelBean.busca}"/>
-			        <h:commandLink action="#{imovelBean.buscar}">
-					        <h:graphicImage value="img/lupa.png" />
-					</h:commandLink>
-		        </h:form>
-		      </div>
 		    </div>
 		    <div class="wrapper">
 		      <div class="home">

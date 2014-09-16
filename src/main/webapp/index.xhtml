@@ -13,53 +13,52 @@
 	    <link href="css/slider.css" rel="stylesheet" />
 	</h:head>
 	<h:body styleClass="home">
-		<h:form>
-		    <div class="topo">
-		      <p class="telefone">#{corretorBean.entity.telefone}</p>
-			  <p class="email">#{corretorBean.entity.email}</p>
-		    </div>
-		    <div class="menu">
-		      <ul>
-		        <li class=""><a class="selected first" href="#">Home</a></li>
-		      </ul>
-		      <div class="busca">
-		        <input type="text" class="form-control" id="busca" placeholder="busca"/>
-		        <a href="#">
-		          <img src="img/lupa.png" />
-		        </a>
-		      </div>
-		    </div>
-		    <div class="wrapper">
-		      <div class="home">
-		        <div class="content">
-		          <div class="hero">
-		            <div class="controls">
-		              <span class="prevControl geral"></span>
-		              <span class="nextControl geral"></span>
-		            </div>
-		            <div class="carousel">
-		              <div class="cycle-slideshow" 
-		                data-cycle-fx="scrollHorz"
-		                data-cycle-timeout="14000"
-		                data-cycle-prev=".prevControl"
-		                data-cycle-next=".nextControl"
-		
-		                >
-		                <!-- empty element for overlay -->
-		                <div class="cycle-overlay"></div>
-						
-						<ui:repeat value="#{imovelBean.novidades}" var="o"  varStatus="status">
-			                <img src="img/banner1.jpg" 
-			                    data-cycle-title="#{o.titulo}" 
-			                    data-cycle-desc="&lt;p class='descricao'&gt;#{o.descricaoCarousel}&lt;/p&gt;
-			                    &lt;p class='direita-carousel'&gt;R$ #{o.valor}
-			                    &lt;a href='imovel.xhtml?imovel_id=#{o.id}' class='btn btn-success'&gt;Leia Mais&lt;/a&gt;
-			                    &lt;/p&gt;" />
-						</ui:repeat>
-		            </div>
-		            </div>
-		            <div class="direita">
-		              <div class="pesquisa">
+	    <div class="topo">
+	      <p class="telefone">#{corretorBean.entity.telefone}</p>
+		  <p class="email">#{corretorBean.entity.email}</p>
+	    </div>
+	    <div class="menu">
+	      <div class="busca">
+	        <h:form>
+		        <h:inputText styleClass="form-control" id="busca" placeholder="busca" value="#{imovelBean.busca}"/>
+		        <h:commandLink action="#{imovelBean.buscar}">
+				        <h:graphicImage value="img/lupa.png" />
+				</h:commandLink>
+	        </h:form>
+	      </div>
+	    </div>
+	    <div class="wrapper">
+	      <div class="home">
+	        <div class="content">
+	          <div class="hero">
+	            <div class="controls">
+	              <span class="prevControl geral"></span>
+	              <span class="nextControl geral"></span>
+	            </div>
+	            <div class="carousel">
+	              <div class="cycle-slideshow" 
+	                data-cycle-fx="scrollHorz"
+	                data-cycle-timeout="14000"
+	                data-cycle-prev=".prevControl"
+	                data-cycle-next=".nextControl"
+	
+	                >
+	                <!-- empty element for overlay -->
+	                <div class="cycle-overlay"></div>
+					
+					<ui:repeat value="#{imovelBean.novidades}" var="o"  varStatus="status">
+		                <img src="img/banner1.jpg" 
+		                    data-cycle-title="#{o.titulo}" 
+		                    data-cycle-desc="&lt;p class='descricao'&gt;#{o.descricaoCarousel}&lt;/p&gt;
+		                    &lt;p class='direita-carousel'&gt;R$ #{o.valor}
+		                    &lt;a href='imovel.xhtml?imovel_id=#{o.id}' class='btn btn-success'&gt;Leia Mais&lt;/a&gt;
+		                    &lt;/p&gt;" />
+					</ui:repeat>
+	            </div>
+	            </div>
+	            <div class="direita">
+	              <div class="pesquisa">
+	              	<form action="resultado.xhtml" onsubmit="return check()">
 		                <p class="header">
 		                  <img src="img/lupa-branca.png" />
 		                  Pesquisa de imóveis
@@ -68,85 +67,87 @@
 		                  <div class="combos">
 		                    <label>Tipo:</label>
 		                    <div class="btn-group tipo">
-		                      <select class="form-control">
-		                          <option>Qualquer</option>
-		                          <option>Apartamento</option>
-		                          <option>Casa</option>
+		                      <select class="form-control" name="tipo">
+		                          <option value="qualquer" >Qualquer</option>
+		                          <option value="APARTAMENTO" >Apartamento</option>
+		                          <option value="CASA" >Casa</option>
 		                      </select>
 		                    </div>
 		                  </div>
 		                  <div class="combos">
 		                    <label>Cidade:</label>
 		                    <div class="btn-group cidade">
-		                      <select class="form-control">
-		                          <option>Qualquer</option>
-		                          <option>Cidade1</option>
-		                          <option>Cidade2</option>
-		                          <option>Pindam</option>
+		                      <select class="form-control" name="cidade">
+		                          <option value="qualquer" >Qualquer</option>
+		                          <option value="cotia" >Cotia</option>
+		                          <option value="jandira" >Jandira</option>
 		                      </select>
 		                    </div>
 		                  </div>
 		                  <div class="combos slider-wrapper">
 		                    <label>Faixa de preço:</label>
 		                    <input type="text" 
-		                            class="span2" 
-		                            value="ddd" 
-		                            data-slider-min="10000" 
-		                            data-slider-max="1000000" 
-		                            data-slider-step="1000" 
-		                            data-slider-value="[250000,450000]" 
-		                            id="slider" /> 
+	                            class="span2" 
+	                            value=""
+	                            name="preco" 
+	                            data-slider-min="10000" 
+	                            data-slider-max="1000000" 
+	                            data-slider-step="1000" 
+	                            data-slider-value="[250000,450000]" 
+	                            id="slider" /> 
+                  			</div>
+                  			<input type="hidden" name="min"/>
+                  			<input type="hidden" name="max"/>
+                  			<input type="submit" class="btn btn-success pesquisar" value="Pesquisar"></input>
+                 		</div>
+					</form>
+	              </div>
+	              <div class="corretor">
+	                <p class="header">
+	                  <img src="img/lupa-branca.png" />
+	                  Fale com um corretor
+	                </p>
+	                <div class="body">
+	                  <img src="img/corretor.jpg" />
+	                  <p class="dados">
+	                    #{corretorBean.entity.nome} <br />
+	                    celular: #{corretorBean.entity.celular} <br />
+	                    fixo: #{corretorBean.entity.telefone} <br />
+	                    #{corretorBean.entity.email} <br />
+	                  </p>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="novidades">
+	            <h1>Nossas novidades</h1>
+	            <ui:repeat value="#{imovelBean.novidades}" var="o"  varStatus="status">
+		            <div class="imovel quadrante" data-imovel-id="#{o.id}">
+		                <div class="foto">
+		                  <img src="img/casa1.jpg" />
+		                  <div class="enfeite-cima">
+		                    <p class="valor">R$ #{o.valor}</p>
 		                  </div>
-		                  <a href="#" class="btn btn-success pesquisar">Pesquisar</a>
+		                  <div class="enfeite-baixo #{o.fita}"></div>
 		                </div>
-		              </div>
-		              <div class="corretor">
-		                <p class="header">
-		                  <img src="img/lupa-branca.png" />
-		                  Fale com um corretor
-		                </p>
-		                <div class="body">
-		                  <img src="img/corretor.jpg" />
-		                  <p class="dados">
-		                    #{corretorBean.entity.nome} <br />
-		                    celular: #{corretorBean.entity.celular} <br />
-		                    fixo: #{corretorBean.entity.telefone} <br />
-		                    #{corretorBean.entity.email} <br />
-		                  </p>
+		                <div class="descricao">
+		                  <div class="titulo">
+		                    #{o.titulo}
+		                  </div>  
+		                  <div class="descritivo">
+		                    #{o.descricaoQuadrante}
+		                  </div>
+		                  <div class="detalhes">
+		                    <p class="cidade"><img src="img/city.png" />Cidade:<span> #{o.cidade}</span></p>
+		                    <p class="tamanho"><img src="img/home.png" />Tamanho:<span> #{o.metros} metros</span></p>
+		                  </div>
 		                </div>
-		              </div>
 		            </div>
-		          </div>
-		          <div class="novidades">
-		            <h1>Nossas novidades</h1>
-		            <ui:repeat value="#{imovelBean.novidades}" var="o"  varStatus="status">
-			            <div class="imovel quadrante" data-imovel-id="#{o.id}">
-			                <div class="foto">
-			                  <img src="img/casa1.jpg" />
-			                  <div class="enfeite-cima">
-			                    <p class="valor">R$ #{o.valor}</p>
-			                  </div>
-			                  <div class="enfeite-baixo #{o.fita}"></div>
-			                </div>
-			                <div class="descricao">
-			                  <div class="titulo">
-			                    #{o.titulo}
-			                  </div>  
-			                  <div class="descritivo">
-			                    #{o.descricaoQuadrante}
-			                  </div>
-			                  <div class="detalhes">
-			                    <p class="cidade"><img src="img/city.png" />Cidade:<span> #{o.cidade}</span></p>
-			                    <p class="tamanho"><img src="img/home.png" />Tamanho:<span> #{o.metros} metros</span></p>
-			                  </div>
-			                </div>
-			            </div>
-		            </ui:repeat>
-		          </div>
-		        </div>
-		      </div>  
-		    </div>
-	    </h:form>
+	            </ui:repeat>
+	          </div>
+	        </div>
+	      </div>  
+	    </div>
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery.cycle2.js"></script>
 		<script src="js/bootstrap-slider.js"></script>
