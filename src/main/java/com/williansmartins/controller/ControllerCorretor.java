@@ -16,15 +16,14 @@ public class ControllerCorretor implements Serializable{
 	private static final long serialVersionUID = 2L;
 	private CorretorEntity entity;
 	private JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
-	private final int NUMERO_DO_CONTADOR = 33;
 	
 	public ControllerCorretor(){
 		System.out.println("corretor");
-		entity = dao.findById(NUMERO_DO_CONTADOR);
+		entity = dao.findAll().get(0);
 	}
 	
 	public String save(){
-		entity.setId(NUMERO_DO_CONTADOR);
+		entity.setId(dao.findAll().get(0).getId());
 		dao.update(entity);
 		return "admin-corretor.xhtml";
 	}
