@@ -24,6 +24,9 @@
 			    <li><a href="admin-clientes.html">Clientes</a></li>
 			    <li><a href="admin-imoveis.html">Imóveis</a></li>
 			  </ul>
+    		  <h:messages>
+	 			  <h:message for=""></h:message>
+	 		  </h:messages>
 			</div>
 		    <div class="wrapper">
 		      <div class="admin">
@@ -87,11 +90,9 @@
 		                </div>
 		                <div class="col-md-3">
 		                  <label>Tipo:</label>
-		                  <h:selectOneMenu value="#{imovelBean.entity.tipo}" id="tipo" class="form-control">
-							  <f:selectItem itemValue="0" itemLabel="Selecione"/>
-							  <f:selectItem itemValue="APARTAMENTO" itemLabel="Apartamento"/>
-							  <f:selectItem itemValue="CASA" itemLabel="Casa"/>
-						  </h:selectOneMenu>
+							 <h:selectOneMenu value="#{imovelBean.entity.tipo}" id="tipo" class="form-control">
+							    <f:selectItems value="#{data.tipos}" />
+							</h:selectOneMenu>
 		                </div>		                
 		                <div class="col-md-3">
 		                  <label>Metros:</label>
@@ -134,9 +135,9 @@
 		            </div>
 		            <div class="tab-pane" id="settings">
 		              <label>caracteristicas:</label>
-		              <h:inputText styleClass="form-control" maxlength="14" id="caracteristicas" />
+		              <h:inputText styleClass="form-control" maxlength="14" id="caracteristicas" value="#{imovelBean.entity.caracteristicas}" />
 		              <label>recursos:</label>
-		              <h:inputText styleClass="form-control" maxlength="14" id="recursos" />
+		              <h:inputText styleClass="form-control" maxlength="14" id="recursos" value="#{imovelBean.entity.recursos}"/>
 		              <label>url maps:</label>
 		              <h:inputText styleClass="form-control" maxlength="14" id="maps" value="#{imovelBean.entity.maps}" />
 		              <label>endereço:</label>
