@@ -31,7 +31,7 @@
 	      <div class="interna">
 	        <div class="content">
 	          <div class="hero">
-	            <img class="imagem-grande" src="img/imovel1.jpg" style="float:left" />
+	            <img class="imagem-grande" src="img/imoveis/#{imovelBean.entity.fotos.get(0).grande}" style="float:left" />
 	            <div class="dados">
 	              <h1 class="titulo">#{imovelBean.entity.titulo}</h1>
 	              <p class="descricao">  
@@ -55,14 +55,9 @@
 	                  data-cycle-prev="#prev"
 	                  data-cycle-slides="> a"
 	                  >
-	                  <a href="#" class="show-image" data-url="imovel1.jpg"><img src="img/carousel1.jpg"/></a>
-	                  <a href="#" class="show-image" data-url="imovel2.jpg"><img src="img/carousel2.jpg"/></a>
-	                  <a href="#" class="show-image" data-url="imovel1.jpg"><img src="img/carousel1.jpg"/></a>
-	                  <a href="#" class="show-image" data-url="imovel2.jpg"><img src="img/carousel2.jpg"/></a>
-	                  <a href="#" class="show-image" data-url="imovel1.jpg"><img src="img/carousel1.jpg"/></a>
-	                  <a href="#" class="show-image" data-url="imovel2.jpg"><img src="img/carousel2.jpg"/></a>
-	                  <a href="#" class="show-image" data-url="imovel1.jpg"><img src="img/carousel1.jpg"/></a>
-	                  <a href="#" class="show-image" data-url="imovel2.jpg"><img src="img/carousel2.jpg"/></a>
+	                  <ui:repeat value="#{imovelBean.entity.fotos}" var="o"  varStatus="status">
+		                  <a href="#" class="show-image" data-url="imoveis/${o.grande}"><img src="img/imoveis/${o.thumb}"/></a>
+	                  </ui:repeat>
 	              </div>
 	
 	              <div class="center">

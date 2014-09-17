@@ -47,7 +47,7 @@
 	                <div class="cycle-overlay"></div>
 					
 					<ui:repeat value="#{imovelBean.novidades}" var="o"  varStatus="status">
-		                <img src="img/banner1.jpg" 
+		                <img src="img/imoveis/#{o.carousel}" 
 		                    data-cycle-title="#{o.titulo}" 
 		                    data-cycle-desc="&lt;p class='descricao'&gt;#{o.descricaoCarousel}&lt;/p&gt;
 		                    &lt;p class='direita-carousel'&gt;R$ #{o.valor}

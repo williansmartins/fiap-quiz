@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -30,14 +31,18 @@ public class ImovelEntity implements Serializable {
 	String cidade;
 	String maps;
 	String endereco;
+	@Column(length = 558)
 	String descricaoCompleta;
+	@Column(length = 213)
 	String descricaoQuadrante;
+	@Column(length = 140)
 	String descricaoCarousel;
 	String fotoCarousel;
 	String recursos;
 	String caracteristicas;
 	boolean mostrarNoCarousel;
 	boolean mostrarNaHome;
+	String carousel;
 
 	@Enumerated(EnumType.STRING)
 	Tipo tipo;
@@ -201,6 +206,14 @@ public class ImovelEntity implements Serializable {
 
 	public void setRecursos(String recursos) {
 		this.recursos = recursos;
+	}
+
+	public String getCarousel() {
+		return carousel;
+	}
+
+	public void setCarousel(String carousel) {
+		this.carousel = carousel;
 	}
 
 	public String getCaracteristicas() {

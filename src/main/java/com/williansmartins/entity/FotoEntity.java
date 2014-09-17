@@ -26,6 +26,32 @@ public class FotoEntity implements Serializable {
 		this.grande = grande;
 		this.thumb = thumb;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getGrande() {
+		return grande;
+	}
+
+	public void setGrande(String grande) {
+		this.grande = grande;
+	}
+
+	public String getThumb() {
+		return thumb;
+	}
+
+	public void setThumb(String thumb) {
+		this.thumb = thumb;
+	}
+	
+	
 	
 	
 }

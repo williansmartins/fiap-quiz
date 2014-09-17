@@ -43,6 +43,7 @@ public class ImovelMassa {
 		fotos.add(new FotoEntity("grande1.jpg", "thumb1.jpg"));
 		fotos.add(new FotoEntity("grande2.jpg", "thumb2.jpg"));
 		fotos.add(new FotoEntity("grande3.jpg", "thumb3.jpg"));
+		entity.setCarousel("carousel-cotia.jpg");
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.APARTAMENTO);
 		entity.setMostrarNoCarousel(true);
@@ -71,6 +72,7 @@ public class ImovelMassa {
 		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
+		entity.setCarousel("carousel-jandira.jpg");
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
