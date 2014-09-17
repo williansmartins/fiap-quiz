@@ -42,7 +42,6 @@ public class ImovelEntity implements Serializable {
 	String caracteristicas;
 	boolean mostrarNoCarousel;
 	boolean mostrarNaHome;
-	String carousel;
 
 	@Enumerated(EnumType.STRING)
 	Tipo tipo;
@@ -206,14 +205,6 @@ public class ImovelEntity implements Serializable {
 
 	public void setRecursos(String recursos) {
 		this.recursos = recursos;
-	}
-
-	public String getCarousel() {
-		return carousel;
-	}
-
-	public void setCarousel(String carousel) {
-		this.carousel = carousel;
 	}
 
 	public String getCaracteristicas() {

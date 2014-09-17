@@ -31,6 +31,7 @@ public class ControllerImovel implements Serializable{
 	String busca;
 	
 	public ControllerImovel(){
+		entity = new ImovelEntity();
 	}
 
 	public String buscar(){
