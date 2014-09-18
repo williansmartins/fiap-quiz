@@ -135,18 +135,18 @@
 		            </div>
 		            <div class="tab-pane" id="settings">
 		              <label>caracteristicas:</label>
-		              <h:inputText styleClass="form-control" maxlength="14" id="caracteristicas" value="#{imovelBean.entity.caracteristicas}" />
+		              <h:inputText styleClass="form-control"  id="caracteristicas" value="#{imovelBean.entity.caracteristicas}" />
 		              <label>recursos:</label>
-		              <h:inputText styleClass="form-control" maxlength="14" id="recursos" value="#{imovelBean.entity.recursos}"/>
+		              <h:inputText styleClass="form-control"  id="recursos" value="#{imovelBean.entity.recursos}"/>
 		              <label>url maps:</label>
-		              <h:inputText styleClass="form-control" maxlength="14" id="maps" value="#{imovelBean.entity.maps}" />
+		              <h:inputText styleClass="form-control"  id="maps" value="#{imovelBean.entity.maps}" />
 		              <label>endereço:</label>
-		              <h:inputText styleClass="form-control" maxlength="14" id="endereco" value="#{imovelBean.entity.endereco}" />
+		              <h:inputText styleClass="form-control"  id="endereco" value="#{imovelBean.entity.endereco}" />
 		            </div>
 		          </div>
 		
 		          <br />
-		          <h:commandButton styleClass="btn btn-success" value="salvar" action="#{imovelBean.save}" />
+		          <h:commandButton styleClass="btn btn-success" value="salvar" action="#{imovelBean.salvar}" />
 		          <a href="admin-imoveis.html" class="btn btn-success"> voltar</a>
 		          <a href="#" class="popularImovel btn btn-danger">Popular imóvel</a>
 		        </div>

@@ -32,6 +32,7 @@ public class ControllerImovel implements Serializable{
 	
 	public ControllerImovel(){
 		entity = new ImovelEntity();
+		lista = dao.findAll();
 	}
 
 	public String buscar(){
@@ -44,6 +45,11 @@ public class ControllerImovel implements Serializable{
 		idDoImovel = Integer.parseInt( request.getParameter("imovel_id") );
 		entity = dao.findById(idDoImovel);
 		System.out.println(">>>" + entity.getTitulo());
+	}
+	
+	public String editar(String id){
+		entity = dao.findById(Integer.parseInt(id));
+		return "admin-imovel.xhtml";
 	}
 	
 	public void buscarImoveis(){
@@ -87,27 +93,25 @@ public class ControllerImovel implements Serializable{
 		return "lista.xhtml?faces-redirect=true";
 	}
 	
-	public String save(){
-		dao.insert(entity);
+	public String salvar(){
+		if(entity.getId() == null){
+			dao.insert(entity);
+		}else{
+			dao.update(entity);
+		}
 		entity = new ImovelEntity();
-		return "lista.xhtml";
+		lista = dao.findAll();
+		return "admin-imoveis.xhtml?faces-redirect=true";
 	}
 	
-	public String remove(){
-		dao.delete(entity.getId());
-		return "lista.xhtml";
+	public String excluir(String id){
+		dao.delete(Integer.parseInt(id));
+		lista = dao.findAll();
+		return "admin-imoveis.xhtml?faces-redirect=true";
 	}	
 	
-	public String incAlt(){
-		entity = dao.findById(entity.getId());
-		return "inserir.xhtml";
-	}	
-	
-	public String prepareInsert(){
-		entity = new ImovelEntity();
-		System.out.println("insert");
-		return "inserir.xhtml?faces-redirect=true";
-	}	
+////// GETTERS AND SETTERS ///////////////
+/////////////////////////////////////////
 	
 	public List<ImovelEntity> getPedidoList() {
 		return dao.findAll();
