@@ -3,7 +3,8 @@
   
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:corejsf="http://corejsf.com">
 	<h:head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <title>Imobiliária</title>
@@ -12,8 +13,8 @@
 	    <link href="css/demo-slideshow.css" rel="stylesheet" />
 	    <link href="css/slider.css" rel="stylesheet" />
 	</h:head>
-	<body>
-		<h:form id="imovel-form">
+	<h:body>
+		
 			<div class="topo">
 			  <p class="telefone">#{corretorBean.entity.telefone}</p>
 			  <p class="email">#{corretorBean.entity.email}</p>
@@ -125,7 +126,9 @@
 		            </div>
 		            <div class="tab-pane" id="messages">
 		              <label>foto - Grande:</label>
-		              <input type="file" class="form-control"/>
+		              <h:form id="imovel-form" enctype="multipart/form-data">
+		              	<corejsf:upload target="img/imoveis/image.jpg" />
+					  </h:form>
 		              <label>foto - Carousel:</label>
 		              <input type="file" class="form-control"/>
 		              <label>foto - Quadrante:</label>
@@ -152,7 +155,6 @@
 		        </div>
 		      </div>  
 		    </div>
-		</h:form>
 		
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery.cycle2.js"></script>
@@ -163,5 +165,5 @@
 		<script src="js/tab.js"></script>
 		<script src="js/button.js"></script>
 		<script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
-	</body>
+	</h:body>
 </html>
