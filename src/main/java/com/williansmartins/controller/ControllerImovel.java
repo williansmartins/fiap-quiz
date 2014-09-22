@@ -1,5 +1,10 @@
 package com.williansmartins.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
@@ -35,6 +41,104 @@ public class ControllerImovel implements Serializable{
 		lista = dao.findAll();
 	}
 
+	Part fotoGrande;
+	Part fotoCarousel;
+	Part fotoQuadrante;
+	private String statusMessage;
+
+	public String uploadFile() throws IOException {
+
+		// Extract file name from content-disposition header of file part
+		String SfotoGrande = getFileName(fotoGrande);
+		String SfotoCarousel = getFileName(fotoCarousel);
+		String SfotoQuadrante = getFileName(fotoQuadrante);
+		
+		String basePath2 = File.separator + "Users" + File.separator + "will" + File.separator + "dev" + File.separator;
+		String basePath = File.separator + "Users"+File.separator + "will"+File.separator + "dev"+File.separator + "servers"+File.separator + "apache-tomcat-7.0.55"+File.separator + "8080"+File.separator + "wtpwebapps"+File.separator + "imobiliaria-hibernate" + File.separator + "img" + File.separator + "imoveis" + File.separator;
+		
+		
+		File outputFilePathfotoGrande = new File(basePath + SfotoGrande);
+		File outputFilePathfotoCarousel = new File(basePath + SfotoCarousel);
+		File outputFilePathfotoQuadrante = new File(basePath + SfotoQuadrante);
+
+		// Copy uploaded file to destination path
+		InputStream inputStream1 = null;
+		InputStream inputStream2 = null;
+		InputStream inputStream3 = null;
+		
+		OutputStream outputStream1 = null;
+		OutputStream outputStream2 = null;
+		OutputStream outputStream3 = null;
+		
+		try {
+			inputStream1 = fotoGrande.getInputStream();
+			inputStream2 = fotoCarousel.getInputStream();
+			inputStream3 = fotoQuadrante.getInputStream();
+			
+			outputStream1 = new FileOutputStream(outputFilePathfotoGrande);System.out.println(outputFilePathfotoGrande);
+			outputStream2 = new FileOutputStream(outputFilePathfotoCarousel);System.out.println(outputFilePathfotoCarousel);
+			outputStream3 = new FileOutputStream(outputFilePathfotoQuadrante);System.out.println(outputFilePathfotoQuadrante);
+			
+			int read = 0;
+			final byte[] bytes = new byte[1024];
+			while ((read = inputStream1.read(bytes)) != -1) {
+				outputStream1.write(bytes, 0, read);
+			}
+			while ((read = inputStream2.read(bytes)) != -1) {
+				outputStream2.write(bytes, 0, read);
+			}
+			while ((read = inputStream3.read(bytes)) != -1) {
+				outputStream3.write(bytes, 0, read);
+			}
+
+			statusMessage = "File upload successfull !!";
+		} catch (IOException e) {
+			e.printStackTrace();
+			statusMessage = "File upload failed !!";
+		} finally {
+			if (outputStream1 != null) {
+				outputStream1.close();
+			}
+			if (inputStream1 != null) {
+				inputStream1.close();
+			}
+			if (outputStream2 != null) {
+				outputStream2.close();
+			}
+			if (inputStream2 != null) {
+				inputStream2.close();
+			}
+			if (outputStream3 != null) {
+				outputStream3.close();
+			}
+			if (inputStream3 != null) {
+				inputStream3.close();
+			}
+		}
+		return null;    // return to same page
+	}
+
+	public String getStatusMessage() {
+		return statusMessage;
+	}
+
+	public void setStatusMessage(String statusMessage) {
+		this.statusMessage = statusMessage;
+	}
+
+	// Extract file name from content-disposition header of file part
+	private String getFileName(Part part) {
+		final String partHeader = part.getHeader("content-disposition");
+		System.out.println("***** partHeader: " + partHeader);
+		for (String content : part.getHeader("content-disposition").split(";")) {
+			if (content.trim().startsWith("filename")) {
+				return content.substring(content.indexOf('=') + 1).trim()
+						.replace("\"", "");
+			}
+		}
+		return null;
+	}
+	
 	public String buscar(){
 		lista = dao.find( busca );
 		return "resultado2.xhtml?faces-redirect=true&includeViewParams=true";
@@ -94,6 +198,20 @@ public class ControllerImovel implements Serializable{
 	}
 	
 	public String salvar(){
+		try {
+			uploadFile();
+			entity.setFotoCarousel(getFileName(fotoCarousel));
+			entity.setFotoGrande(getFileName(fotoGrande));
+			entity.setFotoQuadrante(getFileName(fotoQuadrante));
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 		if(entity.getId() == null){
 			dao.insert(entity);
 		}else{
@@ -148,5 +266,30 @@ public class ControllerImovel implements Serializable{
 	public void setBusca(String busca) {
 		this.busca = busca;
 	}
+
+	public Part getFotoCarousel() {
+		return fotoCarousel;
+	}
+
+	public void setFotoCarousel(Part fotoCarousel) {
+		this.fotoCarousel = fotoCarousel;
+	}
+
+	public Part getFotoGrande() {
+		return fotoGrande;
+	}
+
+	public void setFotoGrande(Part fotoGrande) {
+		this.fotoGrande = fotoGrande;
+	}
+
+	public Part getFotoQuadrante() {
+		return fotoQuadrante;
+	}
+
+	public void setFotoQuadrante(Part fotoQuadrante) {
+		this.fotoQuadrante = fotoQuadrante;
+	}
+	
 	
 }

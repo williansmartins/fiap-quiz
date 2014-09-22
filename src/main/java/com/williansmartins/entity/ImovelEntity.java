@@ -37,7 +37,9 @@ public class ImovelEntity implements Serializable {
 	String descricaoQuadrante;
 	@Column(length = 140)
 	String descricaoCarousel;
+	String fotoGrande;
 	String fotoCarousel;
+	String fotoQuadrante;
 	String recursos;
 	String caracteristicas;
 	boolean mostrarNoCarousel;
@@ -213,6 +215,22 @@ public class ImovelEntity implements Serializable {
 
 	public void setCaracteristicas(String caracteristicas) {
 		this.caracteristicas = caracteristicas;
+	}
+
+	public String getFotoGrande() {
+		return fotoGrande;
+	}
+
+	public void setFotoGrande(String fotoGrande) {
+		this.fotoGrande = fotoGrande;
+	}
+
+	public String getFotoQuadrante() {
+		return fotoQuadrante;
+	}
+
+	public void setFotoQuadrante(String fotoQuadrante) {
+		this.fotoQuadrante = fotoQuadrante;
 	}
 
 }

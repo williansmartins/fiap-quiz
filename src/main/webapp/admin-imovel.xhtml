@@ -14,7 +14,7 @@
 	    <link href="css/slider.css" rel="stylesheet" />
 	</h:head>
 	<h:body>
-		
+		<h:form id="imovel-form" enctype="multipart/form-data">
 			<div class="topo">
 			  <p class="telefone">#{corretorBean.entity.telefone}</p>
 			  <p class="email">#{corretorBean.entity.email}</p>
@@ -126,15 +126,11 @@
 		            </div>
 		            <div class="tab-pane" id="messages">
 		              <label>foto - Grande:</label>
-		              <h:form id="imovel-form" enctype="multipart/form-data">
-		              	<corejsf:upload target="img/imoveis/image.jpg" />
-					  </h:form>
+		              <h:inputFile value="#{imovelBean.fotoGrande}"/> 
 		              <label>foto - Carousel:</label>
-		              <input type="file" class="form-control"/>
+		              <h:inputFile value="#{imovelBean.fotoCarousel}"/>
 		              <label>foto - Quadrante:</label>
-		              <input type="file" class="form-control"/>
-		              <label>foto - Thumb:</label>
-		              <input type="file" class="form-control"/>
+		              <h:inputFile value="#{imovelBean.fotoQuadrante}"/>
 		            </div>
 		            <div class="tab-pane" id="settings">
 		              <label>caracteristicas:</label>
@@ -155,6 +151,7 @@
 		        </div>
 		      </div>  
 		    </div>
+		</h:form>
 		
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery.cycle2.js"></script>
