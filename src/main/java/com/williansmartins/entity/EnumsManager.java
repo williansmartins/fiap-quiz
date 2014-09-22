@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 @ApplicationScoped
-public class Data {
+public class EnumsManager {
 
     public Tipo[] getTipos() {
         return Tipo.values();
