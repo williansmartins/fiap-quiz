@@ -20,6 +20,8 @@ public class ImovelMassa {
 	public void inserirImovel() {
 		dao.insert(getImovel1());
 		dao.insert(getImovel2());
+		dao.insert(getImovel3());
+		dao.insert(getImovel4());
 	}
 	
 	public ImovelEntity getImovel1( ) {
@@ -31,7 +33,7 @@ public class ImovelMassa {
 		entity.setDescricaoCarousel("Um apartamento maravilhoso, com vista para o morro do macaco, em frente ao mercado DIA. Próximo de tudo, mercado, padaria, cabelereiro.");
 		entity.setDormitorios(2);
 		entity.setEndereco("Amapa, 345, jd rosalina, cotia");
-		entity.setFita("sale");
+		entity.setFita("venda");
 		entity.setFotoCarousel("carousel-cotia.jpg");
 		entity.setMaps("url maps");
 		entity.setMetros(54.4);
@@ -59,8 +61,66 @@ public class ImovelMassa {
 		entity.setDescricaoCarousel("3 casas em uma só, próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim, escritório e varanda.");
 		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
 		entity.setDormitorios(2);
-		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Cora�‹o, Jandira");
-		entity.setFita("rent");
+		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
+		entity.setFita("aluga");
+		entity.setFotoCarousel("carousel-jandira.jpg");
+		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
+		entity.setMetros(500);
+		entity.setVagas(2);
+		entity.setValor(new BigDecimal("210000"));
+		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3;");		
+		entity.setRecursos("recurso1;recurso2;recurso3;");		
+		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
+		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
+		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
+		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
+		entity.setFotoCarousel("carousel-jandira.jpg");
+		entity.setFotos(fotos);		
+		entity.setTipo(Tipo.CASA);
+		entity.setMostrarNoCarousel(true);
+		entity.setMostrarNaHome(true);
+		return entity;
+	}
+	
+	public ImovelEntity getImovel3( ) {
+		ImovelEntity entity = new ImovelEntity();
+		entity.setCidade("São Paulo");
+		entity.setTitulo("Grande Família");
+		entity.setDescricaoCompleta("Um terreno muito grande, com 3 casas construídas, a primeira casa é a principal com 130 m², as outras 2 possuem 54 m². A localização é ótima, ao lado de Minimercado, próximo à estação de trem, padarias, possui uma escola no mesmo quarteirão, uma visão totalmente panorâmica da área chamada de Chácara dos Padres. Possui 2 vagas de garagem, escritório e banheiro reservado na primeira casa, um jardim lindo, com plantas, árvores frutíferas, hortas de legumes. Uma ampla varanda com mais de 20 m², uma área  para festas, balanço para crianças e muito mais.");
+		entity.setDescricaoCarousel("3 casas em uma só, próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim, escritório e varanda.");
+		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
+		entity.setDormitorios(2);
+		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
+		entity.setFita("indisponivel");
+		entity.setFotoCarousel("carousel-jandira.jpg");
+		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
+		entity.setMetros(500);
+		entity.setVagas(2);
+		entity.setValor(new BigDecimal("210000"));
+		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3;");		
+		entity.setRecursos("recurso1;recurso2;recurso3;");		
+		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
+		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
+		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
+		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
+		entity.setFotoCarousel("carousel-jandira.jpg");
+		entity.setFotos(fotos);		
+		entity.setTipo(Tipo.CASA);
+		entity.setMostrarNoCarousel(true);
+		entity.setMostrarNaHome(true);
+		return entity;
+	}
+
+	public ImovelEntity getImovel4( ) {
+		ImovelEntity entity = new ImovelEntity();
+		entity.setCidade("Barueri");
+		entity.setTitulo("Grande oportunidade");
+		entity.setDescricaoCompleta("Um terreno muito grande, com 3 casas construídas, a primeira casa é a principal com 130 m², as outras 2 possuem 54 m². A localização é ótima, ao lado de Minimercado, próximo à estação de trem, padarias, possui uma escola no mesmo quarteirão, uma visão totalmente panorâmica da área chamada de Chácara dos Padres. Possui 2 vagas de garagem, escritório e banheiro reservado na primeira casa, um jardim lindo, com plantas, árvores frutíferas, hortas de legumes. Uma ampla varanda com mais de 20 m², uma área  para festas, balanço para crianças e muito mais.");
+		entity.setDescricaoCarousel("3 casas em uma só, próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim, escritório e varanda.");
+		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
+		entity.setDormitorios(2);
+		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
+		entity.setFita("vendido");
 		entity.setFotoCarousel("carousel-jandira.jpg");
 		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
 		entity.setMetros(500);

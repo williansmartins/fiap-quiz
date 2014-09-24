@@ -191,10 +191,14 @@ body {
           height: 88px;
           text-indent: -9999px;
           background-repeat: no-repeat; }
-          .home .content .novidades .imovel .foto .enfeite-baixo.rent {
-            background-image: url('../img/enfeite-baixo-laranja.png'); }
-          .home .content .novidades .imovel .foto .enfeite-baixo.sale {
-            background-image: url('../img/enfeite-baixo-azul.png'); }
+          .home .content .novidades .imovel .foto .enfeite-baixo.aluga {
+            background-image: url('../img/enfeite-aluguel.png'); }
+          .home .content .novidades .imovel .foto .enfeite-baixo.venda {
+            background-image: url('../img/enfeite-venda.png'); }
+          .home .content .novidades .imovel .foto .enfeite-baixo.vendido {
+            background-image: url('../img/enfeite-vendido.png'); }
+          .home .content .novidades .imovel .foto .enfeite-baixo.indisponivel {
+            background-image: url('../img/enfeite-indisponivel.png'); }
       .home .content .novidades .imovel .descricao {
         background: white;
         border-radius: 7px;
