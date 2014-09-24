@@ -9,7 +9,7 @@ import javax.persistence.Query;
 
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.entity.ImovelEntity;
-import com.williansmartins.entity.Tipo;
+import com.williansmartins.enums.Tipo;
 
 public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImovelDao{
 	

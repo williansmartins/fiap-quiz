@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +20,7 @@ import javax.servlet.http.Part;
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.ImovelEntity;
-import com.williansmartins.entity.Tipo;
+import com.williansmartins.enums.Tipo;
 
 @ManagedBean(name="imovelBean")
 @SessionScoped
@@ -31,11 +32,29 @@ public class ControllerImovel implements Serializable{
 	private List<ImovelEntity> novidades;
 	private List<ImovelEntity> lista;
 	private int idDoImovel;
-	BigDecimal min;
-	BigDecimal max;
-	Tipo tipo; 
-	String busca;
+	private BigDecimal min;
+	private BigDecimal max;
+	private String busca;
 	
+	private Tipo tipo; 
+	private List<Tipo> tipos;
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	public List<Tipo> getTipos() {
+		return Arrays.asList(Tipo.values());
+	}
+
+	public void setTipos(List<Tipo> tipos) {
+		this.tipos = tipos;
+	}
+
 	public ControllerImovel(){
 		entity = new ImovelEntity();
 		lista = dao.findAll();
@@ -227,7 +246,11 @@ public class ControllerImovel implements Serializable{
 		lista = dao.findAll();
 		return "admin-imoveis.xhtml?faces-redirect=true";
 	}	
-	
+
+	public String prepararNovo(){
+		entity = new ImovelEntity();
+		return "admin-imovel.xhtml";
+	} 
 ////// GETTERS AND SETTERS ///////////////
 /////////////////////////////////////////
 	

@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.ImovelEntity;
-import com.williansmartins.entity.Tipo;
+import com.williansmartins.enums.Tipo;
 import com.williansmartins.massa.ImovelMassa;
 
 @SuppressWarnings("deprecation")
@@ -86,7 +86,7 @@ public class ImovelTest {
 			dao.delete(entity.getId());
 		}
 
-		// Verificar se elas realmente n�o est�o no banco
+		// Verificar se elas realmente não estão no banco
 		Assert.assertNull(dao.findById(listaEntities.get(0).getId()));
 		Assert.assertNull(dao.findById(listaEntities.get(9).getId()));
 

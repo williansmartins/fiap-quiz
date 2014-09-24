@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.williansmartins.entity.Tipo;
+import com.williansmartins.enums.Tipo;
 
 public interface Dao<T extends Serializable> {
 

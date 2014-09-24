@@ -3,8 +3,7 @@
   
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:corejsf="http://corejsf.com">
+      xmlns:f="http://java.sun.com/jsf/core">
 	<h:head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <title>Imobiliária</title>
@@ -22,8 +21,8 @@
 			<div class="menu">
 			  <ul>
 			    <li><a class="first" href="admin-corretor.xhtml">Corretor</a></li>
-			    <li><a href="admin-clientes.html">Clientes</a></li>
-			    <li><a href="admin-imoveis.html">Imóveis</a></li>
+			    <li><a href="admin-clientes.xhtml">Clientes</a></li>
+			    <li><a href="admin-imoveis.xhtml">Imóveis</a></li>
 			  </ul>
     		  <h:messages>
 	 			  <h:message for=""></h:message>
@@ -90,9 +89,9 @@
 						  </h:selectOneMenu>
 		                </div>
 		                <div class="col-md-3">
-		                  <label>Tipo:</label>
-							 <h:selectOneMenu value="#{imovelBean.entity.tipo}" id="tipo" class="form-control">
-							    <f:selectItems value="#{EnumsManager.tipos}" />
+							<label>Tipo:</label>
+							<h:selectOneMenu value="#{imovelBean.tipo}" var="tipo"  styleClass="form-control">
+							  	<f:selectItems value="#{imovelBean.tipos}" itemLabel="${tipo.label}" />
 							</h:selectOneMenu>
 		                </div>		                
 		                <div class="col-md-3">
@@ -146,7 +145,7 @@
 		
 		          <br />
 		          <h:commandButton styleClass="btn btn-success" value="salvar" action="#{imovelBean.salvar}" />
-		          <a href="admin-imoveis.html" class="btn btn-success"> voltar</a>
+		          <a href="admin-imoveis.xhtml" class="btn btn-success"> voltar</a>
 		          <a href="#" class="popularImovel btn btn-danger">Popular imóvel</a>
 		        </div>
 		      </div>  

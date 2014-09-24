@@ -10,7 +10,7 @@ import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
-import com.williansmartins.entity.Tipo;
+import com.williansmartins.enums.Tipo;
 
 public class ImovelMassa {
 	

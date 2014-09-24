@@ -13,7 +13,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 import com.williansmartins.entity.ImovelEntity;
-import com.williansmartins.entity.Tipo;
+import com.williansmartins.enums.Tipo;
 
 public class JpaGenericDao<T extends Serializable> implements Dao<T>{
 

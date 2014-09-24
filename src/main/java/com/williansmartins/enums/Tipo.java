@@ -1,4 +1,4 @@
-package com.williansmartins.entity;
+package com.williansmartins.enums;
 
 public enum Tipo {
 	APARTAMENTO("Apartamento"), CASA("Casa"), QUALQUER("Qualquer");
@@ -13,4 +13,8 @@ public enum Tipo {
 		return label;
 	}
 	
+	@Override
+    public String toString() {
+        return this.getLabel();
+    }
 }
