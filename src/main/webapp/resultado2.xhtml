@@ -13,7 +13,6 @@
 	    <link href="css/slider.css" rel="stylesheet" />
 	</h:head>
 	<h:body styleClass="resultado">
-		<h:form>
 		    <div class="topo">
 		      <p class="telefone">#{corretorBean.entity.telefone}</p>
 			  <p class="email">#{corretorBean.entity.email}</p>
@@ -22,7 +21,16 @@
 		      <ul>
 		        <li class=""><a class="selected first" href="index.xhtml">Home</a></li>
 		      </ul>
+      	    	<div class="busca">
+		        <h:form id="form-busca"  onkeypress="if (event.keyCode == 13) { document.getElementById('form-busca:ttt').click(); return false; }">
+			        <h:inputText styleClass="form-control" id="busca" placeholder="busca" value="#{imovelBean.busca}"/>
+			        <h:commandLink action="#{imovelBean.buscar}" id="ttt">
+					        <h:graphicImage value="img/lupa.png" />
+					</h:commandLink>
+		        </h:form>
+		      </div>
 		    </div>
+			<h:form>
 		    <div class="wrapper">
 		      <div class="home">
 		        <div class="content">

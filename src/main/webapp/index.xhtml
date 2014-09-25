@@ -19,9 +19,9 @@
 	    </div>
 	    <div class="menu">
 	      <div class="busca">
-	        <h:form>
+	        <h:form id="form-busca"  onkeypress="if (event.keyCode == 13) { document.getElementById('form-busca:ttt').click(); return false; }">
 		        <h:inputText styleClass="form-control" id="busca" placeholder="busca" value="#{imovelBean.busca}"/>
-		        <h:commandLink action="#{imovelBean.buscar}">
+		        <h:commandLink action="#{imovelBean.buscar}" id="ttt">
 				        <h:graphicImage value="img/lupa.png" />
 				</h:commandLink>
 	        </h:form>

@@ -34,7 +34,6 @@ public class ImovelMassa {
 		entity.setDormitorios(2);
 		entity.setEndereco("Amapa, 345, jd rosalina, cotia");
 		entity.setFita("venda");
-		entity.setFotoCarousel("carousel-cotia.jpg");
 		entity.setMaps("url maps");
 		entity.setMetros(54.4);
 		entity.setVagas(1);
@@ -46,6 +45,7 @@ public class ImovelMassa {
 		fotos.add(new FotoEntity("grande2.jpg", "thumb2.jpg"));
 		fotos.add(new FotoEntity("grande3.jpg", "thumb3.jpg"));
 		entity.setFotoCarousel("carousel-cotia.jpg");
+		entity.setFotoQuadrante("quadrante1.jpg");
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.APARTAMENTO);
 		entity.setMostrarNoCarousel(true);
@@ -63,7 +63,6 @@ public class ImovelMassa {
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
 		entity.setFita("aluga");
-		entity.setFotoCarousel("carousel-jandira.jpg");
 		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
 		entity.setMetros(500);
 		entity.setVagas(2);
@@ -74,7 +73,9 @@ public class ImovelMassa {
 		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
+		
 		entity.setFotoCarousel("carousel-jandira.jpg");
+		entity.setFotoQuadrante("quadrante2.jpg");
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
@@ -92,7 +93,6 @@ public class ImovelMassa {
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
 		entity.setFita("indisponivel");
-		entity.setFotoCarousel("carousel-jandira.jpg");
 		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
 		entity.setMetros(500);
 		entity.setVagas(2);
@@ -104,6 +104,7 @@ public class ImovelMassa {
 		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
 		entity.setFotoCarousel("carousel-jandira.jpg");
+		entity.setFotoQuadrante("quadrante1.jpg");
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
@@ -121,7 +122,6 @@ public class ImovelMassa {
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
 		entity.setFita("vendido");
-		entity.setFotoCarousel("carousel-jandira.jpg");
 		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
 		entity.setMetros(500);
 		entity.setVagas(2);
@@ -133,6 +133,7 @@ public class ImovelMassa {
 		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
 		entity.setFotoCarousel("carousel-jandira.jpg");
+		entity.setFotoQuadrante("quadrante2.jpg");
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
