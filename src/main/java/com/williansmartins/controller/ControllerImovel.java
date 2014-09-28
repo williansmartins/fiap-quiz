@@ -219,13 +219,23 @@ public class ControllerImovel implements Serializable{
 	public String salvar(){
 		try {
 			uploadFile();
-			entity.setFotoCarousel(getFileName(fotoCarousel));
-			entity.setFotoGrande(getFileName(fotoGrande));
-			entity.setFotoQuadrante(getFileName(fotoQuadrante));
+			
+			if( !getFileName(fotoCarousel).equals("")){
+				entity.setFotoCarousel(getFileName(fotoCarousel));
+			} 
+			
+			if( !getFileName(fotoGrande).equals("")){
+				entity.setFotoGrande(getFileName(fotoGrande));
+			} 
+			
+			if( !getFileName(fotoQuadrante).equals("")){
+				entity.setFotoQuadrante(getFileName(fotoQuadrante));
+			} 
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			
 		}
 		
 		
