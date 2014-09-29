@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+      	xmlns:h="http://java.sun.com/jsf/html">
+  <head>
+    <meta charset="utf-8" />
+    <title>Imobiliária</title>
+    <link href="css/estilos.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/demo-slideshow.css" rel="stylesheet" />
+    <link href="css/slider.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="topo">
+      <p class="telefone">(11) 4143-3456</p>
+      <p class="email">contato@imobiliaria.com.br</p>
+    </div>
+    <div class="menu">
+      <ul>
+        <li><a class="first" href="admin-corretor.xhtml">Corretor</a></li>
+        <li><a href="admin-clientes.xhtml">Clientes</a></li>
+        <li><a href="admin-imoveis.xhtml">Imóveis</a></li>
+      </ul>
+    </div>
+    <div class="wrapper">
+  	<h:form>
+      <div class="admin">
+        <div class="content clientes">
+          <div class="col-md-6 tabela-clientes">
+            <h1>Listagem de clientes</h1>
+            <div class="tabela"> 
+	              	<h:dataTable value="#{clienteBean.lista}" var="o"
+	    			styleClass="table table-stripede">
+			    		<h:column>
+			   				<f:facet name="header">Nome</f:facet>
+			   				<h:commandLink action="${clienteBean.viewEntity(o.id)}">#{o.nome}</h:commandLink>
+			   			</h:column>
+			    		<h:column>
+			   				<f:facet name="header">Telefone</f:facet>
+			   				#{o.telefone}
+			   			</h:column>
+			    		<h:column>
+			   				<f:facet name="header">Ações</f:facet>
+			   				<h:commandButton action="${clienteBean.excluir(o.id)}" styleClass="btn btn-danger" value="Excluir"></h:commandButton>
+			   			</h:column>
+	              	</h:dataTable> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h1>Dados do cliente</h1>
+            <h:inputHidden value="#{clienteBean.entity.id}" />
+            <label>Nome:</label>
+            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.nome}" />
+            <label>Email:</label>
+            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.email}" />
+            <label>Telefone:</label>
+            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.telefone}" />
+            <br />
+            <h:commandButton action="${clienteBean.salvar()}" styleClass="btn btn-success" value="salvar"></h:commandButton>
+            <h:outputText value="&#160;" />
+            <h:commandButton action="${clienteBean.novo()}" styleClass="btn btn-info" value="novo"></h:commandButton>
+          </div>
+        </div>
+      </div>  
+	</h:form>
+    </div>
+  </body>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.cycle2.js"></script>
+  <script src="js/bootstrap-slider.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/jquery.cycle2.carousel.js"></script>
+  <script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
+</html>

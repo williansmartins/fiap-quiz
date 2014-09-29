@@ -1,5 +1,12 @@
 package com.williansmartins.massa;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ClienteDaoImpl;
 import com.williansmartins.entity.ClienteEntity;
@@ -8,10 +15,30 @@ public class ClienteMassa {
 	
 	JpaGenericDao<ClienteEntity> dao = new ClienteDaoImpl();
 
+	@Test
 	public void inserirUm() {
 		ClienteEntity entityMockada = new ClienteEntity();
 		entityMockada = popularEntity(entityMockada);
 		dao.insert(entityMockada);
+	}
+	
+	@Test
+	public void inserirDez() {
+		List<ClienteEntity> listaEntities = new ArrayList<ClienteEntity>();
+		
+		//Inserir 10 entities
+		for  (int cont = 0; cont < 10; cont++) {
+			ClienteEntity entityMockada = new ClienteEntity();
+			entityMockada = new ClienteMassa().popularEntity(entityMockada);
+			listaEntities.add(entityMockada);
+		}
+		
+		dao.insertAll(listaEntities);
+		
+		//Testar se inseriu as 10
+		Assert.assertTrue( dao.findAll().size() > 9 );
+		Assert.assertNotNull( dao.findById(listaEntities.get(0).getId())  );
+		Assert.assertNotNull( dao.findById(listaEntities.get(9).getId())  );
 	}
 	
 	public ClienteEntity popularEntity(ClienteEntity entity){

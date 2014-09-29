@@ -39,32 +39,21 @@ public class ControllerImovel implements Serializable{
 	private Tipo tipo; 
 	private List<Tipo> tipos;
 
-	public Tipo getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
-	}
-
-	public List<Tipo> getTipos() {
-		return Arrays.asList(Tipo.values());
-	}
-
-	public void setTipos(List<Tipo> tipos) {
-		this.tipos = tipos;
-	}
-
-	public ControllerImovel(){
-		entity = new ImovelEntity();
-		lista = dao.findAll();
-	}
-
 	Part fotoGrande;
 	Part fotoCarousel;
 	Part fotoQuadrante;
 	private String statusMessage;
 
+	public ControllerImovel(){
+		entity = new ImovelEntity();
+		lista = dao.findAll();
+	}
+	
+	@PostConstruct
+	public void init() {
+	
+	}
+	
 	public String uploadFile() throws IOException {
 
 		// Extract file name from content-disposition header of file part
@@ -137,14 +126,6 @@ public class ControllerImovel implements Serializable{
 		return null;    // return to same page
 	}
 
-	public String getStatusMessage() {
-		return statusMessage;
-	}
-
-	public void setStatusMessage(String statusMessage) {
-		this.statusMessage = statusMessage;
-	}
-
 	// Extract file name from content-disposition header of file part
 	private String getFileName(Part part) {
 		final String partHeader = part.getHeader("content-disposition");
@@ -202,20 +183,6 @@ public class ControllerImovel implements Serializable{
 		lista = dao.find(tipo, cidade,  min ,  max );
 	}
 	
-	@PostConstruct
-	public void init() {
-	}
-	
-	public String home(){
-		entity = new ImovelEntity();
-		return "index.xhtml?faces-redirect=true";
-	}
-	
-	public String list(){
-		entity = new ImovelEntity();
-		return "lista.xhtml?faces-redirect=true";
-	}
-	
 	public String salvar(){
 		try {
 			uploadFile();
@@ -234,12 +201,7 @@ public class ControllerImovel implements Serializable{
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally{
-			
 		}
-		
-		
-		
 		
 		if(entity.getId() == null){
 			dao.insert(entity);
@@ -261,8 +223,33 @@ public class ControllerImovel implements Serializable{
 		entity = new ImovelEntity();
 		return "admin-imovel.xhtml";
 	} 
-////// GETTERS AND SETTERS ///////////////
-/////////////////////////////////////////
+	
+	////// GETTERS AND SETTERS ///////////////
+	/////////////////////////////////////////
+	
+	public String getStatusMessage() {
+		return statusMessage;
+	}
+
+	public void setStatusMessage(String statusMessage) {
+		this.statusMessage = statusMessage;
+	}
+	
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	public List<Tipo> getTipos() {
+		return Arrays.asList(Tipo.values());
+	}
+
+	public void setTipos(List<Tipo> tipos) {
+		this.tipos = tipos;
+	}
 	
 	public List<ImovelEntity> getPedidoList() {
 		return dao.findAll();
