@@ -11,12 +11,12 @@
 		<form-login 
 			login-page="/login.xhtml" 
 	        default-target-url="/welcome" 
-		 	authentication-failure-url="/login.xhtml" />
+		 	authentication-failure-url="/login.xhtml?error=true" />
 	</http>
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="user1@example.com" password="user1" authorities="ROLE_USER" />
+				<user name="was" password="secreta" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

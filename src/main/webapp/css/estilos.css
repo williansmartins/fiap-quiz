@@ -357,3 +357,9 @@ width: 620px;
 .modal-open .modal {
 	margin-top: 167px;
 }
+
+#form-login{
+	width: 300px;
+	margin: auto;
+	margin-top: 170px;
+}
