@@ -1,10 +1,14 @@
 package com.williansmartins.controller;
 
 import java.io.Serializable;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ClienteDaoImpl;
@@ -19,6 +23,7 @@ public class ControllerCliente implements Serializable{
 	private ClienteEntity entity;
 	private JpaGenericDao<ClienteEntity> dao = new ClienteDaoImpl();
 	private List<ClienteEntity> lista;
+	private int imovel_id;
 	
 	public ControllerCliente(){
 		entity = new ClienteEntity();
@@ -44,6 +49,14 @@ public class ControllerCliente implements Serializable{
 		entity = new ClienteEntity();
 		lista = dao.findAll();
 		return "admin-clientes.xhtml?faces-redirect=true";
+	}
+	
+	public String salvarSomente(){
+		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		imovel_id = Integer.parseInt( request.getParameter("modal-cliente:imovel_id") );
+		//entity.setInteresse(request.getParameter("modal-cliente:interesse") );
+		dao.insert(entity);
+		return "imovel.xhtml?imovel_id=" + imovel_id + "&faces-redirect=true";
 	}
 	
 	public void novo(){
@@ -72,5 +85,15 @@ public class ControllerCliente implements Serializable{
 	public void setLista(List<ClienteEntity> lista) {
 		this.lista = lista;
 	}
+
+	public int getImovel_id() {
+		return imovel_id;
+	}
+
+	public void setImovel_id(int imovel_id) {
+		this.imovel_id = imovel_id;
+	}
+
+
 	
 }

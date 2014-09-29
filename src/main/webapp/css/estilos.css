@@ -353,3 +353,7 @@ body {
 display: block;
 width: 620px;
 }
+
+.modal-open .modal {
+	margin-top: 167px;
+}

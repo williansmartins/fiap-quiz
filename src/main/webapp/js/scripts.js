@@ -1,5 +1,8 @@
 $(document).ready( function(){
 	
+	$('#modal-cliente\\:interesse').val( $('.titulo').html() );
+	$('#modal-cliente\\:imovel_id').val( $('#form-imovel\\:imovel_id_imovel').val() );
+	
 	if($("body").hasClass("home") ){
 	    
 		//Permite o clique no quadrante chamando a tela do imovel especifico
