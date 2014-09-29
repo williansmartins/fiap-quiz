@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+  <form action="j_spring_security_check" method="post">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="j_username" value="Username: *" />
+                    <h:inputText id="j_username" required="true" value="user1@example.com"/>
+                    <h:outputLabel for="j_password" value="Password: * " />
+                    <h:inputSecret id="j_password" required="true" value="user1"/>
+                    <h:commandButton value="Login"/>
+                </h:panelGrid>
+            </form>
+</h:body>
+</html>
