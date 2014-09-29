@@ -45,7 +45,7 @@
 	                <p class="cidade"><img src="img/garagem.png"/>#{imovelBean.entity.vagas} vagas na garagem</p>
 	                <p class="tamanho"><img src="img/city.png"/>#{imovelBean.entity.cidade}</p>
 	                <a href="#" class="btn botao1 btn-success" data-toggle="modal" data-target="#myModal">Estou interessado, quero mais informações</a>
-	                <a href="#" class="btn botao2 btn-success">Ligue agora (11) 4123-7654</a>
+	                <a href="#" class="btn botao2 btn-success" data-toggle="modal" data-target="#myModal">Ligue agora <h:outputText value="#{corretorBean.entity.telefone}"></h:outputText></a>
 	              </div>
 	            </div>
 	          </div>
