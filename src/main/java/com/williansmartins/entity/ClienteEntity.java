@@ -18,6 +18,7 @@ public class ClienteEntity implements Serializable {
 	String email;
 	String telefone;
 	String celular;
+	String interesse;
 	
 	public Integer getId() {
 		return id;
@@ -45,6 +46,12 @@ public class ClienteEntity implements Serializable {
 	}
 	public String getCelular() {
 		return celular;
+	}
+	public String getInteresse() {
+		return interesse;
+	}
+	public void setInteresse(String interesse) {
+		this.interesse = interesse;
 	}
 	public void setCelular(String celular) {
 		this.celular = celular;

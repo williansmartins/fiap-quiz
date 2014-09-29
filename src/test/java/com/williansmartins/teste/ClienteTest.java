@@ -10,26 +10,21 @@ import org.junit.Test;
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ClienteDaoImpl;
 import com.williansmartins.entity.ClienteEntity;
+import com.williansmartins.massa.ClienteMassa;
 
 @SuppressWarnings("deprecation")
 public class ClienteTest {
 	JpaGenericDao<ClienteEntity> dao = new ClienteDaoImpl();
 	
 	@Test
-	public void inserirSomente() {
-		ClienteEntity entityMockada = new ClienteEntity();
-		entityMockada = popularEntity(entityMockada);
-		dao.insert(entityMockada);
-	}
-	
-	@Test
 	public void inserirERemoverEntity() {
 		ClienteEntity entityMockada = new ClienteEntity();
-		entityMockada = popularEntity(entityMockada);
+		entityMockada = new ClienteMassa().popularEntity(entityMockada);
 		
 		dao.insert(entityMockada);
 		
 		Assert.assertNotNull( dao.findById(entityMockada.getId()) );
+		Assert.assertTrue( dao.findById(entityMockada.getId()).getInteresse().equalsIgnoreCase("imovel x") );
 		
 		dao.delete( entityMockada.getId() );
 		Assert.assertNull( dao.findById(entityMockada.getId()) );
@@ -43,7 +38,7 @@ public class ClienteTest {
 		//Inserir 10 entities
 		for  (int cont = 0; cont < 10; cont++) {
 			ClienteEntity entityMockada = new ClienteEntity();
-			entityMockada = popularEntity(entityMockada);
+			entityMockada = new ClienteMassa().popularEntity(entityMockada);
 			listaEntities.add(entityMockada);
 		}
 		
@@ -59,19 +54,10 @@ public class ClienteTest {
 			dao.delete(entity.getId());
 		}
 		
-		//Verificar se elas realmente não estão no banco
+		//Verificar se elas realmente nÃ£o estÃ£o no banco
 		Assert.assertNull( dao.findById(listaEntities.get(0).getId())  );
 		Assert.assertNull( dao.findById(listaEntities.get(9).getId())  );
 		
 	}
 	
-	public ClienteEntity popularEntity(ClienteEntity entity){
-		
-		entity.setNome("Ulisses Martins de Morais");
-		entity.setCelular("(11) 888-650-220");
-		entity.setTelefone("(11) 4707-4583");
-		entity.setEmail("uli@gmail.com");
-		
-		return entity;
-	}
 }

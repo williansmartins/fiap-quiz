@@ -7,8 +7,10 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import com.williansmartins.dao.JpaGenericDao;
+import com.williansmartins.dao.entity.ClienteDaoImpl;
 import com.williansmartins.dao.entity.CorretorDaoImpl;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
+import com.williansmartins.entity.ClienteEntity;
 import com.williansmartins.entity.CorretorEntity;
 import com.williansmartins.entity.ImovelEntity;
 
@@ -16,6 +18,7 @@ import com.williansmartins.entity.ImovelEntity;
 public class Start {
 	JpaGenericDao<CorretorEntity> dao1 = new CorretorDaoImpl();
 	JpaGenericDao<ImovelEntity> dao2 = new ImovelDaoImpl();
+	JpaGenericDao<ClienteEntity> dao3 = new ClienteDaoImpl();
 	
 	@Test
 	public void apagarTodosCorretores() {
@@ -39,5 +42,17 @@ public class Start {
 	public void inserirImoveis() {
 		new ImovelMassa().inserirImovel();
 		Assert.assertEquals(true, dao2.findAll().size() == 4);
+	}
+
+	@Test
+	public void apagarTodosClientes() {
+		new ClienteMassa().removerTudo();
+		Assert.assertEquals(true, dao3.findAll().size() == 0);
+	}
+	
+	@Test
+	public void inserirClientes() {
+		new ClienteMassa().inserirUm();
+		Assert.assertEquals(true, dao3.findAll().size() == 1);
 	}
 }
