@@ -143,7 +143,11 @@ body {
           .home .content .hero .direita .body .combos .tipo {
             float: right; }
           .home .content .hero .direita .body .combos .cidade {
-            float: right; }
+            float: right; 
+            }
+          .home .content .hero .direita .body .combos .cidade select{
+            height: 34px;
+            }
   .home .content .novidades {
     width: 100%;
     padding-top: 10px;

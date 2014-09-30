@@ -18,7 +18,6 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
-import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
@@ -30,7 +29,7 @@ public class ControllerImovel implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private ImovelEntity entity;
-	private JpaGenericDao<ImovelEntity> dao = new ImovelDaoImpl();
+	private ImovelDaoImpl dao = new ImovelDaoImpl();
 	private List<ImovelEntity> novidades;
 	private List<ImovelEntity> lista;
 	private int idDoImovel;
@@ -59,11 +58,14 @@ public class ControllerImovel implements Serializable{
 	private String statusMessage;
 	
 	private List<FotoEntity> galeriaDeThumbs; 
+	private List<String> cidades;
 
 	public ControllerImovel(){
 		entity = new ImovelEntity();
 		lista = dao.findAll();
 		galeriaDeThumbs = new ArrayList<FotoEntity>();
+		cidades = dao.findCityes();
+		cidades.add(0, "Qualquer");
 	}
 	
 	@PostConstruct
@@ -635,6 +637,15 @@ public class ControllerImovel implements Serializable{
 	public void setThumb10(Part thumb10) {
 		this.thumb10 = thumb10;
 	}
-	
+
+	public List<String> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<String> cidades) {
+		this.cidades = cidades;
+	}
+
+
 	
 }

@@ -21,7 +21,6 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 		entityManager = getEntityManager();
 	}
 	
-	@Override
 	@SuppressWarnings("unchecked")
 	public List<ImovelEntity> find(String s) {
 		entityManager = getEntityManager();
@@ -47,7 +46,6 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 		}
 	}
 	
-	@Override
 	@SuppressWarnings("unchecked")
 	public List<ImovelEntity> find(Tipo tipo, String cidade, BigDecimal minimo, BigDecimal maximo) {
 		entityManager = getEntityManager();
@@ -74,5 +72,26 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> findCityes() {
+		entityManager = getEntityManager();
+		entityManager.getTransaction().begin();
+		
+		String jpql = "SELECT DISTINCT(cidade) FROM imovel";
+		Query query = entityManager.createQuery(jpql);
+		List<String> lista = (List<String>)query.getResultList();
+		
+		entityManager.flush();
+		
+		entityManager.close();
+		if(lista.size() > 0){
+			return lista;
+		}else{
+			return null;
+		}
+	}
+
+	
 }
 

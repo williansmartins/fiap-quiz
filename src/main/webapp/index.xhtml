@@ -3,7 +3,8 @@
   
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:ui="http://java.sun.com/jsf/facelets"
-      	xmlns:h="http://java.sun.com/jsf/html">
+      	xmlns:h="http://java.sun.com/jsf/html"
+      	xmlns:f="http://java.sun.com/jsf/core">
 	<h:head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <title>Imobiliária</title>
@@ -77,11 +78,9 @@
 		                  <div class="combos">
 		                    <label>Cidade:</label>
 		                    <div class="btn-group cidade">
-		                      <select class="form-control" name="cidade">
-		                          <option value="qualquer" >Qualquer</option>
-		                          <option value="cotia" >Cotia</option>
-		                          <option value="jandira" >Jandira</option>
-		                      </select>
+		                      	<h:selectOneMenu styleClass="form-control" name="cidade" id="cidade" >
+							  		<f:selectItems value="#{imovelBean.cidades}" />
+							   	</h:selectOneMenu>
 		                    </div>
 		                  </div>
 		                  <div class="combos slider-wrapper">

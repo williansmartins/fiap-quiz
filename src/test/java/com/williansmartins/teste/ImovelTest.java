@@ -8,7 +8,6 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.ImovelEntity;
 import com.williansmartins.enums.Tipo;
@@ -16,12 +15,12 @@ import com.williansmartins.massa.ImovelMassa;
 
 @SuppressWarnings("deprecation")
 public class ImovelTest {
-	JpaGenericDao<ImovelEntity> dao = new ImovelDaoImpl();
+	ImovelDaoImpl dao = new ImovelDaoImpl();
 	ImovelEntity entityMockada1;
 	ImovelEntity entityMockada2;
 
 	@Test
-	public void inserirERemoverEntity() {
+	public void inserirERemoverEntity() throws Exception {
 		ImovelEntity entityMockada1 = new ImovelEntity();
 		entityMockada1 = new ImovelMassa().getImovel1();
 
@@ -64,7 +63,7 @@ public class ImovelTest {
 	}
 
 	@Test
-	public void listarEntities() {
+	public void listarEntities() throws Exception {
 		List<ImovelEntity> listaEntities = new ArrayList<ImovelEntity>();
 
 		// Inserir 10 entities
@@ -93,7 +92,7 @@ public class ImovelTest {
 	}
 
 	@Test
-	public void buscarPorTudo( ){
+	public void buscarPorTudo( ) throws Exception{
 		List<ImovelEntity> lista;
 				
 		entityMockada1 = new ImovelMassa().getImovel1();
@@ -169,7 +168,7 @@ public class ImovelTest {
 	}
 	
 	@Test
-	public void buscarPorTitulo( ){
+	public void buscarPorTitulo( ) throws Exception{
 		ImovelEntity entityMockada1 = new ImovelEntity();
 		List<ImovelEntity> lista;
 		
@@ -193,5 +192,12 @@ public class ImovelTest {
 		//Testar se removeu a entidade	
 		dao.delete(entityMockada1.getId());
 		Assert.assertNull( dao.findById(entityMockada1.getId()) );
+	}
+
+	@Test
+	public void buscarSomenteCidades(){
+		List<String> cidades = new ArrayList<String>();
+		cidades = dao.findCityes();
+		Assert.assertEquals(true, cidades.size() == 4);
 	}
 }

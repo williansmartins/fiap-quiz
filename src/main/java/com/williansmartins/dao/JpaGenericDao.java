@@ -15,134 +15,138 @@ import javax.persistence.criteria.CriteriaQuery;
 import com.williansmartins.entity.ImovelEntity;
 import com.williansmartins.enums.Tipo;
 
-public class JpaGenericDao<T extends Serializable> implements Dao<T>{
+public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 	private EntityManagerFactory emf;
 	List<T> lista;
-	
+
 	public JpaGenericDao() {
 		emf = Persistence.createEntityManagerFactory("manager-mysql");
 		entityManager = getEntityManager();
 	}
-	
-    public void insert(T entity) {
+
+	public void insert(T entity) {
 		entityManager = getEntityManager();
-		try{
+		try {
 			entityManager.getTransaction().begin();
 			entityManager.persist(entity);
 			entityManager.getTransaction().commit();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			entityManager.getTransaction().rollback();
-			System.out.println("ERRO: "+ e.getCause().getCause() + e.getMessage());
-		}finally{
+			System.out.println("ERRO: " + e.getCause().getCause()
+					+ e.getMessage());
+		} finally {
 			entityManager.close();
 		}
 	}
-    
+
 	public List<T> findAll() {
-		entityManager = getEntityManager();		
-		CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder().createQuery(getGenericClass());
+		entityManager = getEntityManager();
+		CriteriaQuery criteriaQuery = entityManager.getCriteriaBuilder()
+				.createQuery(getGenericClass());
 		criteriaQuery.from(getGenericClass());
-		List<T> lista = entityManager.createQuery(criteriaQuery).getResultList();
+		List<T> lista = entityManager.createQuery(criteriaQuery)
+				.getResultList();
 		entityManager.close();
 		return lista;
 	}
-	
+
 	public List<T> findEspecific(Integer id) {
-		entityManager = getEntityManager();	
+		entityManager = getEntityManager();
 		entityManager.getTransaction().begin();
 		String jpql = "select a from Avaliacao a";
-																			
+
 		Query query = entityManager.createQuery(jpql);
 		lista = query.getResultList();
 		System.out.println("BUSCANDO :" + id);
 		entityManager.getTransaction().commit();
-		if(lista.size() > 0){
+		if (lista.size() > 0) {
 			entityManager.close();
 			return lista;
-		}else{
+		} else {
 			entityManager.close();
 			return null;
 		}
 	}
-	
+
 	public void delete(Integer primaryKey) {
 		entityManager = getEntityManager();
-		try{
+		try {
 			T entity = (T) entityManager.find(getGenericClass(), primaryKey);
 			entityManager.getTransaction().begin();
 			entityManager.remove(entity);
 			entityManager.getTransaction().commit();
-		}catch (Exception e) {
-			System.out.println(">> "+e.getMessage());
-		}
-		finally {
+		} catch (Exception e) {
+			System.out.println(">> " + e.getMessage());
+		} finally {
 			entityManager.close();
-	    }
+		}
 	}
 
 	public T findById(Integer primaryKey) {
 		entityManager = getEntityManager();
 		T entity = null;
 		try {
-		      //Consulta um Cliente pelo seu ID.
+			// Consulta um Cliente pelo seu ID.
 			entity = (T) entityManager.find(getGenericClass(), primaryKey);
-		    return entity;
-		}catch (Exception e) {
-			System.out.println(">> "+e.getMessage());
+			return entity;
+		} catch (Exception e) {
+			System.out.println(">> " + e.getMessage());
 			return null;
-		}finally {
-		   // entityManager.close();
+		} finally {
+			// entityManager.close();
 		}
 	}
 
-    public void update(T entity) {
+	public void update(T entity) {
 		entityManager = getEntityManager();
 		try {
 			entityManager.getTransaction().begin();
 			entityManager.merge(entity);
 			entityManager.getTransaction().commit();
-//			return true; op��o para exibir se foi atualizado com sucesso
+			// return true; op��o para exibir se foi atualizado com sucesso
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			entityManager.getTransaction().rollback();
-//			return false;
+			// return false;
 		} finally {
 			entityManager.close();
 		}
-    }
-	
+	}
+
 	@SuppressWarnings("unchecked")
 	private Class<T> getGenericClass() {
-		return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+		return (Class<T>) ((ParameterizedType) getClass()
+				.getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-	
+
 	public EntityManager getEntityManager() {
-		if(entityManager == null || !(entityManager.isOpen())){
+		if (entityManager == null || !(entityManager.isOpen())) {
 			return emf.createEntityManager();
 		}
 		return entityManager;
 	}
-	public  Boolean verificaUsuario(String valor){
-		entityManager = getEntityManager();	
+
+	public Boolean verificaUsuario(String valor) {
+		entityManager = getEntityManager();
 		entityManager.getTransaction().begin();
 		String jpql = "select a from Usuario a where a.usuario= :valorx";
-																			
+
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("valorx", valor);
 
 		entityManager.getTransaction().commit();
 		lista = query.getResultList();
-		
-		if(lista.size() > 0){
+
+		if (lista.size() > 0) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -153,11 +157,4 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T>{
 		}
 	}
 
-	public List<T> find(String search) {
-		return null;
-	}
-	
-	public List<T> find(Tipo tipo, String cidade, BigDecimal min, BigDecimal max) {
-		return null;
-	}
 }
