@@ -32,7 +32,7 @@
 	      <div class="interna">
 	        <div class="content">
 	          <div class="hero">
-	            <img class="imagem-grande" src="img/imoveis/#{imovelBean.entity.fotoGrande}" style="float:left" />
+	            <img class="imagem-grande" src="img/imoveis/#{imovelBean.entity.fotos[0].grande}" style="float:left" width="429" height="313"/>
 	            <div class="dados">
 	              <h:inputHidden value="#{imovelBean.entity.id}" id="imovel_id_imovel"></h:inputHidden>
 	              <h1 class="titulo">#{imovelBean.entity.titulo}</h1>
@@ -58,7 +58,7 @@
 	                  data-cycle-slides="> a"
 	                  >
 	                  <ui:repeat value="#{imovelBean.entity.fotos}" var="o"  varStatus="status">
-		                  <a href="#" class="show-image" data-url="imoveis/${o.grande}"><img src="img/imoveis/${o.thumb}"/></a>
+		                  <a href="#" class="show-image" data-index="${status.index}" data-url="imoveis/${o.grande}"><img src="img/imoveis/${o.grande}" width="92" height="69"/></a>
 	                  </ui:repeat>
 	              </div>
 	

@@ -15,8 +15,6 @@
 	<h:body>
 		<h:form id="imovel-form" enctype="multipart/form-data">
 			<div class="topo">
-			  <p class="telefone">#{corretorBean.entity.telefone}</p>
-			  <p class="email">#{corretorBean.entity.email}</p>
 			</div>
 			<div class="menu">
 			  <ul>
@@ -31,13 +29,14 @@
 		    <div class="wrapper">
 		      <div class="admin">
 		        <div class="content">
-		          <h1>Dados do imóvel</h1>
+		          <h1 class="popularImovel">Dados do imóvel</h1>
 		
 		          <ul class="nav nav-tabs" role="tablist" id="myTab">
 		            <li class="active"><a href="#home" role="tab" data-toggle="tab">Básico</a></li>
 		            <li><a href="#profile" role="tab" data-toggle="tab">Descrição</a></li>
 		            <li><a href="#messages" role="tab" data-toggle="tab">Fotos</a></li>
 		            <li><a href="#settings" role="tab" data-toggle="tab">Detalhes</a></li>
+		            <li><a href="#thumbs" role="tab" data-toggle="tab">Thumbs</a></li>
 		          </ul>
 		
 		          <div class="tab-content">
@@ -140,6 +139,29 @@
 		              <h:inputText styleClass="form-control"  id="maps" value="#{imovelBean.entity.maps}" />
 		              <label>endereço:</label>
 		              <h:inputText styleClass="form-control"  id="endereco" value="#{imovelBean.entity.endereco}" />
+		            </div>
+		            <div class="tab-pane" id="thumbs">
+		              <h3>Escolha as fotos para aparecer na galeria de Thumbs:</h3>
+		              <label>Imagem1:</label>
+		              <h:inputFile value="#{imovelBean.thumb1}"/> 
+		              <label>Imagem2:</label>
+		              <h:inputFile value="#{imovelBean.thumb2}"/> 
+		              <label>Imagem3:</label>
+		              <h:inputFile value="#{imovelBean.thumb3}"/> 
+		              <label>Imagem4:</label>
+		              <h:inputFile value="#{imovelBean.thumb4}"/> 
+		              <label>Imagem5:</label>
+		              <h:inputFile value="#{imovelBean.thumb5}"/> 
+		              <label>Imagem6:</label>
+		              <h:inputFile value="#{imovelBean.thumb6}"/> 
+		              <label>Imagem7:</label>
+		              <h:inputFile value="#{imovelBean.thumb7}"/> 
+		              <label>Imagem8:</label>
+		              <h:inputFile value="#{imovelBean.thumb8}"/> 
+		              <label>Imagem9:</label>
+		              <h:inputFile value="#{imovelBean.thumb9}"/> 
+		              <label>Imagem10:</label>
+		              <h:inputFile value="#{imovelBean.thumb10}"/> 
 		            </div>
 		          </div>
 		
