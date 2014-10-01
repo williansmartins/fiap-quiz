@@ -52,8 +52,20 @@
             <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.nome}" />
             <label>Email:</label>
             <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.email}" />
-            <label>Telefone:</label>
-            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.telefone}" />
+            <div class="row">
+	            <label class="col-md-6">Fixo:</label>
+	            <label class="col-md-6">Celular:</label>
+            </div>
+            <div class="row">
+	            <div class="col-md-6">
+		            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.telefone}" />
+	            </div>
+	            <div class="col-md-6">
+		            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.celular}" />
+	            </div>
+            </div>
+            <label>Interesse:</label>
+            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.interesse}" />
             <br />
             <h:commandButton action="${clienteBean.salvar()}" styleClass="btn btn-success" value="salvar"></h:commandButton>
             <h:outputText value="&#160;" />

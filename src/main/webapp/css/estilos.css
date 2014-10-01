@@ -276,7 +276,7 @@ body {
         font-size: 14px;
         color: #8b857e;
         text-align: justify;
-        height: 147px;
+        height: 152px;
         overflow: hidden; }
       .interna .content .hero .dados .detalhes {
         position: relative; }
@@ -366,4 +366,11 @@ width: 620px;
 	width: 300px;
 	margin: auto;
 	margin-top: 170px;
+}
+
+*{
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
