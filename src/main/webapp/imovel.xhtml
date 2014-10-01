@@ -81,7 +81,7 @@
 	            </div>
 	            <div class="mapa">
 	              <h1>Mapa da região</h1>
-	              <iframe src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d1829.4916250485917!2d-46.851434499999996!3d-23.497112800000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1408497063839" width="600" height="450" frameborder="0" style="border:0"></iframe>
+	              <iframe src="#{imovelBean.entity.maps}" width="600" height="450" frameborder="0" style="border:0"></iframe>
 	              <p>#{imovelBean.entity.endereco}</p>
 	            </div>
 	          </div>
@@ -103,15 +103,15 @@
                   		
                   		
 			            <label>Imóvel:</label>
-                  		<h:inputText styleClass="form-control" value="#{clienteBean.entity.interesse}" id="interesse" name="interesse"/>
+                  		<h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.interesse}" id="interesse" name="interesse"/>
 			            <label>Nome:</label>
-			            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.nome}" />
+			            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.nome}" />
 			            <label>Email:</label>
-			            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.email}" />
+			            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.email}" />
 			            <label>Telefone fixo:</label>
-			            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.telefone}" />
+			            <h:inputText styleClass="form-control telefone" maxlength="255" value="#{clienteBean.entity.telefone}" />
 			            <label>Celular:</label>
-			            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.celular}" />
+			            <h:inputText styleClass="form-control celular" maxlength="255" value="#{clienteBean.entity.celular}" />
 		          </div>
 		      </div>
 		      <div class="modal-footer">
@@ -129,6 +129,7 @@
 	  <script src="js/scripts.js"></script>
 	  <script src="js/jquery.cycle2.carousel.js"></script>
 	  <script src="js/modal.js"></script>
+	  <script src="js/jquery.maskedinput.js"></script>
 	  <script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
   </h:body>
 </html>

@@ -44,7 +44,7 @@
 						<div class="row">
 			          		<div class="col-md-4">
 				                <label>Título:</label>
-								<h:inputText styleClass="form-control" id="titulo" maxlength="24" value="#{imovelBean.entity.titulo}" />
+								<h:inputText styleClass="form-control" id="titulo" maxlength="35" value="#{imovelBean.entity.titulo}" />
 			          		</div>	
 			          		<div class="col-md-4">
 			          			<label>Apresentar na Home?</label>
@@ -110,7 +110,7 @@
 		                </div>
 		                <div class="col-md-4">
 		                  <label>Cidade:</label>
-		                  <h:inputText styleClass="form-control" type="text" id="cidade" value="#{imovelBean.entity.cidade}" />
+		                  <h:inputText maxlength="25" styleClass="form-control" type="text" id="cidade" value="#{imovelBean.entity.cidade}" />
 		                </div>
 		              </div>
 		            </div>
@@ -123,25 +123,25 @@
 		              <h:inputTextarea maxlength="140" styleClass="form-control" id="descricaoCarousel" value="#{imovelBean.entity.descricaoCarousel}" />
 		            </div>
 		            <div class="tab-pane" id="messages">
-		              <label>foto - Grande:</label>
+		              <label>foto - Grande (429x316):</label>
 		              <h:inputFile value="#{imovelBean.fotoGrande}"/> 
-		              <label>foto - Carousel:</label>
+		              <label>foto - Carousel (619x334):</label>
 		              <h:inputFile value="#{imovelBean.fotoCarousel}"/>
-		              <label>foto - Quadrante:</label>
+		              <label>foto - Quadrante(421x308):</label>
 		              <h:inputFile value="#{imovelBean.fotoQuadrante}"/>
 		            </div>
 		            <div class="tab-pane" id="settings">
 		              <label>caracteristicas:</label>
-		              <h:inputText styleClass="form-control"  id="caracteristicas" value="#{imovelBean.entity.caracteristicas}" />
+		              <h:inputText styleClass="form-control" id="caracteristicas" value="#{imovelBean.entity.caracteristicas}" />
 		              <label>recursos:</label>
-		              <h:inputText styleClass="form-control"  id="recursos" value="#{imovelBean.entity.recursos}"/>
+		              <h:inputText styleClass="form-control" id="recursos" value="#{imovelBean.entity.recursos}"/>
 		              <label>url maps:</label>
-		              <h:inputText styleClass="form-control"  id="maps" value="#{imovelBean.entity.maps}" />
+		              <h:inputText styleClass="form-control" id="maps" value="#{imovelBean.entity.maps}" />
 		              <label>endereço:</label>
-		              <h:inputText styleClass="form-control"  id="endereco" value="#{imovelBean.entity.endereco}" />
+		              <h:inputText maxlength="134" styleClass="form-control"  id="endereco" value="#{imovelBean.entity.endereco}" />
 		            </div>
 		            <div class="tab-pane" id="thumbs">
-		              <h3>Escolha as fotos para aparecer na galeria de Thumbs:</h3>
+		              <h3>Escolha as fotos para aparecer na galeria de Thumbs (92x69):</h3>
 		              <label>Imagem1:</label>
 		              <h:inputFile value="#{imovelBean.thumb1}"/> 
 		              <label>Imagem2:</label>

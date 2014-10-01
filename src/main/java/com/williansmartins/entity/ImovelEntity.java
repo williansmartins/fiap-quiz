@@ -31,6 +31,7 @@ public class ImovelEntity implements Serializable {
 	int dormitorios;
 	int vagas;
 	String cidade;
+	@Column(length = 558)
 	String maps;
 	String endereco;
 	@Column(length = 558)

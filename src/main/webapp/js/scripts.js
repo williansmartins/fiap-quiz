@@ -10,7 +10,6 @@ $(document).ready( function(){
 		document.oncontextmenu = clickIE;
 	}
 	document.oncontextmenu = new Function("return false");
-	
     
 	$('#modal-cliente\\:interesse').val( $('.titulo').html() );
 	$('#modal-cliente\\:imovel_id').val( $('#form-imovel\\:imovel_id_imovel').val() );
@@ -49,15 +48,20 @@ $(document).ready( function(){
 			$('.imagem-grande').attr( 'src', 'img/' + $(this).attr('data-url') );
 		});
 		
-	    var arr = $("#caracteristicas").attr("data-valor").split(";").slice(0,-1);
-	    for(var i = 0; i<arr.length; i++){
+		//Apresentaçao das caracteristicas e recursos em formato de lista
+	    var arr = $("#caracteristicas").attr("data-valor").split(";");
+	    for(var i = 0; i < arr.length; i++){
 	    	$("#caracteristicas").append( "<li>" + arr[i] + "</li>" );
 	    }
 	    
-	    var arr = $("#recursos").attr("data-valor").split(";").slice(0,-1);
-	    for(var i = 0; i<arr.length; i++){
+	    var arr = $("#recursos").attr("data-valor").split(";");
+	    console.info(arr);
+	    for(var i = 0; i < arr.length; i++){
 	    	$("#recursos").append( "<li>" + arr[i] + "</li>" );
 	    }
+	    
+	    $(".telefone").mask("(99) 9999-9999");
+	    $(".celular").mask("(99) 9999-9999?9");
 	    
 	}
 

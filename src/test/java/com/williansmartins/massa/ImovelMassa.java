@@ -38,8 +38,8 @@ public class ImovelMassa {
 		entity.setMetros(54.4);
 		entity.setVagas(1);
 		entity.setValor(new BigDecimal("150000"));
-		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3;");		
-		entity.setRecursos("recurso1;recurso2;recurso3;");		
+		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
+		entity.setRecursos("recurso1;recurso2;recurso3");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
 		fotos.add(new FotoEntity("grande1.jpg", "thumb1.jpg"));
 		fotos.add(new FotoEntity("grande2.jpg", "thumb2.jpg"));
@@ -68,8 +68,8 @@ public class ImovelMassa {
 		entity.setMetros(500);
 		entity.setVagas(2);
 		entity.setValor(new BigDecimal("210000"));
-		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3;");		
-		entity.setRecursos("recurso1;recurso2;recurso3;");		
+		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
+		entity.setRecursos("recurso1;recurso2;recurso3");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
 		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
@@ -99,8 +99,8 @@ public class ImovelMassa {
 		entity.setMetros(500);
 		entity.setVagas(2);
 		entity.setValor(new BigDecimal("210000"));
-		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3;");		
-		entity.setRecursos("recurso1;recurso2;recurso3;");		
+		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
+		entity.setRecursos("recurso1;recurso2;recurso3");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
 		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
@@ -129,8 +129,8 @@ public class ImovelMassa {
 		entity.setMetros(500);
 		entity.setVagas(2);
 		entity.setValor(new BigDecimal("210000"));
-		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3;");		
-		entity.setRecursos("recurso1;recurso2;recurso3;");		
+		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
+		entity.setRecursos("recurso1;recurso2;recurso3");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
 		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
 		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
