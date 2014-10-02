@@ -1,15 +1,16 @@
 $(document).ready( function(){
 	
+	//Bloquear o botao direito do mouse
 	var mensagem = "Não copie, além de imoral é crime!";
-	
-	if (document.layers) {
-		document.captureEvents(Event.MOUSEDOWN);
-		document.onmousedown = clickNS;
-	} else {
-		document.onmouseup = clickNS;
-		document.oncontextmenu = clickIE;
-	}
-	document.oncontextmenu = new Function("return false");
+//	
+//	if (document.layers) {
+//		document.captureEvents(Event.MOUSEDOWN);
+//		document.onmousedown = clickNS;
+//	} else {
+//		document.onmouseup = clickNS;
+//		document.oncontextmenu = clickIE;
+//	}
+//	document.oncontextmenu = new Function("return false");
     
 	$('#modal-cliente\\:interesse').val( $('.titulo').html() );
 	$('#modal-cliente\\:imovel_id').val( $('#form-imovel\\:imovel_id_imovel').val() );

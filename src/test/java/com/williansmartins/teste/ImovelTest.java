@@ -200,4 +200,10 @@ public class ImovelTest {
 		cidades = dao.findCityes();
 		Assert.assertEquals(true, cidades.size() == 4);
 	}
+	
+	@Test
+	public void buscarImoveisDoCarousel(){
+		List<ImovelEntity> lista = dao.findCarousel();
+		Assert.assertEquals(true, lista.size() == 2);
+	}
 }

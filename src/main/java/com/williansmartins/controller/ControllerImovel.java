@@ -31,6 +31,7 @@ public class ControllerImovel implements Serializable{
 	private ImovelEntity entity;
 	private ImovelDaoImpl dao = new ImovelDaoImpl();
 	private List<ImovelEntity> novidades;
+	private List<ImovelEntity> listaCarousel;
 	private List<ImovelEntity> lista;
 	private int idDoImovel;
 	private BigDecimal min;
@@ -644,6 +645,14 @@ public class ControllerImovel implements Serializable{
 
 	public void setCidades(List<String> cidades) {
 		this.cidades = cidades;
+	}
+
+	public List<ImovelEntity> getListaCarousel() {
+		return dao.findCarousel();
+	}
+
+	public void setListaCarousel(List<ImovelEntity> listaCarousel) {
+		this.listaCarousel = listaCarousel;
 	}
 
 

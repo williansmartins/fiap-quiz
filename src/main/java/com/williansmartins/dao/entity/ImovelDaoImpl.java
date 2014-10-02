@@ -7,6 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
+
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.entity.ImovelEntity;
 import com.williansmartins.enums.Tipo;
@@ -81,6 +84,25 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 		String jpql = "SELECT DISTINCT(cidade) FROM imovel";
 		Query query = entityManager.createQuery(jpql);
 		List<String> lista = (List<String>)query.getResultList();
+		
+		entityManager.flush();
+		
+		entityManager.close();
+		if(lista.size() > 0){
+			return lista;
+		}else{
+			return null;
+		}
+	}
+
+	@Override
+	public List<ImovelEntity> findCarousel() {
+		entityManager = getEntityManager();
+		entityManager.getTransaction().begin();
+		
+		String jpql = "SELECT p FROM imovel p WHERE p.mostrarNoCarousel = 1";
+		Query query = entityManager.createQuery(jpql);
+		List<ImovelEntity> lista = (List<ImovelEntity>)query.getResultList();
 		
 		entityManager.flush();
 		
