@@ -96,7 +96,7 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 			System.out.println(">> " + e.getMessage());
 			return null;
 		} finally {
-			// entityManager.close();
+			entityManager.close();
 		}
 	}
 
@@ -133,23 +133,7 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 		return entityManager;
 	}
 
-	public Boolean verificaUsuario(String valor) {
-		entityManager = getEntityManager();
-		entityManager.getTransaction().begin();
-		String jpql = "select a from Usuario a where a.usuario= :valorx";
-
-		Query query = entityManager.createQuery(jpql);
-		query.setParameter("valorx", valor);
-
-		entityManager.getTransaction().commit();
-		lista = query.getResultList();
-
-		if (lista.size() > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	
 
 	public void insertAll(List<T> entities) {
 		for (T t : entities) {
