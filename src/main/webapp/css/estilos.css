@@ -374,3 +374,21 @@ width: 620px;
   -webkit-user-select: none;
   user-select: none;
 }
+
+.wrapper .dashboard{
+	margin-top: 200px;
+}
+
+.wrapper .dashboard .botao{
+	position: relative;
+	float: left;
+}
+
+.wrapper .dashboard .texto{
+	position: absolute;
+	top: 23px;
+	text-align: center;
+	width: 100px;
+	color: white;
+}
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+      	xmlns:h="http://java.sun.com/jsf/html"
+      	xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>Imobiliária</title>
+	    <link href="css/estilos.css" rel="stylesheet" />
+	    <link href="css/bootstrap.css" rel="stylesheet" />
+	    <link href="css/demo-slideshow.css" rel="stylesheet" />
+	    <link href="css/slider.css" rel="stylesheet" />
+</h:head>
+	<h:body styleClass="home">
+	    <div class="topo">
+	      <p class="telefone">#{corretorBean.entity.telefone}</p>
+		  <p class="email">#{corretorBean.entity.email}</p>
+	    </div>
+	    <div class="menu">
+	      <div class="busca">
+	        <h:form id="form-busca"  onkeypress="if (event.keyCode == 13) { document.getElementById('form-busca:ttt').click(); return false; }">
+		        <h:inputText styleClass="form-control" id="busca" placeholder="busca" value="#{imovelBean.busca}"/>
+		        <h:commandLink action="#{imovelBean.buscar}" id="ttt">
+				        <h:graphicImage value="img/lupa.png" />
+				</h:commandLink>
+	        </h:form>
+	      </div>
+	    </div>
+	    <div class="wrapper">
+	      <div class="dashboard">
+	        <div class="content">
+				<h:form>
+				<h1>Sala de controle</h1>
+					<div class=" botao">
+						<h:commandLink action="#{salaBean.countCliente}">
+							<span class="texto">clientes <br /> dao</span>
+					        <h:graphicImage value="img/botao-azul.png" />
+						</h:commandLink>
+					</div>
+					<div class=" botao">
+						<h:commandLink action="#{salaBean.countImovel}">
+							<span class="texto">imovel <br />dao</span>
+					        <h:graphicImage value="img/botao-azul.png" />
+						</h:commandLink>
+					</div>
+					<div class=" botao">
+						<h:commandLink action="#{salaBean.countCorretor}">
+							<span class="texto">corretor <br /> dao</span>
+					        <h:graphicImage value="img/botao-azul.png" />
+						</h:commandLink>
+					</div>
+					<div class="row">
+						<h:commandLink action="#{salaBean.reset}">
+					        <h:graphicImage value="img/botao-alarme2.png" />
+						</h:commandLink>
+						<h:outputText value="Reset"></h:outputText>
+					</div>
+					<br />
+					<br />
+					<br />
+					<div class="alert alert-danger fade in out" role="alert">
+	  					#{salaBean.mensagem}
+	  				</div>
+				</h:form>	          
+	        </div>
+	      </div>  
+	    </div>
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.cycle2.js"></script>
+		<script src="js/bootstrap-slider.js"></script>
+		<script src="js/dropdown.js"></script>
+		<script src="js/scripts.js"></script>
+  	</h:body>
+
+</html>

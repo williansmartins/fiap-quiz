@@ -55,13 +55,13 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 
 	public List<T> findEspecific(Integer id) {
 		entityManager = getEntityManager();
-		entityManager.getTransaction().begin();
+		//entityManager.getTransaction().begin();
 		String jpql = "select a from Avaliacao a";
 
 		Query query = entityManager.createQuery(jpql);
 		lista = query.getResultList();
 		System.out.println("BUSCANDO :" + id);
-		entityManager.getTransaction().commit();
+		//entityManager.getTransaction().commit();
 		if (lista.size() > 0) {
 			entityManager.close();
 			return lista;
@@ -132,8 +132,6 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 		}
 		return entityManager;
 	}
-
-	
 
 	public void insertAll(List<T> entities) {
 		for (T t : entities) {

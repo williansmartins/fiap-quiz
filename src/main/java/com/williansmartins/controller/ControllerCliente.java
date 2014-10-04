@@ -1,31 +1,28 @@
 package com.williansmartins.controller;
 
 import java.io.Serializable;
-import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
-import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ClienteDaoImpl;
 import com.williansmartins.entity.ClienteEntity;
-import com.williansmartins.entity.ImovelEntity;
 
 @ManagedBean(name="clienteBean")
-@RequestScoped
+@SessionScoped
 public class ControllerCliente implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private ClienteEntity entity;
-	private JpaGenericDao<ClienteEntity> dao = new ClienteDaoImpl();
+	private ClienteDaoImpl dao;
 	private List<ClienteEntity> lista;
 	private int imovel_id;
 	
 	public ControllerCliente(){
+		dao = new ClienteDaoImpl();
 		entity = new ClienteEntity();
 		lista = dao.findAll();
 	}
@@ -93,7 +90,5 @@ public class ControllerCliente implements Serializable{
 	public void setImovel_id(int imovel_id) {
 		this.imovel_id = imovel_id;
 	}
-
-
 	
 }

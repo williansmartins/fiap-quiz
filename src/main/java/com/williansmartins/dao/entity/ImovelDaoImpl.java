@@ -7,9 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.entity.ImovelEntity;
 import com.williansmartins.enums.Tipo;
@@ -19,9 +16,15 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 	@PersistenceContext
 	private EntityManager entityManager;
 	List<ImovelEntity> lista;
+	private static Integer count = 0 ;
 	
 	public ImovelDaoImpl() {
 		entityManager = getEntityManager();
+		count ++;
+	}
+	
+	public static Integer getCount() {
+		return count;
 	}
 	
 	@SuppressWarnings("unchecked")

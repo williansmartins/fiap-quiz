@@ -29,7 +29,7 @@ public class ControllerImovel implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private ImovelEntity entity;
-	private ImovelDaoImpl dao = new ImovelDaoImpl();
+	private ImovelDaoImpl dao;
 	private List<ImovelEntity> novidades;
 	private List<ImovelEntity> listaCarousel;
 	private List<ImovelEntity> lista;
@@ -62,6 +62,7 @@ public class ControllerImovel implements Serializable{
 	private List<String> cidades;
 
 	public ControllerImovel(){
+		dao = new ImovelDaoImpl();
 		entity = new ImovelEntity();
 		lista = dao.findAll();
 		galeriaDeThumbs = new ArrayList<FotoEntity>();

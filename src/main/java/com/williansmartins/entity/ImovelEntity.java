@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -51,7 +52,7 @@ public class ImovelEntity implements Serializable {
 	@Enumerated(EnumType.STRING)
 	Tipo tipo;
 
-	@OneToMany(targetEntity = FotoEntity.class, cascade=CascadeType.ALL)
+	@OneToMany(targetEntity = FotoEntity.class, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "imovel_id")
 	List<FotoEntity> fotos;
 

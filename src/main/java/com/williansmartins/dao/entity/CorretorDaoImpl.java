@@ -1,21 +1,18 @@
 package com.williansmartins.dao.entity;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.entity.CorretorEntity;
 
 public class CorretorDaoImpl extends JpaGenericDao<CorretorEntity> implements ICorretorDao{
 	
-	@PersistenceContext
-	private EntityManager entityManager;
-	List<CorretorEntity> lista;
+	private static Integer count = 0 ;
 	
-	public CorretorDaoImpl() {
-		entityManager = getEntityManager();
+	public CorretorDaoImpl(){
+		count ++;
+	}
+	
+	public static Integer getCount() {
+		return count;
 	}
 }
 
