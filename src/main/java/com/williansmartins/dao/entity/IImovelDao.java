@@ -8,4 +8,5 @@ import com.williansmartins.entity.ImovelEntity;
 public interface IImovelDao extends Dao<ImovelEntity>{
 	List<String> findCityes();
 	List<ImovelEntity> findCarousel();
+	List<ImovelEntity> buscarImoveisQueApresentamNaHome();
 }

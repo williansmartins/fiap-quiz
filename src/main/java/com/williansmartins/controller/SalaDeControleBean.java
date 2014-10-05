@@ -30,6 +30,10 @@ public class SalaDeControleBean implements Serializable{
 		new Start().inserirImoveis();
 	}
 	
+	public void deletarImoveis(){
+		new Start().apagarTodosImoveis();
+	}
+	
 	public void countCliente(){
 		mensagem = "Quantidade de dao de cliente instanciado: " + ClienteDaoImpl.getCount().toString();
 	}	

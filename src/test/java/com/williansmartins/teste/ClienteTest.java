@@ -14,10 +14,11 @@ import com.williansmartins.massa.ClienteMassa;
 
 @SuppressWarnings("deprecation")
 public class ClienteTest {
-	JpaGenericDao<ClienteEntity> dao = new ClienteDaoImpl();
+	JpaGenericDao<ClienteEntity> dao;
 	
 	@Test
 	public void inserirERemoverEntity() {
+		dao = new ClienteDaoImpl();
 		ClienteEntity entityMockada = new ClienteEntity();
 		entityMockada = new ClienteMassa().popularEntity(entityMockada);
 		

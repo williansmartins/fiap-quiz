@@ -11,8 +11,13 @@ import com.williansmartins.entity.CorretorEntity;
 import com.williansmartins.entity.ImovelEntity;
 
 public class GeralDown {
-	JpaGenericDao<CorretorEntity> dao1 = new CorretorDaoImpl();
-	JpaGenericDao<ImovelEntity> dao2 = new ImovelDaoImpl();
+	JpaGenericDao<CorretorEntity> dao1;
+	JpaGenericDao<ImovelEntity> dao2;
+	
+	public GeralDown(){
+		dao1 = new CorretorDaoImpl();
+		dao2 = new ImovelDaoImpl();
+	}
 	
 	@Test
 	public void down() {

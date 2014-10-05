@@ -13,10 +13,15 @@ import com.williansmartins.entity.ClienteEntity;
 
 public class ClienteMassa {
 	
-	JpaGenericDao<ClienteEntity> dao = new ClienteDaoImpl();
+	JpaGenericDao<ClienteEntity> dao;
+	
+	public ClienteMassa(){
+		dao = new ClienteDaoImpl();
+	}
 
 	@Test
 	public void inserirUm() {
+		dao = new ClienteDaoImpl();
 		ClienteEntity entityMockada = new ClienteEntity();
 		entityMockada = popularEntity(entityMockada);
 		dao.insert(entityMockada);

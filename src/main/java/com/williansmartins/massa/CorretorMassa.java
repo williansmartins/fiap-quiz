@@ -5,11 +5,14 @@ import org.junit.Test;
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.CorretorDaoImpl;
 import com.williansmartins.entity.CorretorEntity;
-import com.williansmartins.entity.ImovelEntity;
 
 public class CorretorMassa {
 	
-	JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
+	JpaGenericDao<CorretorEntity> dao;
+	
+	public CorretorMassa(){
+		dao = new CorretorDaoImpl();
+	}
 
 	@Test
 	public void inserirCorretor() {

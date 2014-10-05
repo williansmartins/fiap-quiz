@@ -14,7 +14,11 @@ import com.williansmartins.enums.Tipo;
 
 public class ImovelMassa {
 	
-	JpaGenericDao<ImovelEntity> dao = new ImovelDaoImpl();
+	JpaGenericDao<ImovelEntity> dao;
+	
+	public ImovelMassa(){
+		dao = new ImovelDaoImpl();
+	}
 
 	@Test
 	public void inserirImovel() {
@@ -87,8 +91,8 @@ public class ImovelMassa {
 	
 	public ImovelEntity getImovel3( ) {
 		ImovelEntity entity = new ImovelEntity();
-		entity.setCidade("São Paulo");
-		entity.setTitulo("Grande Família");
+		entity.setCidade("Rio de Janeiro");
+		entity.setTitulo("Casa em Ipanema");
 		entity.setDescricaoCompleta("Um terreno muito grande, com 3 casas construídas, a primeira casa é a principal com 130 m², as outras 2 possuem 54 m². A localização é ótima, ao lado de Minimercado, próximo à estação de trem, padarias, possui uma escola no mesmo quarteirão, uma visão totalmente panorâmica da área chamada de Chácara dos Padres. Possui 2 vagas de garagem, escritório e banheiro reservado na primeira casa, um jardim lindo, com plantas, árvores frutíferas, hortas de legumes. Uma ampla varanda com mais de 20 m², uma área  para festas, balanço para crianças e muito mais.");
 		entity.setDescricaoCarousel("3 casas em uma só, próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim, escritório e varanda.");
 		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
@@ -110,15 +114,15 @@ public class ImovelMassa {
 		entity.setFotoGrande("grande1.jpg");
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
-		entity.setMostrarNoCarousel(true);
-		entity.setMostrarNaHome(true);
+		entity.setMostrarNoCarousel(false);
+		entity.setMostrarNaHome(false);
 		return entity;
 	}
 
 	public ImovelEntity getImovel4( ) {
 		ImovelEntity entity = new ImovelEntity();
 		entity.setCidade("Barueri");
-		entity.setTitulo("Grande oportunidade");
+		entity.setTitulo("Bela Vista");
 		entity.setDescricaoCompleta("Um terreno muito grande, com 3 casas construídas, a primeira casa é a principal com 130 m², as outras 2 possuem 54 m². A localização é ótima, ao lado de Minimercado, próximo à estação de trem, padarias, possui uma escola no mesmo quarteirão, uma visão totalmente panorâmica da área chamada de Chácara dos Padres. Possui 2 vagas de garagem, escritório e banheiro reservado na primeira casa, um jardim lindo, com plantas, árvores frutíferas, hortas de legumes. Uma ampla varanda com mais de 20 m², uma área  para festas, balanço para crianças e muito mais.");
 		entity.setDescricaoCarousel("3 casas em uma só, próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim, escritório e varanda.");
 		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
@@ -141,7 +145,7 @@ public class ImovelMassa {
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
-		entity.setMostrarNaHome(true);
+		entity.setMostrarNaHome(false);
 		return entity;
 	}
 

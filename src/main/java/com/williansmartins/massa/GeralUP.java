@@ -11,8 +11,13 @@ import com.williansmartins.entity.CorretorEntity;
 import com.williansmartins.entity.ImovelEntity;
 
 public class GeralUP {
-	JpaGenericDao<CorretorEntity> dao1 = new CorretorDaoImpl();
-	JpaGenericDao<ImovelEntity> dao2 = new ImovelDaoImpl();
+	JpaGenericDao<CorretorEntity> dao1;
+	JpaGenericDao<ImovelEntity> dao2;
+	
+	public GeralUP(){
+		dao1 = new CorretorDaoImpl();
+		dao2 = new ImovelDaoImpl();
+	}
 	
 	@Test
 	public void up() {

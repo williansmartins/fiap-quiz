@@ -18,6 +18,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
@@ -32,6 +33,7 @@ public class ControllerImovel implements Serializable{
 	private ImovelDaoImpl dao;
 	private List<ImovelEntity> novidades;
 	private List<ImovelEntity> listaCarousel;
+	private List<ImovelEntity> listaHome;
 	private List<ImovelEntity> lista;
 	private int idDoImovel;
 	private BigDecimal min;
@@ -67,12 +69,9 @@ public class ControllerImovel implements Serializable{
 		lista = dao.findAll();
 		galeriaDeThumbs = new ArrayList<FotoEntity>();
 		cidades = dao.findCityes();
-		cidades.add(0, "Qualquer");
-	}
-	
-	@PostConstruct
-	public void init() {
-	
+		if( cidades != null){
+			cidades.add(0, "Qualquer");
+		}
 	}
 	
 	public String uploadFile() throws IOException {
@@ -654,6 +653,14 @@ public class ControllerImovel implements Serializable{
 
 	public void setListaCarousel(List<ImovelEntity> listaCarousel) {
 		this.listaCarousel = listaCarousel;
+	}
+
+	public List<ImovelEntity> getListaHome() {
+		return dao.buscarImoveisQueApresentamNaHome();
+	}
+
+	public void setListaHome(List<ImovelEntity> listaHome) {
+		this.listaHome = listaHome;
 	}
 
 

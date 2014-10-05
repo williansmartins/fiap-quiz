@@ -1,5 +1,6 @@
 package com.williansmartins.dao.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.entity.ImovelEntity;
 import com.williansmartins.enums.Tipo;
 
-public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImovelDao{
+public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImovelDao, Serializable{
 	
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -104,6 +105,25 @@ public class ImovelDaoImpl extends JpaGenericDao<ImovelEntity> implements IImove
 		entityManager.getTransaction().begin();
 		
 		String jpql = "SELECT p FROM imovel p WHERE p.mostrarNoCarousel = 1";
+		Query query = entityManager.createQuery(jpql);
+		List<ImovelEntity> lista = (List<ImovelEntity>)query.getResultList();
+		
+		entityManager.flush();
+		
+		entityManager.close();
+		if(lista.size() > 0){
+			return lista;
+		}else{
+			return null;
+		}
+	}
+	
+	@Override
+	public List<ImovelEntity> buscarImoveisQueApresentamNaHome() {
+		entityManager = getEntityManager();
+		entityManager.getTransaction().begin();
+		
+		String jpql = "SELECT p FROM imovel p WHERE p.mostrarNaHome = 1";
 		Query query = entityManager.createQuery(jpql);
 		List<ImovelEntity> lista = (List<ImovelEntity>)query.getResultList();
 		

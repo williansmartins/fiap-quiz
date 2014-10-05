@@ -3,7 +3,8 @@
   
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 	<h:head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <title>Imobiliária</title>
@@ -50,11 +51,11 @@
 			          			<label>Apresentar na Home?</label>
 			          			<br />
 								<div class="btn-group" data-toggle="buttons">
-								  <label class="btn btn-primary">
-								    <input type="radio" name="radio-home" id="option1" value="sim"/> Sim
+								  <label class="btn btn-primary #{imovelBean.entity.mostrarNaHome == true ? 'active' : ''}">
+								    <input type="radio" name="radio-home" id="option1" value="sim" checked="#{imovelBean.entity.mostrarNaHome == true ? 'checked' : ''}" /> Sim
 								  </label>
-								  <label class="btn btn-primary">
-								    <input type="radio" name="radio-home" id="option2" value="nao"/> Não
+								  <label class="btn btn-primary #{imovelBean.entity.mostrarNaHome != true ? 'active' : ''}">
+								    <input type="radio" name="radio-home" id="option2" value="nao" checked="#{imovelBean.entity.mostrarNaHome != true ? 'checked' : ''}"/> Não
 								  </label>
 								</div>
 								<h:inputHidden id="radio1" value="#{imovelBean.entity.mostrarNaHome}" />
@@ -63,11 +64,11 @@
 			          		<div class="col-md-4">
 			          			<label>Apresentar no Carrousel?</label>
 								<div class="btn-group" data-toggle="buttons">
-								  <label class="btn btn-primary">
-								    <input type="radio" name="radio-carousel" id="option3" value="sim"/> Sim
+								  <label class="btn btn-primary #{imovelBean.entity.mostrarNoCarousel == true ? 'active' : ''}">
+								    <input type="radio" name="radio-carousel" id="option3" value="sim" checked="#{imovelBean.entity.mostrarNoCarousel == true ? 'checked' : ''}"/> Sim
 								  </label>
-								  <label class="btn btn-primary">
-								    <input type="radio" name="radio-carousel" id="option4" value="nao"/> Não
+								  <label class="btn btn-primary #{imovelBean.entity.mostrarNoCarousel != true ? 'active' : ''}">
+								    <input type="radio" name="radio-carousel" id="option4" value="nao" checked="#{imovelBean.entity.mostrarNoCarousel != true ? 'checked' : ''}"/> Não
 								  </label>
 								</div>
 			          		</div>	

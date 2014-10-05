@@ -15,17 +15,9 @@
 </h:head>
 	<h:body styleClass="home">
 	    <div class="topo">
-	      <p class="telefone">#{corretorBean.entity.telefone}</p>
-		  <p class="email">#{corretorBean.entity.email}</p>
 	    </div>
 	    <div class="menu">
 	      <div class="busca">
-	        <h:form id="form-busca"  onkeypress="if (event.keyCode == 13) { document.getElementById('form-busca:ttt').click(); return false; }">
-		        <h:inputText styleClass="form-control" id="busca" placeholder="busca" value="#{imovelBean.busca}"/>
-		        <h:commandLink action="#{imovelBean.buscar}" id="ttt">
-				        <h:graphicImage value="img/lupa.png" />
-				</h:commandLink>
-	        </h:form>
 	      </div>
 	    </div>
 	    <div class="wrapper">
@@ -51,11 +43,17 @@
 					        <h:graphicImage value="img/botao-azul.png" />
 						</h:commandLink>
 					</div>
-					<div class="row">
+					<div class="">
 						<h:commandLink action="#{salaBean.reset}">
 					        <h:graphicImage value="img/botao-alarme2.png" />
 						</h:commandLink>
 						<h:outputText value="Reset"></h:outputText>
+					</div>
+					<div class="">
+						<h:commandLink action="#{salaBean.deletarImoveis}">
+					        <h:graphicImage value="img/botao-alarme2.png" />
+						</h:commandLink>
+						<h:outputText value="Delete imóveis"></h:outputText>
 					</div>
 					<br />
 					<br />

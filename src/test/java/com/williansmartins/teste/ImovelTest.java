@@ -15,9 +15,13 @@ import com.williansmartins.massa.ImovelMassa;
 
 @SuppressWarnings("deprecation")
 public class ImovelTest {
-	ImovelDaoImpl dao = new ImovelDaoImpl();
+	ImovelDaoImpl dao;
 	ImovelEntity entityMockada1;
 	ImovelEntity entityMockada2;
+	
+	public ImovelTest(){
+		dao = new ImovelDaoImpl();
+	}
 
 	@Test
 	public void inserirERemoverEntity() throws Exception {
@@ -204,6 +208,12 @@ public class ImovelTest {
 	@Test
 	public void buscarImoveisDoCarousel(){
 		List<ImovelEntity> lista = dao.findCarousel();
+		Assert.assertEquals(true, lista.size() == 3);
+	}
+	
+	@Test
+	public void buscarImoveisDaHome(){
+		List<ImovelEntity> lista = dao.buscarImoveisQueApresentamNaHome();
 		Assert.assertEquals(true, lista.size() == 2);
 	}
 }

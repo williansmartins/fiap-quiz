@@ -69,8 +69,8 @@ $(document).ready( function(){
 
     //$('#myTab a:first').tab('show');
     
-    $("input[name=radio-home]").prop("checked", true).trigger("click");
-    $("input[name=radio-carousel]").prop("checked", true).trigger("click");
+//    $("input[name=radio-home]").prop("checked", true).trigger("click");
+//    $("input[name=radio-carousel]").prop("checked", true).trigger("click");
 
     $("#option1").change(function (e){
     	$("#imovel-form\\:radio1").val(true);

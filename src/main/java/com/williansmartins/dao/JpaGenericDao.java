@@ -2,18 +2,13 @@ package com.williansmartins.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
-
-import com.williansmartins.entity.ImovelEntity;
-import com.williansmartins.enums.Tipo;
 
 public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 
@@ -40,6 +35,7 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 		} finally {
 			entityManager.close();
 		}
+		
 	}
 
 	public List<T> findAll() {
@@ -51,24 +47,6 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 				.getResultList();
 		entityManager.close();
 		return lista;
-	}
-
-	public List<T> findEspecific(Integer id) {
-		entityManager = getEntityManager();
-		//entityManager.getTransaction().begin();
-		String jpql = "select a from Avaliacao a";
-
-		Query query = entityManager.createQuery(jpql);
-		lista = query.getResultList();
-		System.out.println("BUSCANDO :" + id);
-		//entityManager.getTransaction().commit();
-		if (lista.size() > 0) {
-			entityManager.close();
-			return lista;
-		} else {
-			entityManager.close();
-			return null;
-		}
 	}
 
 	public void delete(Integer primaryKey) {
@@ -89,11 +67,9 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 		entityManager = getEntityManager();
 		T entity = null;
 		try {
-			// Consulta um Cliente pelo seu ID.
 			entity = (T) entityManager.find(getGenericClass(), primaryKey);
 			return entity;
 		} catch (Exception e) {
-			System.out.println(">> " + e.getMessage());
 			return null;
 		} finally {
 			entityManager.close();
@@ -120,10 +96,6 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 	private Class<T> getGenericClass() {
 		return (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
-	}
-
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
 	}
 
 	public EntityManager getEntityManager() {

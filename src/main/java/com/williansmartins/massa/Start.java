@@ -16,9 +16,15 @@ import com.williansmartins.entity.ImovelEntity;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Start {
-	JpaGenericDao<CorretorEntity> dao1 = new CorretorDaoImpl();
-	JpaGenericDao<ImovelEntity> dao2 = new ImovelDaoImpl();
-	JpaGenericDao<ClienteEntity> dao3 = new ClienteDaoImpl();
+	JpaGenericDao<CorretorEntity> dao1;
+	JpaGenericDao<ImovelEntity> dao2;
+	JpaGenericDao<ClienteEntity> dao3;
+	
+	public Start(){
+		dao1 = new CorretorDaoImpl();
+		dao2 = new ImovelDaoImpl();
+		dao3 = new ClienteDaoImpl();
+	}
 	
 	@Test
 	public void apagarTodosCorretores() {

@@ -120,7 +120,7 @@
 	          </div>
 	          <div class="novidades">
 	            <h1>Nossas novidades</h1>
-	            <ui:repeat value="#{imovelBean.novidades}" var="o"  varStatus="status">
+	            <ui:repeat value="#{imovelBean.listaHome}" var="o"  varStatus="status">
 		            <div class="imovel quadrante" data-imovel-id="#{o.id}">
 		                <div class="foto">
 		                  <img src="img/imoveis/#{o.fotoQuadrante}" width="302" height="184"/>

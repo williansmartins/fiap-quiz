@@ -14,7 +14,11 @@ import com.williansmartins.massa.CorretorMassa;
 
 @SuppressWarnings("deprecation")
 public class CorretorTest {
-	JpaGenericDao<CorretorEntity> dao = new CorretorDaoImpl();
+	JpaGenericDao<CorretorEntity> dao;
+	
+	public CorretorTest(){
+		dao = new CorretorDaoImpl();
+	}
 	
 	@Test
 	public void inserirMesmoSemOsOutrosDados() {
@@ -67,7 +71,7 @@ public class CorretorTest {
 			dao.delete(entity.getId());
 		}
 		
-		//Verificar se elas realmente não estão no banco
+		//Verificar se elas realmente nï¿½o estï¿½o no banco
 		Assert.assertNull( dao.findById(listaEntities.get(0).getId())  );
 		Assert.assertNull( dao.findById(listaEntities.get(9).getId())  );
 		
