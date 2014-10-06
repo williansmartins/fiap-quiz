@@ -38,7 +38,7 @@ public class ImovelMassa {
 		entity.setDormitorios(2);
 		entity.setEndereco("Amapa, 345, jd rosalina, cotia");
 		entity.setFita("venda");
-		entity.setMaps("url maps");
+		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(54.4);
 		entity.setVagas(1);
 		entity.setValor(new BigDecimal("150000"));
@@ -68,7 +68,7 @@ public class ImovelMassa {
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
 		entity.setFita("aluga");
-		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
+		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(500);
 		entity.setVagas(2);
 		entity.setValor(new BigDecimal("210000"));
@@ -99,7 +99,7 @@ public class ImovelMassa {
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
 		entity.setFita("indisponivel");
-		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
+		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(500);
 		entity.setVagas(2);
 		entity.setValor(new BigDecimal("210000"));
@@ -129,7 +129,7 @@ public class ImovelMassa {
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
 		entity.setFita("vendido");
-		entity.setMaps("url maps jandira - url maps url maps url maps url maps url maps url maps url maps url maps url maps ");
+		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(500);
 		entity.setVagas(2);
 		entity.setValor(new BigDecimal("210000"));

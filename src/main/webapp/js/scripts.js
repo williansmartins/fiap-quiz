@@ -1,5 +1,35 @@
 $(document).ready( function(){
-	
+
+	if($("body").hasClass("clientes") ){
+		$("#form-clientes\\:fixo").mask("(99) 9999-9999");
+		$("#form-clientes\\:celular").focusout(function(){
+	        var phone, element;
+	        element = $(this);
+	        element.unmask();
+	        phone = element.val().replace(/\D/g, '');
+	        if(phone.length > 10) {
+	            element.mask("(99) 99999-999?9");
+	        } else {
+	            element.mask("(99) 9999-9999?9");
+	        }
+	    }).trigger('focusout');
+	}
+	    
+	if($("body").hasClass("corretor") ){
+		$("#form-corretor\\:fixo").mask("(99) 9999-9999");
+		$("#form-corretor\\:celular").focusout(function(){
+	        var phone, element;
+	        element = $(this);
+	        element.unmask();
+	        phone = element.val().replace(/\D/g, '');
+	        if(phone.length > 10) {
+	            element.mask("(99) 99999-999?9");
+	        } else {
+	            element.mask("(99) 9999-9999?9");
+	        }
+	    }).trigger('focusout');
+	}
+	    
 	//Bloquear o botao direito do mouse
 	var mensagem = "Não copie, além de imoral é crime!";
 //	
@@ -62,7 +92,17 @@ $(document).ready( function(){
 	    }
 	    
 	    $(".telefone").mask("(99) 9999-9999");
-	    $(".celular").mask("(99) 9999-9999?9");
+	    $(".celular").focusout(function(){
+	        var phone, element;
+	        element = $(this);
+	        element.unmask();
+	        phone = element.val().replace(/\D/g, '');
+	        if(phone.length > 10) {
+	            element.mask("(99) 99999-999?9");
+	        } else {
+	            element.mask("(99) 9999-9999?9");
+	        }
+	    }).trigger('focusout');
 	    
 	}
 

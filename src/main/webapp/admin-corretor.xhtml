@@ -10,9 +10,10 @@
 	    <link href="css/bootstrap.css" rel="stylesheet" />
 	    <link href="css/demo-slideshow.css" rel="stylesheet" />
 	    <link href="css/slider.css" rel="stylesheet" />
+	    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
 	</h:head>
-	<body>
-		<h:form>
+	<body class="corretor">
+		<h:form id="form-corretor">
 			<div class="topo">
 			</div>
 			<div class="menu">
@@ -29,11 +30,11 @@
 			      <label>Nome:</label>
 			      <h:inputText styleClass="form-control" maxlength="30" value="#{corretorBean.entity.nome}" />
 			      <label>Celular:</label>
-			      <h:inputText styleClass="form-control" maxlength="19" value="#{corretorBean.entity.celular}" />
+			      <h:inputText id="celular" styleClass="form-control" value="#{corretorBean.entity.celular}" />
 			      <label>Fixo:</label>
-			      <h:inputText styleClass="form-control" maxlength="19" value="#{corretorBean.entity.telefone}" />
+			      <h:inputText id="fixo" styleClass="form-control" value="#{corretorBean.entity.telefone}" />
 			      <label>Email:</label>
-			      <h:inputText styleClass="form-control" maxlength="30" value="#{corretorBean.entity.email}" />
+			      <h:inputText styleClass="form-control" maxlength="40" value="#{corretorBean.entity.email}" />
 			      <br />
 			      <h:commandButton styleClass="btn btn-success" value="salvar" action="#{corretorBean.save}" />
 			    </div>
@@ -48,5 +49,6 @@
 		<script src="js/scripts.js"></script>
 		<script src="js/jquery.cycle2.carousel.js"></script>
 		<script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
+		<script src="js/jquery.maskedinput.js"></script>
 	</body>
 </html>
