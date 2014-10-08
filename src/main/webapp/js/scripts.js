@@ -1,5 +1,13 @@
 $(document).ready( function(){
+	
+	if($("body").hasClass("admin-imovel") ){
+		//$('#myTab a:last').tab('show');
+		var tab = GetURLParameter('tab');
 
+		$('#myTab #'+tab+'').tab('show');
+		console.log(tab);
+	}
+	
 	if($("body").hasClass("clientes") ){
 		$("#form-clientes\\:fixo").mask("(99) 9999-9999");
 		$("#form-clientes\\:celular").focusout(function(){
@@ -168,4 +176,25 @@ function clickNS(e) {
 			return false;
 		}
 	}
+}
+
+function mostrar( item ){
+	//$('#myTab a:last').tab('show');
+	$(item).parent().first().hide();
+}
+
+function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+
+    {
+        var sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] == sParam)
+        {
+            return sParameterName[1];
+        }
+    }
 }

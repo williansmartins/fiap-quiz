@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	    <title>Imobiliária</title>
@@ -14,7 +15,7 @@
 	    <link href="css/slider.css" rel="stylesheet" />
 	    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
 	</h:head>
-	<h:body>
+	<h:body styleClass="admin-imovel">
 		<h:form id="imovel-form" enctype="multipart/form-data">
 			<div class="topo">
 			</div>
@@ -28,21 +29,21 @@
 	 			  <h:message for=""></h:message>
 	 		  </h:messages>
 			</div>
-		    <div class="wrapper">
+		    <div class="wrapper admin-imovel">
 		      <div class="admin">
 		        <div class="content">
 		          <h1 class="popularImovel">Dados do imóvel</h1>
 		
 		          <ul class="nav nav-tabs" role="tablist" id="myTab">
-		            <li class="active"><a href="#home" role="tab" data-toggle="tab">Básico</a></li>
+		            <li><a href="#home"     id="tab-home" role="tab" data-toggle="tab">Básico</a></li>
 		            <li><a href="#profile" role="tab" data-toggle="tab">Descrição</a></li>
-		            <li><a href="#messages" role="tab" data-toggle="tab">Fotos</a></li>
+		            <li><a href="#fotosPrincipais" role="tab" data-toggle="tab">Fotos</a></li>
 		            <li><a href="#settings" role="tab" data-toggle="tab">Detalhes</a></li>
 		            <li><a href="#thumbs" role="tab" data-toggle="tab">Thumbs</a></li>
 		          </ul>
 		
 		          <div class="tab-content">
-		            <div class="tab-pane active" id="home">
+		            <div class="tab-pane" id="home">
 						<div class="row">
 			          		<div class="col-md-4">
 				                <label>Título:</label>
@@ -124,13 +125,14 @@
 		              <label>descricao-carousel:</label>
 		              <h:inputTextarea maxlength="140" styleClass="form-control" id="descricaoCarousel" value="#{imovelBean.entity.descricaoCarousel}" />
 		            </div>
-		            <div class="tab-pane" id="messages">
-		              <label>foto - Grande (429x316):</label>
-		              <h:inputFile value="#{imovelBean.fotoGrande}"/> 
-		              <label>foto - Carousel (619x334):</label>
-		              <h:inputFile value="#{imovelBean.fotoCarousel}"/>
-		              <label>foto - Quadrante(421x308):</label>
-		              <h:inputFile value="#{imovelBean.fotoQuadrante}"/>
+		            <div class="tab-pane" id="fotosPrincipais">
+		              
+			              <label>foto - Grande (429x316):</label>
+			              <h:inputFile value="#{imovelBean.fotoGrande}"/> 
+			              <label>foto - Carousel (619x334):</label>
+			              <h:inputFile value="#{imovelBean.fotoCarousel}"/>
+			              <label>foto - Quadrante(421x308):</label>
+			              <h:inputFile value="#{imovelBean.fotoQuadrante}"/>
 		            </div>
 		            <div class="tab-pane" id="settings">
 		              <label>caracteristicas:</label>
@@ -143,27 +145,21 @@
 		              <h:inputText maxlength="134" styleClass="form-control"  id="endereco" value="#{imovelBean.entity.endereco}" />
 		            </div>
 		            <div class="tab-pane" id="thumbs">
-		              <h3>Escolha as fotos para aparecer na galeria de Thumbs (92x69):</h3>
-		              <label>Imagem1:</label>
-		              <h:inputFile value="#{imovelBean.thumb1}"/> 
-		              <label>Imagem2:</label>
-		              <h:inputFile value="#{imovelBean.thumb2}"/> 
-		              <label>Imagem3:</label>
-		              <h:inputFile value="#{imovelBean.thumb3}"/> 
-		              <label>Imagem4:</label>
-		              <h:inputFile value="#{imovelBean.thumb4}"/> 
-		              <label>Imagem5:</label>
-		              <h:inputFile value="#{imovelBean.thumb5}"/> 
-		              <label>Imagem6:</label>
-		              <h:inputFile value="#{imovelBean.thumb6}"/> 
-		              <label>Imagem7:</label>
-		              <h:inputFile value="#{imovelBean.thumb7}"/> 
-		              <label>Imagem8:</label>
-		              <h:inputFile value="#{imovelBean.thumb8}"/> 
-		              <label>Imagem9:</label>
-		              <h:inputFile value="#{imovelBean.thumb9}"/> 
-		              <label>Imagem10:</label>
-		              <h:inputFile value="#{imovelBean.thumb10}"/> 
+			              <h3>Escolha as fotos para aparecerem na galeria de Thumbs (92x69):</h3>
+			              <ui:repeat value="#{imovelBean.entity.fotos}" var="o"  varStatus="status" id="fotos">
+				              <div class="thumb">
+					              	<img class="foto" src="img/imoveis/#{o.thumb}" width="92" height="69" />
+	 				             	<h:commandButton value="x" id="remover" styleClass="button" onclick="mostrar(this)">
+									    <f:ajax listener="#{imovelBean.removerFoto(o.id)}" execute="" render="foto"/>
+									</h:commandButton>
+				              </div>
+			              </ui:repeat>
+			              <div class="add-foto">
+	        				<a class="" id="">+</a>
+	   					  </div>	
+			              <br />
+			              <br />
+			              <br />
 		            </div>
 		          </div>
 		
@@ -171,9 +167,12 @@
 		          <h:commandButton styleClass="btn btn-success" value="salvar" action="#{imovelBean.salvar}" />
 		          <a href="admin-imoveis.xhtml" class="btn btn-success"> voltar</a>
 		          <a href="#" class="popularImovel btn btn-danger">Popular imóvel</a>
+		          
+		    		
 		        </div>
 		      </div>  
 		    </div>
+		    <h:messages></h:messages>
 		</h:form>
 		
 		<script src="js/jquery.js"></script>

@@ -392,3 +392,32 @@ width: 620px;
 	color: white;
 }
 
+.wrapper.admin-imovel #thumbs .thumb{
+	margin: 3px;
+	float: left;
+	position: relative;
+}
+
+.wrapper.admin-imovel #thumbs .thumb .button{
+	position: absolute;
+	top: 2px;
+	right: 2px;
+}
+.wrapper.admin-imovel #thumbs .add-foto{
+	margin: 3px;
+	width: 92px; 
+	height: 69px; 
+	line-height: 55px; 
+	border: 2px dashed #ddd;
+	cursor: pointer;
+	float: left;
+	overflow: hidden;
+	text-align: center;
+}
+.wrapper.admin-imovel #thumbs a{
+	width: 92px; 
+	height: 69px; 
+	font-size: 44px;
+	color: #ddd;
+	text-decoration: none;
+}

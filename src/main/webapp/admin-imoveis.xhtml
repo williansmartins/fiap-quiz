@@ -14,7 +14,7 @@
     <link href="css/slider.css" rel="stylesheet" />
     <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
   </head>
-  <body>
+  <h:body onload="#{imovelBean.popularListaDeImoveis()}">
     <div class="topo">
     </div>
     <div class="menu">
@@ -67,5 +67,5 @@
 	<script src="js/scripts.js"></script>
 	<script src="js/jquery.cycle2.carousel.js"></script>
 	<script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
-  </body>
+  </h:body>
 </html>
