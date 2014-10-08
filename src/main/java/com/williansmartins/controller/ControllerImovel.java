@@ -340,7 +340,7 @@ public class ControllerImovel implements Serializable{
 	
 	public String editar(String id){
 		entity = dao.findById(Integer.parseInt(id));
-		return "admin-imovel.xhtml";
+		return "admin-imovel.xhtml?faces-redirect=true";
 	}
 	
 	public void buscarImoveis(){
@@ -458,7 +458,7 @@ public class ControllerImovel implements Serializable{
 
 	public String prepararNovo(){
 		entity = new ImovelEntity();
-		return "admin-imovel.xhtml";
+		return "admin-imovel.xhtml?faces-redirect=true";
 	} 
 	
 	////// GETTERS AND SETTERS ///////////////

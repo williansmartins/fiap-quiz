@@ -9,6 +9,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.williansmartins.dao.entity.ImovelDaoImpl;
+import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
 import com.williansmartins.enums.Tipo;
 import com.williansmartins.massa.ImovelMassa;
@@ -216,4 +217,37 @@ public class ImovelTest {
 		List<ImovelEntity> lista = dao.buscarImoveisQueApresentamNaHome();
 		Assert.assertEquals(true, lista.size() == 2);
 	}
+	
+	@Test
+	public void testeComFotos(){
+		//criar um imovel
+		ImovelEntity entity = new ImovelMassa().getImovel1();
+		
+		//enviar para o banco a entity
+		dao.insert( entity );
+		
+		System.out.println(">>>>" + entity.getId());
+		System.out.println(">>>>" + entity.getFotos().get(0).getId());
+		System.out.println(">>>>" + entity.getFotos().get(1).getId());
+		System.out.println(">>>>" + entity.getFotos().get(2).getId());
+		System.out.println("----------");
+		
+		//remover fotos e atualizar imovel
+		entity.getFotos().remove(1);
+		dao.update(entity);
+		
+		System.out.println(">>>>" + entity.getId());
+		System.out.println(">>>>" + entity.getFotos().get(0).getId());
+		System.out.println(">>>>" + entity.getFotos().get(1).getId());
+		
+		entity.getFotos().add(new FotoEntity());
+
+		
+		System.out.println("----------");
+		System.out.println(">>>>" + entity.getId());
+		System.out.println(">>>>" + entity.getFotos().get(0).getId());
+		System.out.println(">>>>" + entity.getFotos().get(1).getId());
+		System.out.println(">>>>" + entity.getFotos().get(2).getId());
+	}
+	
 }
