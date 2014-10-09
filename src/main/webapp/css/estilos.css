@@ -392,6 +392,11 @@ width: 620px;
 	color: white;
 }
 
+.wrapper.admin-imovel #thumbs{
+	height: 296px;
+	overflow: auto;
+}
+
 .wrapper.admin-imovel #thumbs .thumb{
 	margin: 3px;
 	float: left;
@@ -420,4 +425,13 @@ width: 620px;
 	font-size: 44px;
 	color: #ddd;
 	text-decoration: none;
+}
+.wrapper .home .carousel{
+	height: 334px;	
+}
+.wrapper .home .cycle-slideshow{
+	height: 334px;	
+}
+.wrapper .home .cycle-slideshow img{
+	height: 334px;	
 }
