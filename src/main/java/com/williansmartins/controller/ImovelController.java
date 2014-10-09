@@ -65,7 +65,6 @@ public class ImovelController implements Serializable{
 	}
 	
 	public void removerFoto(String s){
-		System.out.println("removendo a foto: " + s);
 		
 		for (int i = 0; i < entity.getFotos().size(); i++) {
 			if( entity.getFotos().get(i).getId() == Integer.parseInt(s)){

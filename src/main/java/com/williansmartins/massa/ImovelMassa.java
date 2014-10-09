@@ -106,16 +106,23 @@ public class ImovelMassa {
 		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
 		entity.setRecursos("recurso1;recurso2;recurso3");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
-		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
-		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
-		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
-		entity.setFotoCarousel("carousel-jandira.jpg");
+		entity.setFotoCarousel("carousel1.jpg");
 		entity.setFotoQuadrante("quadrante1.jpg");
-		entity.setFotoGrande("grande1.jpg");
+		fotos.add(new FotoEntity("", "thumb1-1.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-2.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-3.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-4.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-5.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-6.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-7.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-8.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-9.jpg"));
+		fotos.add(new FotoEntity("", "thumb1-10.jpg"));
+		entity.setFotoGrande("thumb1-1.jpg");
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
-		entity.setMostrarNoCarousel(false);
-		entity.setMostrarNaHome(false);
+		entity.setMostrarNoCarousel(true);
+		entity.setMostrarNaHome(true);
 		return entity;
 	}
 
