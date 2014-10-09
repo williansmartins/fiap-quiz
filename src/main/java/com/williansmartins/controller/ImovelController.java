@@ -26,7 +26,7 @@ import com.williansmartins.enums.Tipo;
 
 @ManagedBean(name="imovelBean")
 @SessionScoped
-public class ControllerImovel implements Serializable{
+public class ImovelController implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private ImovelEntity entity;
@@ -46,13 +46,14 @@ public class ControllerImovel implements Serializable{
 	private Part fotoGrande;
 	private Part fotoCarousel;
 	private Part fotoQuadrante;
+	private Part thumb;
 	
 	private String statusMessage;
 	
 	private List<FotoEntity> galeriaDeThumbs; 
 	private List<String> cidades;
 
-	public ControllerImovel(){
+	public ImovelController(){
 		dao = new ImovelDaoImpl();
 		entity = new ImovelEntity();
 		lista = dao.findAll();
@@ -153,6 +154,41 @@ public class ControllerImovel implements Serializable{
 		}
 		return null;    // return to same page
 	}
+	
+	public void uploadThumb() throws IOException {
+		
+		String name = getFileName( thumb );
+		String basePath = File.separator + "Users"+File.separator + "will"+File.separator + "dev"+File.separator + "servers"+File.separator + "apache-tomcat-7.0.55"+File.separator + "8080"+File.separator + "wtpwebapps"+File.separator + "imobiliaria-hibernate" + File.separator + "img" + File.separator + "imoveis" + File.separator;
+		File outputFilePath = new File(basePath + name);
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		
+		try {
+			int read = 0;
+			final byte[] bytes = new byte[1024];
+			
+			if( thumb != null ){
+				inputStream = thumb.getInputStream();
+				outputStream = new FileOutputStream(outputFilePath);
+				while ((read = inputStream.read(bytes)) != -1) {
+					outputStream.write(bytes, 0, read);
+				}
+			}
+			
+			statusMessage = "File upload successfull !!";
+		} catch (IOException e) {
+			e.printStackTrace();
+			statusMessage = "File upload failed !!";
+		} finally {
+			if (outputStream != null) {
+				outputStream.close();
+			}
+			if (inputStream != null) {
+				inputStream.close();
+			}
+			
+		}
+	}
 
 	// Extract file name from content-disposition header of file part
 	private String getFileName(Part part) {
@@ -240,6 +276,25 @@ public class ControllerImovel implements Serializable{
 		entity = new ImovelEntity();
 		lista = dao.findAll();
 		return "admin-imoveis.xhtml?faces-redirect=true";
+	}
+	
+	
+	public String salvarThumb(){
+		try {
+			uploadThumb();
+			
+			if( thumb != null && !getFileName(thumb).equals("")){
+				entity.setFotoCarousel(getFileName(thumb));
+			} 
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			entity.getFotos().add(new FotoEntity(getFileName(thumb), getFileName(thumb)));
+			dao.update(entity);
+		}
+		
+		return "admin-imovel.xhtml?tab=tab-thumbs&faces-redirect=true";
 	}
 	
 	public String excluir(String id){
@@ -373,6 +428,14 @@ public class ControllerImovel implements Serializable{
 
 	public void setListaHome(List<ImovelEntity> listaHome) {
 		this.listaHome = listaHome;
+	}
+
+	public Part getThumb() {
+		return thumb;
+	}
+
+	public void setThumb(Part thumb) {
+		this.thumb = thumb;
 	}
 
 
