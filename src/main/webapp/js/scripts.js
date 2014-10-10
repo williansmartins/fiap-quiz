@@ -3,9 +3,14 @@ $(document).ready( function(){
 	if($("body").hasClass("admin-imovel") ){
 		//$('#myTab a:last').tab('show');
 		var tab = GetURLParameter('tab');
-
-		$('#myTab #'+tab+'').tab('show');
-		console.log(tab);
+		if(tab==undefined){
+			$('#myTab #tab-home').tab('show');
+		}else{
+			$('#myTab #'+tab+'').tab('show');
+		}
+//		$("#myTab a").click(function(){
+//			document.location.search = "tab="+$(this).attr('id');
+//		});
 	}
 	
 	if($("body").hasClass("clientes") ){
@@ -152,7 +157,7 @@ $(document).ready( function(){
     	$('#imovel-form\\:caracteristicas').val("caracteristica1;caracteristica2;caracteristica2;caracteristica3")
     	$('#imovel-form\\:recursos').val("recurso1;recurso2;recurso2;recurso3")
     	
-    	$('#imovel-form\\:maps').val("https://www.google.com.br/maps/place/")
+    	$('#imovel-form\\:maps').val("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079")
     	$('#imovel-form\\:endereco').val("Rua Amapá, 345 - Jardim Rosalina - Cotia - SP - 06608-430")
     });
     

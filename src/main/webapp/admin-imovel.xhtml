@@ -36,10 +36,10 @@
 		
 		          <ul class="nav nav-tabs" role="tablist" id="myTab">
 		            <li><a href="#home"     id="tab-home" role="tab" data-toggle="tab">Básico</a></li>
-		            <li><a href="#profile" role="tab" data-toggle="tab">Descrição</a></li>
-		            <li><a href="#fotosPrincipais" role="tab" data-toggle="tab">Fotos</a></li>
-		            <li><a href="#settings" role="tab" data-toggle="tab">Detalhes</a></li>
+		            <li><a href="#profile" id="tab-profile" role="tab" data-toggle="tab">Descrição</a></li>
+		            <li><a href="#fotosPrincipais" id="tab-fotosPrincipais" role="tab" data-toggle="tab">Fotos</a></li>
 		            <li><a href="#thumbs" id="tab-thumbs" role="tab" data-toggle="tab">Thumbs</a></li>
+		            <li><a href="#settings" id="tab-settings" role="tab" data-toggle="tab">Detalhes</a></li>
 		          </ul>
 		
 		          <div class="tab-content">
@@ -126,9 +126,6 @@
 		              <h:inputTextarea maxlength="140" styleClass="form-control" id="descricaoCarousel" value="#{imovelBean.entity.descricaoCarousel}" />
 		            </div>
 		            <div class="tab-pane" id="fotosPrincipais">
-		              
-			              <label>foto - Grande (421x308):</label>
-			              <h:inputFile value="#{imovelBean.fotoGrande}"/> 
 			              <label>foto - Carousel (619x334):</label>
 			              <h:inputFile value="#{imovelBean.fotoCarousel}"/>
 			              <label>foto - Quadrante(276x163):</label>
@@ -145,12 +142,12 @@
 		              <h:inputText maxlength="134" styleClass="form-control"  id="endereco" value="#{imovelBean.entity.endereco}" />
 		            </div>
 		            <div class="tab-pane" id="thumbs">
-			              <h3>Escolha as fotos para aparecerem na galeria de Thumbs (92x69):</h3>
+			              <h3>Escolha as fotos para aparecerem na galeria de Thumbs (421x308):</h3>
 			              <ui:repeat value="#{imovelBean.entity.fotos}" var="o"  varStatus="status" id="fotos">
 				              <div class="thumb">
-					              	<img class="foto" src="img/imoveis/#{o.thumb}" width="92" height="69" />
+					              	<img id="foto" class="foto" src="img/imoveis/#{o.thumb}" width="92" height="69" />
 	 				             	<h:commandButton value="x" id="remover" styleClass="button" onclick="mostrar(this)">
-									    <f:ajax listener="#{imovelBean.removerFoto(o.id)}" execute="" render="foto"/>
+									    <f:ajax listener="#{imovelBean.removerFoto(o.thumb)}" execute="" render="foto"/>
 									</h:commandButton>
 				              </div>
 			              </ui:repeat>
@@ -173,7 +170,6 @@
 		      </div>  
 		    </div>
 		    <h:messages></h:messages>
-		</h:form>
 		
 		<div class="modal fade" id="myModal" >
 		  <div class="modal-dialog">
@@ -183,22 +179,22 @@
 		        <h4 class="modal-title">Gerenciador de upload</h4>
 		        <p class="modal-title">Escolha a imagem que deseja:</p>
 		      </div>
-              <h:form enctype="multipart/form-data">
 			      <div class="modal-body">
 	                  <div class="">
 	                  		<h:inputHidden value="#{imovelBean.entity.id}" id="imovel_id"></h:inputHidden>
 				            <label>Foto:</label>
-				            <h:inputFile value="#{imovelBean.thumb}"/>  
+				            <h:inputFile value="#{imovelBean.thumb}" id="thumb_uploaded"/>  
 			          </div>
 			      </div>
 			      <div class="modal-footer">
-			      	<h:commandButton action="${imovelBean.salvarThumb()}" styleClass="btn btn-success" value="Enviar" />
+			      	<h:commandButton action="${imovelBean.salvarThumb()}" styleClass="btn btn-success" value="Enviar" >
+			      	</h:commandButton>
 			      </div>
-               </h:form>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 		
+               </h:form>
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery.cycle2.js"></script>
 		<script src="js/bootstrap-slider.js"></script>

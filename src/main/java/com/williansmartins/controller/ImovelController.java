@@ -11,14 +11,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
-import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
@@ -29,6 +27,10 @@ import com.williansmartins.enums.Tipo;
 public class ImovelController implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
+//	String BASE_PATH = File.separator + "Users"+File.separator + "will"+File.separator + "dev"+File.separator + "servers"+File.separator + "apache-tomcat-7.0.55"+File.separator + "8080"+File.separator + "wtpwebapps"+File.separator + "imobiliaria-hibernate" + File.separator + "img" + File.separator + "imoveis" + File.separator;
+	String BASE_PATH = File.separator + "/home/pwmscom/appservers/apache-tomcat-7x/webapps/imobiliaria/img/imoveis/";
+	
 	private ImovelEntity entity;
 	private ImovelDaoImpl dao;
 	private List<ImovelEntity> novidades;
@@ -56,6 +58,7 @@ public class ImovelController implements Serializable{
 	public ImovelController(){
 		dao = new ImovelDaoImpl();
 		entity = new ImovelEntity();
+		entity.setFotos(new ArrayList<FotoEntity>());
 		lista = dao.findAll();
 		galeriaDeThumbs = new ArrayList<FotoEntity>();
 		cidades = dao.findCityes();
@@ -67,8 +70,9 @@ public class ImovelController implements Serializable{
 	public void removerFoto(String s){
 		
 		for (int i = 0; i < entity.getFotos().size(); i++) {
-			if( entity.getFotos().get(i).getId() == Integer.parseInt(s)){
+			if( entity.getFotos().get(i).getThumb().equalsIgnoreCase( s ) ){
 				entity.getFotos().remove( entity.getFotos().get(i) );
+				return;
 			}
 		}
 		dao.update(entity);
@@ -81,13 +85,9 @@ public class ImovelController implements Serializable{
 		String SfotoCarousel = getFileName(fotoCarousel);
 		String SfotoQuadrante = getFileName(fotoQuadrante);
 		
-		String basePath2 = File.separator + "Users" + File.separator + "will" + File.separator + "dev" + File.separator;
-		String basePath = File.separator + "Users"+File.separator + "will"+File.separator + "dev"+File.separator + "servers"+File.separator + "apache-tomcat-7.0.55"+File.separator + "8080"+File.separator + "wtpwebapps"+File.separator + "imobiliaria-hibernate" + File.separator + "img" + File.separator + "imoveis" + File.separator;
-		
-		
-		File outputFilePathfotoGrande = new File(basePath + SfotoGrande);
-		File outputFilePathfotoCarousel = new File(basePath + SfotoCarousel);
-		File outputFilePathfotoQuadrante = new File(basePath + SfotoQuadrante);
+		File outputFilePathfotoGrande = new File(BASE_PATH + SfotoGrande);
+		File outputFilePathfotoCarousel = new File(BASE_PATH + SfotoCarousel);
+		File outputFilePathfotoQuadrante = new File(BASE_PATH + SfotoQuadrante);
 		
 		// Copy uploaded file to destination path
 		InputStream inputStream1 = null;
@@ -129,7 +129,7 @@ public class ImovelController implements Serializable{
 			statusMessage = "File upload successfull !!";
 		} catch (IOException e) {
 			e.printStackTrace();
-			statusMessage = "File upload failed !!";
+			statusMessage = "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< File upload failed !!" + e.getMessage();
 		} finally {
 			if (outputStream1 != null) {
 				outputStream1.close();
@@ -157,8 +157,7 @@ public class ImovelController implements Serializable{
 	public void uploadThumb() throws IOException {
 		
 		String name = getFileName( thumb );
-		String basePath = File.separator + "Users"+File.separator + "will"+File.separator + "dev"+File.separator + "servers"+File.separator + "apache-tomcat-7.0.55"+File.separator + "8080"+File.separator + "wtpwebapps"+File.separator + "imobiliaria-hibernate" + File.separator + "img" + File.separator + "imoveis" + File.separator;
-		File outputFilePath = new File(basePath + name);
+		File outputFilePath = new File(BASE_PATH + name);
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 		
@@ -177,7 +176,7 @@ public class ImovelController implements Serializable{
 			statusMessage = "File upload successfull !!";
 		} catch (IOException e) {
 			e.printStackTrace();
-			statusMessage = "File upload failed !!";
+			statusMessage = ">>>>>>>>>>>>>>>>>>>>>>>> File upload failed !! " + e.getMessage();
 		} finally {
 			if (outputStream != null) {
 				outputStream.close();
@@ -281,19 +280,17 @@ public class ImovelController implements Serializable{
 	public String salvarThumb(){
 		try {
 			uploadThumb();
+			System.out.println(entity.getTitulo());
 			
 			if( thumb != null && !getFileName(thumb).equals("")){
-				entity.setFotoCarousel(getFileName(thumb));
+				entity.getFotos().add(new FotoEntity(getFileName(thumb), getFileName(thumb)));
 			} 
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally{
-			entity.getFotos().add(new FotoEntity(getFileName(thumb), getFileName(thumb)));
-			dao.update(entity);
 		}
 		
-		return "admin-imovel.xhtml?tab=tab-thumbs&faces-redirect=true";
+		return "admin-imovel.xhtml?faces-redirect=true&tab=tab-thumbs";
 	}
 	
 	public String excluir(String id){
@@ -304,6 +301,7 @@ public class ImovelController implements Serializable{
 
 	public String prepararNovo(){
 		entity = new ImovelEntity();
+		entity.setFotos(new ArrayList<FotoEntity>());
 		return "admin-imovel.xhtml?faces-redirect=true";
 	} 
 	
