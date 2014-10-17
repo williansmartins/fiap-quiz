@@ -10,6 +10,7 @@ import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
+import com.williansmartins.enums.Fita;
 import com.williansmartins.enums.Tipo;
 
 public class ImovelMassa {
@@ -37,7 +38,7 @@ public class ImovelMassa {
 		entity.setDescricaoCarousel("Um apartamento maravilhoso, com vista para o morro do macaco, em frente ao mercado DIA. Próximo de tudo, mercado, padaria, cabelereiro.");
 		entity.setDormitorios(2);
 		entity.setEndereco("Amapa, 345, jd rosalina, cotia");
-		entity.setFita("venda");
+		entity.setFita(Fita.LANCAMENTO);
 		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(54.4);
 		entity.setVagas(1);
@@ -67,7 +68,7 @@ public class ImovelMassa {
 		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
-		entity.setFita("aluga");
+		entity.setFita(Fita.OBRAS);
 		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(500);
 		entity.setVagas(2);
@@ -98,7 +99,7 @@ public class ImovelMassa {
 		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
-		entity.setFita("indisponivel");
+		entity.setFita(Fita.PRE);
 		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(500);
 		entity.setVagas(2);
@@ -135,7 +136,7 @@ public class ImovelMassa {
 		entity.setDescricaoQuadrante("Um terreno grande, com 3 casas construídas, a primeira é a principal com 130 m², as outras com 54 m². Próximo de mercado, estação de trem, padarias, escola no mesmo quarteirão, 2 vagas, jardim e varanda.");
 		entity.setDormitorios(2);
 		entity.setEndereco("Maria Aparecida Pedrosa, 47, Sagrado Coração, Jandira");
-		entity.setFita("vendido");
+		entity.setFita(Fita.PRONTO);
 		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(500);
 		entity.setVagas(2);

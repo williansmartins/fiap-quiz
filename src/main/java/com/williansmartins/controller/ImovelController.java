@@ -20,6 +20,7 @@ import javax.servlet.http.Part;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
 import com.williansmartins.entity.FotoEntity;
 import com.williansmartins.entity.ImovelEntity;
+import com.williansmartins.enums.Fita;
 import com.williansmartins.enums.Tipo;
 
 @ManagedBean(name="imovelBean")
@@ -43,7 +44,9 @@ public class ImovelController implements Serializable{
 	private String busca;
 	
 	private Tipo tipo; 
+	private Fita fita; 
 	private List<Tipo> tipos;
+	private List<Fita> fitas;
 
 	private Part fotoGrande;
 	private Part fotoCarousel;
@@ -432,6 +435,22 @@ public class ImovelController implements Serializable{
 
 	public void setThumb(Part thumb) {
 		this.thumb = thumb;
+	}
+
+	public List<Fita> getFitas() {
+		return Arrays.asList(Fita.values());
+	}
+
+	public void setFitas(List<Fita> fitas) {
+		this.fitas = fitas;
+	}
+
+	public Fita getFita() {
+		return fita;
+	}
+
+	public void setFita(Fita fita) {
+		this.fita = fita;
 	}
 
 

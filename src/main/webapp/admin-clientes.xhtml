@@ -33,7 +33,11 @@
 	    			styleClass="table table-stripede">
 			    		<h:column>
 			   				<f:facet name="header">Nome</f:facet>
-			   				<h:commandLink action="${clienteBean.viewEntity(o.id)}">#{o.nome}</h:commandLink>
+			   				<h:commandLink action="${clienteBean.viewEntity(o.id)}">
+			   					#{o.nome}
+			   					<br />
+			   					#{o.interesse}
+			   				</h:commandLink>
 			   			</h:column>
 			    		<h:column>
 			   				<f:facet name="header">Telefone</f:facet>

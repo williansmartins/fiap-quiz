@@ -45,11 +45,11 @@
 		          <div class="tab-content">
 		            <div class="tab-pane" id="home">
 						<div class="row">
-			          		<div class="col-md-4">
+			          		<div class="col-md-3">
 				                <label>Título:</label>
 								<h:inputText styleClass="form-control" id="titulo" maxlength="35" value="#{imovelBean.entity.titulo}" />
 			          		</div>	
-			          		<div class="col-md-4">
+			          		<div class="col-md-3">
 			          			<label>Apresentar na Home?</label>
 			          			<br />
 								<div class="btn-group" data-toggle="buttons">
@@ -63,8 +63,19 @@
 								<h:inputHidden id="radio1" value="#{imovelBean.entity.mostrarNaHome}" />
 								<h:inputHidden id="radio2" value="#{imovelBean.entity.mostrarNoCarousel}" />
 			          		</div>	
-			          		<div class="col-md-4">
+			          		<div class="col-md-3">
 			          			<label>Apresentar no Carrousel?</label>
+								<div class="btn-group" data-toggle="buttons">
+								  <label class="btn btn-primary #{imovelBean.entity.mostrarNoCarousel == true ? 'active' : ''}">
+								    <input type="radio" name="radio-carousel" id="option3" value="sim" checked="#{imovelBean.entity.mostrarNoCarousel == true ? 'checked' : ''}"/> Sim
+								  </label>
+								  <label class="btn btn-primary #{imovelBean.entity.mostrarNoCarousel != true ? 'active' : ''}">
+								    <input type="radio" name="radio-carousel" id="option4" value="nao" checked="#{imovelBean.entity.mostrarNoCarousel != true ? 'checked' : ''}"/> Não
+								  </label>
+								</div>
+			          		</div>	
+			          		<div class="col-md-3">
+			          			<label>Tem valor?</label><br />
 								<div class="btn-group" data-toggle="buttons">
 								  <label class="btn btn-primary #{imovelBean.entity.mostrarNoCarousel == true ? 'active' : ''}">
 								    <input type="radio" name="radio-carousel" id="option3" value="sim" checked="#{imovelBean.entity.mostrarNoCarousel == true ? 'checked' : ''}"/> Sim
@@ -82,17 +93,13 @@
 		                </div>
 		                <div class="col-md-3">
 		                  <label>Fita:</label>
-		                  <h:selectOneMenu value="#{imovelBean.entity.fita}" id="fita" class="form-control">
-							  <f:selectItem itemValue="0" itemLabel="Selecione"/>
-							  <f:selectItem itemValue="vendido" itemLabel="vendido"/>
-							  <f:selectItem itemValue="indisponivel" itemLabel="indisponível"/>
-							  <f:selectItem itemValue="aluga" itemLabel="aluga"/>
-							  <f:selectItem itemValue="venda" itemLabel="à venda"/>
-						  </h:selectOneMenu>
+		                  <h:selectOneMenu value="#{imovelBean.entity.fita}" var="item"  styleClass="form-control">
+							  	<f:selectItems value="#{imovelBean.fitas}" itemLabel="${item.label}" />
+							</h:selectOneMenu>
 		                </div>
 		                <div class="col-md-3">
 							<label>Tipo:</label>
-							<h:selectOneMenu value="#{imovelBean.tipo}" var="tipo"  styleClass="form-control">
+							<h:selectOneMenu value="#{imovelBean.entity.tipo}" var="tipo"  styleClass="form-control">
 							  	<f:selectItems value="#{imovelBean.tipos}" itemLabel="${tipo.label}" />
 							</h:selectOneMenu>
 		                </div>		                

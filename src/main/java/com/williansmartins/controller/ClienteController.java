@@ -13,7 +13,7 @@ import com.williansmartins.entity.ClienteEntity;
 
 @ManagedBean(name="clienteBean")
 @SessionScoped
-public class ControllerCliente implements Serializable{
+public class ClienteController implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private ClienteEntity entity;
@@ -21,7 +21,7 @@ public class ControllerCliente implements Serializable{
 	private List<ClienteEntity> lista;
 	private int imovel_id;
 	
-	public ControllerCliente(){
+	public ClienteController(){
 		dao = new ClienteDaoImpl();
 		entity = new ClienteEntity();
 		lista = dao.findAll();
@@ -30,6 +30,7 @@ public class ControllerCliente implements Serializable{
 	public String excluir(String id){
 		dao.delete(Integer.parseInt(id));
 		lista = dao.findAll();
+		entity = new ClienteEntity();
 		return "admin-clientes.xhtml?faces-redirect=true";
 	}	
 
@@ -53,6 +54,7 @@ public class ControllerCliente implements Serializable{
 		imovel_id = Integer.parseInt( request.getParameter("modal-cliente:imovel_id") );
 		//entity.setInteresse(request.getParameter("modal-cliente:interesse") );
 		dao.insert(entity);
+		entity = new ClienteEntity();
 		return "imovel.xhtml?imovel_id=" + imovel_id + "&faces-redirect=true";
 	}
 	

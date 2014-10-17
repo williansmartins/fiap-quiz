@@ -190,7 +190,7 @@ body {
         .home .content .novidades .imovel .foto .enfeite-baixo {
           position: absolute;
           bottom: -1px;
-          left: -2px;
+          left: 0px;
           width: 89px;
           height: 88px;
           text-indent: -9999px;
@@ -203,6 +203,14 @@ body {
             background-image: url('../img/enfeite-vendido.png'); }
           .home .content .novidades .imovel .foto .enfeite-baixo.indisponivel {
             background-image: url('../img/enfeite-indisponivel.png'); }
+          .home .content .novidades .imovel .foto .enfeite-baixo.PRONTO {
+            background-image: url('../img/enfeite-pronto.png'); }
+          .home .content .novidades .imovel .foto .enfeite-baixo.PRE {
+            background-image: url('../img/enfeite-pre.png'); }
+          .home .content .novidades .imovel .foto .enfeite-baixo.LANCAMENTO {
+            background-image: url('../img/enfeite-lancamento.png'); }
+          .home .content .novidades .imovel .foto .enfeite-baixo.OBRAS {
+            background-image: url('../img/enfeite-obras.png'); }
       .home .content .novidades .imovel .descricao {
         background: white;
         border-radius: 7px;
@@ -289,9 +297,14 @@ body {
           .interna .content .hero .dados .detalhes .btn.botao1 {
             position: absolute;
             bottom: 56px; }
-          .interna .content .hero .dados .detalhes .btn.botao2 {
-            position: absolute;
-            bottom: 13px; }
+          .interna .content .hero .dados .detalhes .botao2 {
+	            position: absolute;
+	            cursor: default;
+	            bottom: 13px; 
+	            right: 1px;
+				background-color: orange;
+				padding: 8px;
+            }
   .interna .content .carousel {
     height: 85px;
     background-color: white;
@@ -460,4 +473,19 @@ width: 620px;
 
 .msg-erro.email{
 	top: 266px;
+}
+
+.fixed{
+	position: fixed;
+	z-index: 999;
+	left: 85px;
+	top: 270px;
+	width: 160px;
+	height: 160px;
+}
+
+.fixed a{
+	width: 160px;
+	height: 160px;
+	display: block;
 }

@@ -28,6 +28,10 @@ public class ControllerCorretor implements Serializable{
 		return "admin-corretor.xhtml";
 	}
 	
+	public void pegaEntity(){
+		entity = dao.findAll().size() > 0 ? dao.findAll().get(0) : new CorretorEntity();
+	}
+	
 	public CorretorEntity getEntity() {
 		return entity;
 	}

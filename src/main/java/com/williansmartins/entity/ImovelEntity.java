@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.williansmartins.enums.Fita;
 import com.williansmartins.enums.Tipo;
 
 @Entity(name="imovel")
@@ -27,7 +28,6 @@ public class ImovelEntity implements Serializable {
 	
 	BigDecimal valor;
 	String titulo;
-	String fita;
 	double metros;
 	int dormitorios;
 	int vagas;
@@ -51,6 +51,9 @@ public class ImovelEntity implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	Tipo tipo;
+	
+	@Enumerated(EnumType.STRING)
+	Fita fita;
 
 	@OneToMany(targetEntity = FotoEntity.class, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "imovel_id")
@@ -83,14 +86,6 @@ public class ImovelEntity implements Serializable {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-
-	public String getFita() {
-		return fita;
-	}
-
-	public void setFita(String fita) {
-		this.fita = fita;
 	}
 
 	public double getMetros() {
@@ -235,6 +230,14 @@ public class ImovelEntity implements Serializable {
 
 	public void setFotoQuadrante(String fotoQuadrante) {
 		this.fotoQuadrante = fotoQuadrante;
+	}
+
+	public Fita getFita() {
+		return fita;
+	}
+
+	public void setFita(Fita fita) {
+		this.fita = fita;
 	}
 
 }

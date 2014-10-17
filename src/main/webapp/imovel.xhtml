@@ -45,8 +45,8 @@
 	                <p class="tamanho"><img src="img/cama.png"/>#{imovelBean.entity.dormitorios} dormitórios</p>
 	                <p class="cidade"><img src="img/garagem.png"/>#{imovelBean.entity.vagas} vaga(s) na garagem</p>
 	                <p class="tamanho"><img src="img/city.png"/>#{imovelBean.entity.cidade}</p>
-	                <a href="#" class="btn botao1 btn-success" data-toggle="modal" data-target="#myModal">Estou interessado, quero mais informações</a>
-	                <a href="#" class="btn botao2 btn-success">Ligue agora <h:outputText value="#{corretorBean.entity.telefone}"></h:outputText></a>
+	                <a href="#" class="btn botao1 btn-success" data-toggle="modal" data-target="#myModal">Estou interessado, quero mais informações!</a>
+	                <span class="botao2">Ligue agora <h:outputText value="#{corretorBean.entity.telefone}"></h:outputText></span>
 	              </div>
 	            </div>
 	          </div>
@@ -80,14 +80,14 @@
 	              <ul id="recursos" data-valor="#{imovelBean.entity.recursos}">
 	              </ul>
 	            </div>
-	            <div class="mapa">
-	              <h1>Mapa da região</h1>
-	              <iframe src="#{imovelBean.entity.maps}" width="600" height="450" frameborder="0" style="border:0"></iframe>
-	              <p>#{imovelBean.entity.endereco}</p>
-	            </div>
 	          </div>
 	        </div>
 	      </div>  
+	      <div class="fixed">
+				<a href="#" class="" data-toggle="modal" data-target="#myModal">
+					<img src="img/balao-verde.png" />
+				</a>
+		  </div>
      	</h:form> 
 	  	<div class="modal fade" id="myModal" >
           <h:form id="modal-cliente">

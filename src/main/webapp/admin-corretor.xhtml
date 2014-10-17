@@ -12,7 +12,7 @@
 	    <link href="css/slider.css" rel="stylesheet" />
 	    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
 	</h:head>
-	<body class="corretor">
+	<h:body onload="#{corretorBean.pegaEntity()}" class="corretor">
 		<h:form id="form-corretor">
 			<div class="topo">
 			</div>
@@ -50,5 +50,5 @@
 		<script src="js/jquery.cycle2.carousel.js"></script>
 		<script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
 		<script src="js/jquery.maskedinput.js"></script>
-	</body>
+	</h:body>
 </html>
