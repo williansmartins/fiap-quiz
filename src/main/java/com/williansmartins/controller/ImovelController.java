@@ -28,8 +28,8 @@ public class ImovelController implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-//	String BASE_PATH = File.separator + "Users"+File.separator + "will"+File.separator + "dev"+File.separator + "servers"+File.separator + "apache-tomcat-7.0.55"+File.separator + "8080"+File.separator + "wtpwebapps"+File.separator + "imobiliaria-hibernate" + File.separator + "img" + File.separator + "imoveis" + File.separator;
-	String BASE_PATH = File.separator + "/home/pwmscom/appservers/apache-tomcat-7x/webapps/imobiliaria/img/imoveis/";
+	String BASE_PATH = File.separator + "Users"+File.separator + "will"+File.separator + "dev"+File.separator + "servers"+File.separator + "apache-tomcat-7.0.55"+File.separator + "8080"+File.separator + "wtpwebapps"+File.separator + "imobiliaria-hibernate" + File.separator + "img" + File.separator + "imoveis" + File.separator;
+//	String BASE_PATH = File.separator + "/home/pwmscom/appservers/apache-tomcat-7x/webapps/imobiliaria/img/imoveis/";
 	
 	private ImovelEntity entity;
 	private ImovelDaoImpl dao;
@@ -211,7 +211,6 @@ public class ImovelController implements Serializable{
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		idDoImovel = Integer.parseInt( request.getParameter("imovel_id") );
 		entity = dao.findById(idDoImovel);
-		System.out.println(">>>" + entity.getTitulo());
 	}
 	
 	public String editar(String id){

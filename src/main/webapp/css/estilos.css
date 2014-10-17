@@ -189,8 +189,8 @@ body {
             padding-right: 4px; }
         .home .content .novidades .imovel .foto .enfeite-baixo {
           position: absolute;
-          bottom: 7px;
-          left: 6px;
+          bottom: -1px;
+          left: -2px;
           width: 89px;
           height: 88px;
           text-indent: -9999px;
@@ -434,4 +434,30 @@ width: 620px;
 }
 .wrapper .home .cycle-slideshow img{
 	height: 334px;	
+}
+
+.relative{
+	position: relative;
+}
+
+.msg-erro{
+	position: absolute;
+	color: red;
+	right: 8px;
+}
+
+.msg-erro.nome{
+	top: 89px;
+}
+
+.msg-erro.telefone{
+	top: 148px;
+}
+
+.msg-erro.celular{
+	top: 207px;
+}
+
+.msg-erro.email{
+	top: 266px;
 }
