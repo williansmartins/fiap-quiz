@@ -14,16 +14,14 @@ public class FotoEntity implements Serializable {
 	@Id @GeneratedValue
 	Integer id;
 	
-	String grande;
 	String thumb;
 	
 	public FotoEntity() {
 		super();
 	}
 
-	public FotoEntity(String grande, String thumb) {
+	public FotoEntity( String thumb ) {
 		super();
-		this.grande = grande;
 		this.thumb = thumb;
 	}
 
@@ -33,14 +31,6 @@ public class FotoEntity implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getGrande() {
-		return grande;
-	}
-
-	public void setGrande(String grande) {
-		this.grande = grande;
 	}
 
 	public String getThumb() {

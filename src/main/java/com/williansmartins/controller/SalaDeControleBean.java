@@ -30,6 +30,11 @@ public class SalaDeControleBean implements Serializable{
 		new Start().inserirImoveis();
 	}
 	
+	public void resetImoveis(){
+		new Start().apagarTodosImoveis();
+		new Start().inserirImoveis();
+	}
+	
 	public void deletarImoveis(){
 		new Start().apagarTodosImoveis();
 	}

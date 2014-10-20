@@ -42,20 +42,24 @@ public class ImovelMassa {
 		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(54.4);
 		entity.setVagas(1);
-		entity.setValor(new BigDecimal("150000"));
-		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
-		entity.setRecursos("recurso1;recurso2;recurso3");		
+		entity.setValor(new BigDecimal("220000"));
+		entity.setCaracteristicas("playground;campo de futebol;espaço gourmet; portaria;poucos andares;tranquilidade");		
+		entity.setRecursos("recursos próximos;padarias; bazar; academia; restaurantes; pizzarias;açougues;mercados;escolas;pronto-socorro;rodovia próximo;cabelereiros;");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
-		fotos.add(new FotoEntity("grande1.jpg", "thumb1.jpg"));
-		fotos.add(new FotoEntity("grande2.jpg", "thumb2.jpg"));
-		fotos.add(new FotoEntity("grande3.jpg", "thumb3.jpg"));
-		entity.setFotoCarousel("carousel-cotia.jpg");
-		entity.setFotoQuadrante("quadrante1.jpg");
-		entity.setFotoGrande("grande1.jpg");
+		fotos.add(new FotoEntity( "ametista-1.jpg" ));
+		fotos.add(new FotoEntity( "ametista-2.jpg" ));
+		fotos.add(new FotoEntity( "ametista-3.jpg" ));
+		fotos.add(new FotoEntity( "ametista-4.jpg" ));
+		fotos.add(new FotoEntity( "ametista-5.jpg" ));
+		
+		entity.setFotoCarousel("ametista-carousel.jpg");
+		entity.setFotoQuadrante("ametista-quadrante.jpg");
+		
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.APARTAMENTO);
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
+		entity.setTemValor(true);
 		return entity;
 	}
 	
@@ -73,20 +77,21 @@ public class ImovelMassa {
 		entity.setMetros(500);
 		entity.setVagas(2);
 		entity.setValor(new BigDecimal("210000"));
-		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
-		entity.setRecursos("recurso1;recurso2;recurso3");		
+		entity.setCaracteristicas("muito espaço; espaço para festas; o	ficina; espaço para escritório; lavanderia externa; grande sacada; balanço; quinta com muito verde; árvores frutíferas; área com gramado");		
+		entity.setRecursos("mercado ao lado;açougue;padaria ao lado;estação de trem; ponto de ônibus; escola na mesma rua; cabelereiro; bazar; bares");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
-		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
-		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
-		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
+		fotos.add(new FotoEntity("jandira-1.jpg"));
+		fotos.add(new FotoEntity("jandira-2.jpg"));
+		fotos.add(new FotoEntity("jandira-3.jpg"));
 		
-		entity.setFotoCarousel("carousel-jandira.jpg");
-		entity.setFotoQuadrante("quadrante2.jpg");
-		entity.setFotoGrande("grande2.jpg");
+		entity.setFotoCarousel("jandira-carousel.jpg");
+		entity.setFotoQuadrante("jandira-quadrante.jpg");
+
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
+		entity.setTemValor(true);
 		return entity;
 	}
 	
@@ -107,23 +112,29 @@ public class ImovelMassa {
 		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
 		entity.setRecursos("recurso1;recurso2;recurso3");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
-		entity.setFotoCarousel("carousel1.jpg");
-		entity.setFotoQuadrante("quadrante1.jpg");
-		fotos.add(new FotoEntity("", "thumb1-1.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-2.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-3.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-4.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-5.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-6.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-7.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-8.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-9.jpg"));
-		fotos.add(new FotoEntity("", "thumb1-10.jpg"));
-		entity.setFotoGrande("thumb1-1.jpg");
+		entity.setFotoCarousel("pacote1-carousel.jpg");
+		entity.setFotoQuadrante("pacote1-quadrante.jpg");
+		fotos.add(new FotoEntity("pacote1-1.jpg"));
+		fotos.add(new FotoEntity("pacote1-2.jpg"));
+		fotos.add(new FotoEntity("pacote1-3.jpg"));
+		fotos.add(new FotoEntity("pacote1-4.jpg"));
+		fotos.add(new FotoEntity("pacote1-5.jpg"));
+		fotos.add(new FotoEntity("pacote1-6.jpg"));
+		fotos.add(new FotoEntity("pacote1-7.jpg"));
+		fotos.add(new FotoEntity("pacote1-8.jpg"));
+		fotos.add(new FotoEntity("pacote1-9.jpg"));
+		fotos.add(new FotoEntity("pacote1-10.jpg"));
+		fotos.add(new FotoEntity("pacote1-11.jpg"));
+		fotos.add(new FotoEntity("pacote1-12.jpg"));
+		fotos.add(new FotoEntity("pacote1-13.jpg"));
+		fotos.add(new FotoEntity("pacote1-14.jpg"));
+		fotos.add(new FotoEntity("pacote1-15.jpg"));
+		fotos.add(new FotoEntity("pacote1-16.jpg"));
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
+		entity.setTemValor(true);
 		return entity;
 	}
 
@@ -140,20 +151,32 @@ public class ImovelMassa {
 		entity.setMaps("https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d1829.4916250485917!2d-46.8514345!3d-23.4971128!3m2!1i1024!2i768!4f13.1!4m9!1i0!3e6!4m0!4m5!1s0x94cf023b1a960943%3A0xc7c573393bf1f502!2sAlphaville+Comercial%2C+Barueri+-+SP!3m2!1d-23.4970209!2d-46.851323699999995!5e0!3m2!1spt-PT!2sbr!4v1412624406079");
 		entity.setMetros(500);
 		entity.setVagas(2);
-		entity.setValor(new BigDecimal("210000"));
 		entity.setCaracteristicas("caracteristica1;caracteristica2;caracteristica3");		
 		entity.setRecursos("recurso1;recurso2;recurso3");		
 		List<FotoEntity> fotos = new ArrayList<FotoEntity>();
-		fotos.add(new FotoEntity("grande-jandira-1.jpg", "thumb-jandira-1.jpg"));
-		fotos.add(new FotoEntity("grande-jandira-2.jpg", "thumb-jandira-2.jpg"));
-		fotos.add(new FotoEntity("grande-jandira-3.jpg", "thumb-jandira-3.jpg"));
-		entity.setFotoCarousel("carousel-jandira.jpg");
-		entity.setFotoQuadrante("quadrante2.jpg");
-		entity.setFotoGrande("grande3.jpg");
+		entity.setFotoCarousel("pacote2-carousel.jpg");
+		entity.setFotoQuadrante("pacote2-quadrante.jpg");
+		fotos.add(new FotoEntity("pacote2-1.jpg"));
+		fotos.add(new FotoEntity("pacote2-2.jpg"));
+		fotos.add(new FotoEntity("pacote2-3.jpg"));
+		fotos.add(new FotoEntity("pacote2-4.jpg"));
+		fotos.add(new FotoEntity("pacote2-5.jpg"));
+		fotos.add(new FotoEntity("pacote2-6.jpg"));
+		fotos.add(new FotoEntity("pacote2-7.jpg"));
+		fotos.add(new FotoEntity("pacote2-8.jpg"));
+		fotos.add(new FotoEntity("pacote2-9.jpg"));
+		fotos.add(new FotoEntity("pacote2-10.jpg"));
+		fotos.add(new FotoEntity("pacote2-11.jpg"));
+		fotos.add(new FotoEntity("pacote2-12.jpg"));
+		fotos.add(new FotoEntity("pacote2-13.jpg"));
+		fotos.add(new FotoEntity("pacote2-14.jpg"));
+		fotos.add(new FotoEntity("pacote2-15.jpg"));
+		fotos.add(new FotoEntity("pacote2-16.jpg"));
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
-		entity.setMostrarNaHome(false);
+		entity.setMostrarNaHome(true);
+		entity.setTemValor(false);
 		return entity;
 	}
 
