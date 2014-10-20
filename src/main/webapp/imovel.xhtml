@@ -104,20 +104,20 @@
                   		<h:inputHidden value="#{clienteBean.imovel_id}" id="imovel_id"></h:inputHidden>
                   		
                   		
-			            <label>Imóvel:</label>
+			            <label>Imóvel*:</label>
                   		<h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.interesse}" id="interesse" name="interesse"/>
-			            <label>Nome:</label>
-			            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.nome}" />
-			            <label>Email:</label>
-			            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.email}" />
-			            <label>Telefone fixo:</label>
-			            <h:inputText styleClass="form-control telefone" maxlength="255" value="#{clienteBean.entity.telefone}" />
-			            <label>Celular:</label>
-			            <h:inputText styleClass="form-control celular" maxlength="255" value="#{clienteBean.entity.celular}" />
+			            <label>Nome*:</label>
+			            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.nome}" id="nome"/>
+			            <label>Email*:</label>
+			            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.email}" id="email"/>
+			            <label>Telefone fixo*:</label>
+			            <h:inputText styleClass="form-control telefone" maxlength="255" value="#{clienteBean.entity.telefone}" id="telefone"/>
+			            <label>Celular*:</label>
+			            <h:inputText styleClass="form-control celular" maxlength="255" value="#{clienteBean.entity.celular}" id="celular"/>
 		          </div>
 		      </div>
 		      <div class="modal-footer">
-		      	<h:commandButton action="${clienteBean.salvarSomente()}" onclick="alert('Mensagem enviada com sucesso. Assim que possível entraremos em contato.')" styleClass="btn btn-success" value="Confirmar"></h:commandButton>
+		      	<h:commandButton action="${clienteBean.salvarSomente()}" onclick="return validaFormCliente()" styleClass="btn btn-success" value="Confirmar"></h:commandButton>
 		      </div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->

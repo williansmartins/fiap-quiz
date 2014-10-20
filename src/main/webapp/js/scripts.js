@@ -45,15 +45,15 @@ $(document).ready( function(){
 	    
 	//Bloquear o botao direito do mouse
 	var mensagem = "Não copie, além de imoral é crime!";
-//	
-//	if (document.layers) {
-//		document.captureEvents(Event.MOUSEDOWN);
-//		document.onmousedown = clickNS;
-//	} else {
-//		document.onmouseup = clickNS;
-//		document.oncontextmenu = clickIE;
-//	}
-//	document.oncontextmenu = new Function("return false");
+	
+	if (document.layers) {
+		document.captureEvents(Event.MOUSEDOWN);
+		document.onmousedown = clickNS;
+	} else {
+		document.onmouseup = clickNS;
+		document.oncontextmenu = clickIE;
+	}
+	document.oncontextmenu = new Function("return false");
     
 	$('#modal-cliente\\:interesse').val( $('.titulo').html() );
 	$('#modal-cliente\\:imovel_id').val( $('#form-imovel\\:imovel_id_imovel').val() );
@@ -220,4 +220,45 @@ function addCommas(nStr)
         x1 = x1.replace(rgx, '$1' + '.' + '$2');
     }
     return x1 + x2;
+}
+
+function validaFormCliente(){
+	if( $("#modal-cliente\\:interesse").val() == "" ){
+		alert("Favor preencher o campo de interesse");
+		return false;
+	}else{
+		if( $("#modal-cliente\\:nome").val() == "" ){
+			alert("Favor preencher o campo de nome");
+			return false;
+		}else{
+			if( $("#modal-cliente\\:email").val() == "" ){
+				alert("Favor preencher o campo de email");
+				return false;
+			}else{
+				if( !validateEmail( $("#modal-cliente\\:email").val() )  ){
+					alert("Email em formato incorreto, por favor corrigir");
+					return false;
+				}else{
+					if( $("#modal-cliente\\:telefone").val() == "" ){
+						alert("Favor preencher o campo de telefone");
+						return false;
+					}else{
+						if( $("#modal-cliente\\:celular").val() == "" ){
+							alert("Favor preencher o campo de celular");
+							return false;
+						}else{
+							alert('Mensagem enviada com sucesso!');
+							return true;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+function validateEmail(email) 
+{
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
 }

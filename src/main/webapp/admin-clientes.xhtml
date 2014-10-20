@@ -54,23 +54,23 @@
             <h1>Dados do cliente</h1>
             <h:inputHidden value="#{clienteBean.entity.id}" />
             <label>Nome:</label>
-            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.nome}" />
+            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.nome}" />
             <label>Email:</label>
-            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.email}" />
+            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.email}" />
             <div class="row">
 	            <label class="col-md-6">Fixo:</label>
 	            <label class="col-md-6">Celular:</label>
             </div>
             <div class="row">
 	            <div class="col-md-6">
-		            <h:inputText id="fixo" styleClass="form-control" maxlength="24" value="#{clienteBean.entity.telefone}" />
+		            <h:inputText id="fixo" styleClass="form-control" maxlength="255" value="#{clienteBean.entity.telefone}" />
 	            </div>
 	            <div class="col-md-6">
-		            <h:inputText id="celular" styleClass="form-control" maxlength="24" value="#{clienteBean.entity.celular}" />
+		            <h:inputText id="celular" styleClass="form-control" maxlength="255" value="#{clienteBean.entity.celular}" />
 	            </div>
             </div>
             <label>Interesse:</label>
-            <h:inputText styleClass="form-control" maxlength="24" value="#{clienteBean.entity.interesse}" />
+            <h:inputText styleClass="form-control" maxlength="255" value="#{clienteBean.entity.interesse}" />
             <br />
             <h:commandButton action="${clienteBean.salvar()}" styleClass="btn btn-success" value="salvar"></h:commandButton>
             <h:outputText value="&#160;" />
