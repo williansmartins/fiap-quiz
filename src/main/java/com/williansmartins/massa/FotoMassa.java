@@ -21,7 +21,6 @@ public class FotoMassa {
 	
 	public FotoEntity getEntityData( ) {
 		FotoEntity entity = new FotoEntity();
-		entity.setGrande("grande");
 		entity.setThumb("thumb");
 		return entity;
 	}

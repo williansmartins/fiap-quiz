@@ -30,6 +30,8 @@ public class ImovelEntity implements Serializable {
 	String titulo;
 	double metros;
 	int dormitorios;
+	int suites;
+	int banheiros;
 	int vagas;
 	String cidade;
 	@Column(length = 558)
@@ -247,6 +249,22 @@ public class ImovelEntity implements Serializable {
 
 	public void setTemValor(boolean temValor) {
 		this.temValor = temValor;
+	}
+
+	public int getSuites() {
+		return suites;
+	}
+
+	public void setSuites(int suites) {
+		this.suites = suites;
+	}
+
+	public int getBanheiros() {
+		return banheiros;
+	}
+
+	public void setBanheiros(int banheiros) {
+		this.banheiros = banheiros;
 	}
 
 }

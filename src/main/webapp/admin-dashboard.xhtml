@@ -26,33 +26,6 @@
 	        <div class="content">
 				<h:form>
 				<h1>Sala de controle</h1>
-					<div class=" botao">
-						<h:commandLink action="#{salaBean.countCliente}">
-							<span class="texto">clientes <br /> dao</span>
-					        <h:graphicImage value="img/botao-azul.png" />
-						</h:commandLink>
-					</div>
-					<div class=" botao">
-						<h:commandLink action="#{salaBean.countImovel}">
-							<span class="texto">imovel <br />dao</span>
-					        <h:graphicImage value="img/botao-azul.png" />
-						</h:commandLink>
-					</div>
-					<div class=" botao">
-						<h:commandLink action="#{salaBean.countCorretor}">
-							<span class="texto">corretor <br /> dao</span>
-					        <h:graphicImage value="img/botao-azul.png" />
-						</h:commandLink>
-					</div>
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
 					<div class="">
 						<h:commandLink action="#{salaBean.resetImoveis}">
 					        <h:graphicImage value="img/botao-alarme2.png" />
@@ -74,9 +47,28 @@
 					<br />
 					<br />
 					<br />
+					<div class=" botao">
+						<h:commandLink action="#{salaBean.countCliente}">
+							<span class="texto">clientes <br /> dao</span>
+					        <h:graphicImage value="img/botao-azul.png" />
+						</h:commandLink>
+					</div>
+					<div class=" botao">
+						<h:commandLink action="#{salaBean.countImovel}">
+							<span class="texto">imovel <br />dao</span>
+					        <h:graphicImage value="img/botao-azul.png" />
+						</h:commandLink>
+					</div>
+					<div class=" botao">
+						<h:commandLink action="#{salaBean.countCorretor}">
+							<span class="texto">corretor <br /> dao</span>
+					        <h:graphicImage value="img/botao-azul.png" />
+						</h:commandLink>
+					</div>
 					<div class="alert alert-danger fade in out" role="alert">
 	  					#{salaBean.mensagem}
 	  				</div>
+
 				</h:form>	          
 	        </div>
 	      </div>  

@@ -24,7 +24,6 @@ public class FotoTest {
 	@Test
 	public void inserirSomente() throws Exception {
 		FotoEntity entityMockada1 = new FotoEntity();
-		entityMockada1.setGrande("grande");
 		entityMockada1.setThumb("thumb");
 		
 		ImovelEntity imovelEntity = new ImovelEntity();

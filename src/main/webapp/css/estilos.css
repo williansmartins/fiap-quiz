@@ -290,6 +290,16 @@ body {
         position: relative; }
         .interna .content .hero .dados .detalhes p {
           line-height: 23px; }
+        .interna .content .hero .dados .detalhes p.suites {
+          	position: absolute;
+			left: 123px;
+			top: 98px;
+          }
+        .interna .content .hero .dados .detalhes p.banheiros {
+          	position: absolute;
+			left: 123px;
+			top: 68px;
+          }
           .interna .content .hero .dados .detalhes p img {
             padding-right: 8px; }
         .interna .content .hero .dados .detalhes .btn {

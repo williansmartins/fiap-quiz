@@ -60,6 +60,8 @@ public class ImovelMassa {
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
 		entity.setTemValor(true);
+		entity.setSuites(1);
+		entity.setBanheiros(2);
 		return entity;
 	}
 	
@@ -92,6 +94,8 @@ public class ImovelMassa {
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
 		entity.setTemValor(true);
+		entity.setSuites(1);
+		entity.setBanheiros(2);
 		return entity;
 	}
 	
@@ -124,17 +128,13 @@ public class ImovelMassa {
 		fotos.add(new FotoEntity("pacote1-8.jpg"));
 		fotos.add(new FotoEntity("pacote1-9.jpg"));
 		fotos.add(new FotoEntity("pacote1-10.jpg"));
-		fotos.add(new FotoEntity("pacote1-11.jpg"));
-		fotos.add(new FotoEntity("pacote1-12.jpg"));
-		fotos.add(new FotoEntity("pacote1-13.jpg"));
-		fotos.add(new FotoEntity("pacote1-14.jpg"));
-		fotos.add(new FotoEntity("pacote1-15.jpg"));
-		fotos.add(new FotoEntity("pacote1-16.jpg"));
 		entity.setFotos(fotos);		
 		entity.setTipo(Tipo.CASA);
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
 		entity.setTemValor(true);
+		entity.setSuites(1);
+		entity.setBanheiros(3);
 		return entity;
 	}
 
@@ -177,6 +177,8 @@ public class ImovelMassa {
 		entity.setMostrarNoCarousel(true);
 		entity.setMostrarNaHome(true);
 		entity.setTemValor(false);
+		entity.setSuites(2);
+		entity.setBanheiros(4);
 		return entity;
 	}
 
