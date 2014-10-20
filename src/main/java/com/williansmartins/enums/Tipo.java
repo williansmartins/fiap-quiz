@@ -1,7 +1,7 @@
 package com.williansmartins.enums;
 
 public enum Tipo {
-	APARTAMENTO("Apartamento"), CASA("Casa"), QUALQUER("Qualquer");
+	APARTAMENTO("Apartamento"), CASA("Casa"), QUALQUER("Qualquer"), SALA_COMERCIAL("Sala comercial"), TERRENO("Terreno");
 	
 	private String label;
 	

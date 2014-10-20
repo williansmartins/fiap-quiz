@@ -62,6 +62,7 @@
 								</div>
 								<h:inputHidden id="radio1" value="#{imovelBean.entity.mostrarNaHome}" />
 								<h:inputHidden id="radio2" value="#{imovelBean.entity.mostrarNoCarousel}" />
+								<h:inputHidden id="radio3" value="#{imovelBean.entity.temValor}" />
 			          		</div>	
 			          		<div class="col-md-3">
 			          			<label>Apresentar no Carrousel?</label>
@@ -77,11 +78,11 @@
 			          		<div class="col-md-3">
 			          			<label>Tem valor?</label><br />
 								<div class="btn-group" data-toggle="buttons">
-								  <label class="btn btn-primary #{imovelBean.entity.mostrarNoCarousel == true ? 'active' : ''}">
-								    <input type="radio" name="radio-carousel" id="option3" value="sim" checked="#{imovelBean.entity.mostrarNoCarousel == true ? 'checked' : ''}"/> Sim
+								  <label class="btn btn-primary #{imovelBean.entity.temValor == true ? 'active' : ''}">
+								    <input type="radio" name="radio-valor" id="option5" value="sim" checked="#{imovelBean.entity.temValor == true ? 'checked' : ''}"/> Sim
 								  </label>
-								  <label class="btn btn-primary #{imovelBean.entity.mostrarNoCarousel != true ? 'active' : ''}">
-								    <input type="radio" name="radio-carousel" id="option4" value="nao" checked="#{imovelBean.entity.mostrarNoCarousel != true ? 'checked' : ''}"/> Não
+								  <label class="btn btn-primary #{imovelBean.entity.temValor != true ? 'active' : ''}">
+								    <input type="radio" name="radio-valor" id="option6" value="nao" checked="#{imovelBean.entity.temValor != true ? 'checked' : ''}"/> Não
 								  </label>
 								</div>
 			          		</div>	

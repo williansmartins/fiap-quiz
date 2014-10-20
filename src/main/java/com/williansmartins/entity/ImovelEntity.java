@@ -48,6 +48,7 @@ public class ImovelEntity implements Serializable {
 	String caracteristicas;
 	boolean mostrarNoCarousel;
 	boolean mostrarNaHome;
+	boolean temValor;
 
 	@Enumerated(EnumType.STRING)
 	Tipo tipo;
@@ -238,6 +239,14 @@ public class ImovelEntity implements Serializable {
 
 	public void setFita(Fita fita) {
 		this.fita = fita;
+	}
+
+	public boolean isTemValor() {
+		return temValor;
+	}
+
+	public void setTemValor(boolean temValor) {
+		this.temValor = temValor;
 	}
 
 }

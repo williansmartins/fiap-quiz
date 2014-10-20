@@ -132,12 +132,18 @@ $(document).ready( function(){
     	$("#imovel-form\\:radio1").val(false);
     });
     
-    
     $("#option3").change(function (e){
     	$("#imovel-form\\:radio2").val(true);
     });
     $("#option4").change(function (e){
     	$("#imovel-form\\:radio2").val(false);
+    });
+    
+    $("#option5").change(function (e){
+    	$("#imovel-form\\:radio3").val(true);
+    });
+    $("#option6").change(function (e){
+    	$("#imovel-form\\:radio3").val(false);
     });
     
     $(".popularImovel").click(function (e){
@@ -148,7 +154,7 @@ $(document).ready( function(){
     	$('#imovel-form\\:metros').val("54.0")
     	$('#imovel-form\\:vagas').val("1")
     	$('#imovel-form\\:cidade').val("Cotia")
-    	$('#imovel-form\\:fita').val("aluga")
+    	$('#imovel-form\\:fita').val("pre")
     	
     	$('#imovel-form\\:descricaoCompleta').val("descricaoCompleta")
     	$('#imovel-form\\:descricaoQuadrante').val("descricaoQuadrante")

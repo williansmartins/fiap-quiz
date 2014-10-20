@@ -11,13 +11,13 @@ import com.williansmartins.entity.CorretorEntity;
 
 @ManagedBean(name="corretorBean")
 @SessionScoped
-public class ControllerCorretor implements Serializable{
+public class CorretorController implements Serializable{
 
 	private static final long serialVersionUID = 2L;
 	private CorretorEntity entity;
 	private JpaGenericDao<CorretorEntity> dao;
 	
-	public ControllerCorretor(){
+	public CorretorController(){
 		dao = new CorretorDaoImpl();
 		entity = dao.findAll().size() > 0 ? dao.findAll().get(0) : new CorretorEntity();
 	}

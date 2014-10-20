@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+      	xmlns:h="http://java.sun.com/jsf/html"
+      	xmlns:f="http://java.sun.com/jsf/core">
+	<f:view>
+		<h:head>
+		    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		    <title>Imobiliária</title>
+		    <link href="css/estilos.css" rel="stylesheet" />
+		    <link href="css/bootstrap.css" rel="stylesheet" />
+		    <link href="css/demo-slideshow.css" rel="stylesheet" />
+		    <link href="css/slider.css" rel="stylesheet" />
+		    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+		</h:head>
+		<f:loadBundle basename="com.williansmartins.msg.messages" var="msgs" />
+		<h:body styleClass="resultado">
+			    <div class="topo">
+			    </div>
+			    <div class="menu">
+			      <ul>
+			        <li class=""><a class="selected first" href="index.xhtml">Home</a></li>
+			      </ul>
+				      <div class="busca">
+				      <h:form>
+					      <h:commandButton action="#{languageBean.es()}" value="ES"></h:commandButton>
+					      <h:commandButton action="#{languageBean.en()}" value="EN"></h:commandButton>
+				      </h:form>
+			    	</div>
+			    </div>
+				<h:form>
+			    <div class="wrapper">
+			      <div class="erro">
+		            <br />
+		            <br />
+		            <br />
+		            <br />
+		            <br />
+		            <br />
+		            <br />
+		            <br />
+		            <br />
+		            <h1>Hummmm! deu erro...</h1>
+	                <h2>Olha o erro aqui:</h2>
+				    <h:inputTextarea style="width: 100%;" rows="20" cols="200" value="#{erroBean.getStackTrace()}" />
+			      </div>  
+			    </div>
+		    </h:form>
+			<script src="js/jquery.js"></script>
+	  	</h:body>
+	</f:view>
+</html>
