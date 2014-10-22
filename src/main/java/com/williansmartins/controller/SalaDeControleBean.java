@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 import com.williansmartins.dao.entity.ClienteDaoImpl;
 import com.williansmartins.dao.entity.CorretorDaoImpl;
 import com.williansmartins.dao.entity.ImovelDaoImpl;
+import com.williansmartins.massa.ImovelMassa;
 import com.williansmartins.massa.Start;
 
 @ManagedBean(name="salaBean")
@@ -33,6 +34,14 @@ public class SalaDeControleBean implements Serializable{
 	public void resetImoveis(){
 		new Start().apagarTodosImoveis();
 		new Start().inserirImoveis();
+	}
+	
+	public void testeDeStress(){
+		try {
+			new ImovelMassa().testeDeStress();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void deletarImoveis(){

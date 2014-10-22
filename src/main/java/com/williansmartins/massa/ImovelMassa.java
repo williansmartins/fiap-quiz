@@ -187,5 +187,24 @@ public class ImovelMassa {
 			dao.delete( o.getId() );
 		}
 	}
+	
+	public void testeDeStress() throws Exception {
+		List<ImovelEntity> listaEntities = new ArrayList<ImovelEntity>();
+		
+		// Inserir 10 entities
+		for (int cont = 0; cont < 200; cont++) {
+			ImovelEntity entityMockada1 = new ImovelEntity();
+			entityMockada1 = new ImovelMassa().getImovel1();
+			listaEntities.add(entityMockada1);
+		}
+		
+		dao.insertAll(listaEntities);
+		
+		// Remover as entities
+//		for (ImovelEntity entity : listaEntities) {
+//			dao.delete(entity.getId());
+//		}
+		
+	}
 
 }
