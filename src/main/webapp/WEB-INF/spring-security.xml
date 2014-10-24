@@ -10,13 +10,13 @@
 		<intercept-url pattern="/admin*" access="ROLE_USER" />
 		<form-login 
 			login-page="/login.xhtml" 
-	        default-target-url="/welcome" 
+	        default-target-url="/admin-inicio.xhtml" 
 		 	authentication-failure-url="/login.xhtml?error=true" />
 	</http>
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="was" password="secreta" authorities="ROLE_USER" />
+				<user name="willians" password="secreta" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

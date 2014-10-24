@@ -30,8 +30,7 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			entityManager.getTransaction().rollback();
-			System.out.println("ERRO: " + e.getCause().getCause()
-					+ e.getMessage());
+			System.out.println("ERRO: " + e.getCause().getCause() + e.getMessage());
 		} finally {
 			entityManager.close();
 		}

@@ -15,35 +15,28 @@
 	    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
 	</h:head>
 	<h:body styleClass="home">
-	    <div class="topo">
-	    </div>
-	    <div class="menu">
+	    <div class="logo">
 	    </div>
 	    <div class="wrapper">
-	      	<div class="home">
-	        	<div class="content">
-		  			<form id="form-login" action="j_spring_security_check" method="post">
-		  				<c:if test="#{param['error'] == true}">
-			  				<div class="alert alert-danger fade in out" role="alert">
-			  					Autenticação não autorizada
-			  					<button type="button" class="close" data-dismiss="alert">
-			  						<span aria-hidden="true">&times;</span>
-			  						<span class="sr-only">Close</span>
-			  					</button>
-			  				</div>
-		  				</c:if>
-	                    <h:outputLabel for="j_username" value="Username:" />
-	                    <h:inputText id="j_username" required="true" value="was" requiredMessage="Please enter username" styleClass="form-control"/>
-	                    <h:outputLabel for="j_password" value="Password:" />
-	                    <h:inputSecret id="j_password" required="true" requiredMessage="Please enter password" styleClass="form-control"/>
-	                    <br />
-	                    <h:commandButton value="Login" styleClass="btn btn-success"/>
-			            <div>
-					        <h:messages></h:messages>
-					    </div>
-		            </form>
-   	      		</div>  
-	    	</div>
+	    	<h1>Quanto você conhece de Tecnologia?</h1>
+  			<form id="form-login" action="j_spring_security_check" method="post">
+                   <h:inputHidden id="j_username" required="true" value="willians" requiredMessage="Please enter username" styleClass="form-control"/>
+                   <h:inputSecret id="j_password" required="true" requiredMessage="Please enter password" styleClass="form-control"/>
+                   <br />
+                   <h:commandButton value="Login" styleClass="btn btn-success botao"/>
+	            <div>
+  				<c:if test="#{param['error'] == true}">
+	  				<div class="alert alert-success fade in out erro" role="alert">
+	  					Autenticação não autorizada
+	  					<button type="button" class="close" data-dismiss="alert">
+	  						<span aria-hidden="true">&times;</span>
+	  						<span class="sr-only">Close</span>
+	  					</button>
+	  				</div>
+  				</c:if>
+			        <h:messages></h:messages>
+			    </div>
+            </form>
 	    </div>
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.js"></script>

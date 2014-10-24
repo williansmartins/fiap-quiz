@@ -5,25 +5,25 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.williansmartins.dao.JpaGenericDao;
-import com.williansmartins.dao.entity.CorretorDaoImpl;
-import com.williansmartins.dao.entity.ImovelDaoImpl;
-import com.williansmartins.entity.CorretorEntity;
-import com.williansmartins.entity.ImovelEntity;
+import com.williansmartins.dao.entity.QuestaoDaoImpl;
+import com.williansmartins.dao.entity.UserDaoImpl;
+import com.williansmartins.entity.QuestaoEntity;
+import com.williansmartins.entity.UserEntity;
 
 public class GeralUP {
-	JpaGenericDao<CorretorEntity> dao1;
-	JpaGenericDao<ImovelEntity> dao2;
+	JpaGenericDao<QuestaoEntity> dao1;
+	JpaGenericDao<UserEntity> dao2;
 	
 	public GeralUP(){
-		dao1 = new CorretorDaoImpl();
-		dao2 = new ImovelDaoImpl();
+		dao1 = new QuestaoDaoImpl();
+		dao2 = new UserDaoImpl();
 	}
 	
 	@Test
 	public void up() {
-		new CorretorMassa().inserirCorretor();
+		new QuestaoMassa().inserirImovel();
 		Assert.assertEquals(true, dao1.findAll().size() == 1);
-		new ImovelMassa().inserirImovel();
+		new UserMassa().inserir();
 		Assert.assertEquals(true, dao2.findAll().size() == 4);
 	}
 }
