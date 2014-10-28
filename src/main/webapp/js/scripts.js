@@ -3,8 +3,14 @@ $(document).ready( function(){
 		$("#form-login\\:cpf").mask("999.999.999-99");
 	}
 	
-	$('input[name=alternativas]').change(function (e){
-    	$("#form-questao\\:chute").val( $(this).val() );
-    });
+	//////////////////////////////////////////////////////////////////
+	//Bloquear o botao direito do mouse
+	document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
+	//////////////////////////////////////////////////////////////////
+	//FIM - Bloquear o botao direito do mouse
 	
 });
+
+function trocou(){
+	$("#form-questao\\:chute").val( $('input[name=alternativas]:checked').val() );
+}

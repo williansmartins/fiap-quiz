@@ -1,5 +1,7 @@
 package com.williansmartins.dao.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -7,8 +9,10 @@ import javax.persistence.Query;
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.entity.UserEntity;
 
-public class UserDaoImpl extends JpaGenericDao<UserEntity> implements IUserDao{
+public class UserDaoImpl extends JpaGenericDao<UserEntity> implements IUserDao, Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@PersistenceContext
 	private EntityManager entityManager;
 	

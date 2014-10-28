@@ -2,6 +2,7 @@ package com.williansmartins.entity;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 
 @Entity(name="user")
 public class UserEntity implements Serializable{
@@ -21,13 +23,17 @@ public class UserEntity implements Serializable{
 	Integer id;
 	private String nome;
 	private String cpf;
-	private Time tempo;
+	private Date created;
 	@OneToMany(targetEntity = RespostaEntity.class, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
 	List<RespostaEntity> respostas;
 	
 	public UserEntity(){
-		
+	}
+
+	@PrePersist
+	protected void onCreate() {
+		created = new Date();
 	}
 	
 	public Integer getId() {
@@ -62,13 +68,12 @@ public class UserEntity implements Serializable{
 		this.respostas = respostas;
 	}
 
-	public Time getTempo() {
-		return tempo;
+	public Date getCreated() {
+		return created;
 	}
 
-	public void setTempo(Time tempo) {
-		this.tempo = tempo;
+	public void setCreated(Date created) {
+		this.created = created;
 	}
-
 	
 }

@@ -26,16 +26,16 @@
 	  					</button>
 	  				</div>
  				</c:if>
-	            <div class="titulo" id="titulo">
+	            <h:panelGroup class="titulo" id="titulo" layout="block">
 	            #{quizMB.questaoAtual.pergunta}
-	            </div>
-	            <div class="alternativas" id="alternativas" >
+	            </h:panelGroup>
+	            <h:panelGroup class="alternativas" id="alternativas" layout="block">
 		            <div class="row">
 		            	<ui:repeat var="item" value="#{quizMB.questaoAtual.pergunta}">
 						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaA != ''}">
 						    <div class="input-group alternativa">
 						      <span class="input-group-addon">
-						        <input type="radio" name="alternativas" value="a" />
+						        <input type="radio" name="alternativas" value="a" onchange="trocou()"/>
 						      </span>
 						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaA}" />
 						    </div>
@@ -43,7 +43,7 @@
 						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaB != ''}">
 						    <div class="input-group alternativa">
 						      <span class="input-group-addon">
-						        <input type="radio" name="alternativas" value="b" />
+						        <input type="radio" name="alternativas" value="b"  onchange="trocou()"/>
 						      </span>
 						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaB}" />
 						    </div>
@@ -51,7 +51,7 @@
 						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaC != ''}">
 						    <div class="input-group alternativa">
 						      <span class="input-group-addon">
-						        <input type="radio" name="alternativas" value="c" />
+						        <input type="radio" name="alternativas" value="c"  onchange="trocou()"/>
 						      </span>
 						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaC}" />
 						    </div>
@@ -59,7 +59,7 @@
 						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaD != ''}">
 						    <div class="input-group alternativa">
 						      <span class="input-group-addon">
-						        <input type="radio" name="alternativas" value="d" />
+						        <input type="radio" name="alternativas" value="d"  onchange="trocou()"/>
 						      </span>
 						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaD}" />
 						    </div>
@@ -67,7 +67,7 @@
 						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaE != ''}">
 						    <div class="input-group alternativa">
 						      <span class="input-group-addon">
-						        <input type="radio" name="alternativas" value="e" />
+						        <input type="radio" name="alternativas" value="e"  onchange="trocou()"/>
 						      </span>
 						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaE}" />
 						    </div>
@@ -75,14 +75,16 @@
 		            	</ui:repeat>
 					</div><!-- /.row -->
 					<h:inputHidden value="#{quizMB.chute}" id="chute" />
-	            </div>
+	            </h:panelGroup>
 	            <div class="pirulas vermelha">
 	            	<h:commandButton value="entrar" styleClass="texto" image="img/pirula-vermelha-enviar.png">
-	            		<f:ajax listener="#{quizMB.enviar}" execute="" render="titulo alternativas"/>
+	            		<f:ajax listener="#{quizMB.enviar}" execute="chute" render="form-questao:titulo form-questao:alternativas"/>
 	            	</h:commandButton>
 	            </div>
 	            <div class="pirulas verde">
-	            	<h:commandButton value="desistir" styleClass="texto" action="#{quizMB.pular}" image="img/pirula-verde-pular.png"/>
+	            	<h:commandButton value="desistir" styleClass="texto" image="img/pirula-verde-pular.png">
+	            		<f:ajax listener="#{quizMB.pular}" execute="chute" render="form-questao:titulo form-questao:alternativas"/>
+	            	</h:commandButton>
 	            </div>
 			    <div class="fim">
 			     	<div class="grade">
@@ -100,7 +102,7 @@
 	    <div class="countdown">
 		    <script type="application/javascript">
 				var myCountdown1 = new Countdown({
-											 	time: 180, 
+											 	time: 10, 
 												width:200, 
 												height:100,  
 												onComplete	: countdownComplete, 

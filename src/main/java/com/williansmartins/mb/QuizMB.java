@@ -1,11 +1,14 @@
 package com.williansmartins.mb;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -14,7 +17,6 @@ import com.williansmartins.dao.entity.UserDaoImpl;
 import com.williansmartins.entity.QuestaoEntity;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
-import com.williansmartins.util.ValidarCpf;
 
 @ManagedBean(name="quizMB")
 @SessionScoped
@@ -29,7 +31,7 @@ public class QuizMB implements Serializable{
 	private UserEntity user;
 	private String senhaDigitada;
 	private String chute;
-	private List<RespostaEntity> respostas = new ArrayList<RespostaEntity>();
+	private List<RespostaEntity> respostas;
 	
 	public QuizMB(){
 		daoQuestao = new QuestaoDaoImpl();
@@ -38,6 +40,7 @@ public class QuizMB implements Serializable{
 		indiceDaQuestao = 0;
 		questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 		user = new UserEntity();
+		respostas = new ArrayList<RespostaEntity>();
 		user.setRespostas(new ArrayList<RespostaEntity>() );
 	}
 	
@@ -47,7 +50,7 @@ public class QuizMB implements Serializable{
         return "login.xhtml?faces-redirect=true";
     }
 	
-	public String enviar(){
+	public void enviar() throws IOException{
 		RespostaEntity resposta = new RespostaEntity();
 		
 		if( chute.charAt(0) == questaoAtual.getCorreta()  ){
@@ -67,23 +70,34 @@ public class QuizMB implements Serializable{
 			//se chegou ao fim, pega todas as respostas e insere no banco
 			user.setRespostas(respostas);
 			daoUser.insert(user);
-			
-			return "admin-ultima.xhtml?faces-redirect=true";
+			user = new UserEntity();
+			respostas = new ArrayList<RespostaEntity>();
+			user.setRespostas(new ArrayList<RespostaEntity>() );
+			FacesContext.getCurrentInstance().getExternalContext().redirect("admin-ultima.xhtml?faces-redirect=true");
 		}else{
 			System.out.println("Tem mais");
 			questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
-			return "";
 		}
 	}
 	
-	public String pular(){
+	public void pular() throws IOException{
+		RespostaEntity resposta = new RespostaEntity();
+		resposta.setAcertou("nao");
+		resposta.setNumero(questaoAtual.getId());
+		resposta.setRespondeu("-");
+		respostas.add(resposta);
+		
 		if( indiceDaQuestao++ >= listaDeQuestoes.size()-1 ){
 			System.out.println("chegou ao fim");
-			return "admin-ultima.xhtml?faces-redirect=true";
+			user.setRespostas(respostas);
+			daoUser.insert(user);
+			user = new UserEntity();
+			respostas = new ArrayList<RespostaEntity>();
+			user.setRespostas(new ArrayList<RespostaEntity>() );
+			FacesContext.getCurrentInstance().getExternalContext().redirect("admin-ultima.xhtml?faces-redirect=true");
 		}else{
 			System.out.println("Tem mais");
 			questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
-			return "";
 		}
 	}
 	
@@ -91,6 +105,17 @@ public class QuizMB implements Serializable{
 		indiceDaQuestao = 0;
 		daoUser.insert(user);
 		user = new UserEntity();
+		respostas = new ArrayList<RespostaEntity>();
+		user.setRespostas(new ArrayList<RespostaEntity>() );
+		return "login.xhtml?faces-redirect=true";
+	}
+
+	
+	public String concluir(){
+		indiceDaQuestao = 0;
+		user = new UserEntity();
+		respostas = new ArrayList<RespostaEntity>();
+		user.setRespostas(new ArrayList<RespostaEntity>() );
 		return "login.xhtml?faces-redirect=true";
 	}
 	
@@ -103,6 +128,8 @@ public class QuizMB implements Serializable{
 			//verificar se o cpf é válido
 			if( true ){
 //				if( new ValidarCpf().validarCpf( user.getCpf() ) ){
+				indiceDaQuestao = 0;
+				questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 				return "admin-questao.xhtml?faces-redirect=true";
 			}else{
 				return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF invalido!";
