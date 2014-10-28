@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Questao</title>
+		<link href="css/estilos.css" rel="stylesheet" />
+		<link href="css/bootstrap.css" rel="stylesheet" />
+	</h:head>
+	<h:body styleClass="home">
+	    <div class="logo">
+	    </div>
+	    <div class="wrapper">
+	    	<h1>Quanto você conhece de Tecnologia?</h1>
+  			<h:form id="form-questao" class="">
+	            <c:if test="#{param['error'] == true}">
+	  				<div class="alert alert-success fade in out" role="alert">
+	  					#{param['mensagem']}
+	  					<button type="button" class="close" data-dismiss="alert">
+	  						<span aria-hidden="true">&times;</span>
+	  						<span class="sr-only">Close</span>
+	  					</button>
+	  				</div>
+ 				</c:if>
+	            <div class="titulo" id="titulo">
+	            #{quizMB.questaoAtual.pergunta}
+	            </div>
+	            <div class="alternativas" id="alternativas" >
+		            <div class="row">
+		            	<ui:repeat var="item" value="#{quizMB.questaoAtual.pergunta}">
+						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaA != ''}">
+						    <div class="input-group alternativa">
+						      <span class="input-group-addon">
+						        <input type="radio" name="alternativas" value="a" />
+						      </span>
+						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaA}" />
+						    </div>
+						  </h:panelGrid>
+						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaB != ''}">
+						    <div class="input-group alternativa">
+						      <span class="input-group-addon">
+						        <input type="radio" name="alternativas" value="b" />
+						      </span>
+						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaB}" />
+						    </div>
+						  </h:panelGrid>
+						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaC != ''}">
+						    <div class="input-group alternativa">
+						      <span class="input-group-addon">
+						        <input type="radio" name="alternativas" value="c" />
+						      </span>
+						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaC}" />
+						    </div>
+						  </h:panelGrid>
+						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaD != ''}">
+						    <div class="input-group alternativa">
+						      <span class="input-group-addon">
+						        <input type="radio" name="alternativas" value="d" />
+						      </span>
+						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaD}" />
+						    </div>
+						  </h:panelGrid>
+						  <h:panelGrid styleClass="col-lg-12" rendered="#{quizMB.questaoAtual.respostaE != ''}">
+						    <div class="input-group alternativa">
+						      <span class="input-group-addon">
+						        <input type="radio" name="alternativas" value="e" />
+						      </span>
+						      <input type="text" class="form-control texto" value="#{quizMB.questaoAtual.respostaE}" />
+						    </div>
+						  </h:panelGrid>
+		            	</ui:repeat>
+					</div><!-- /.row -->
+					<h:inputHidden value="#{quizMB.chute}" id="chute" />
+	            </div>
+	            <div class="pirulas vermelha">
+	            	<h:commandButton value="entrar" styleClass="texto" image="img/pirula-vermelha-enviar.png">
+	            		<f:ajax listener="#{quizMB.enviar}" execute="" render="titulo alternativas"/>
+	            	</h:commandButton>
+	            </div>
+	            <div class="pirulas verde">
+	            	<h:commandButton value="desistir" styleClass="texto" action="#{quizMB.pular}" image="img/pirula-verde-pular.png"/>
+	            </div>
+			    <div class="fim">
+			     	<div class="grade">
+				    	<img src="img/fim.png" />
+				      	<h:commandButton value="re-iniciar" action="#{quizMB.reiniciar}"></h:commandButton>
+			    	</div>
+			    </div>
+            </h:form>
+	    </div>
+	    <script src="js/jquery.js"></script>
+	    <script src="js/bootstrap.js"></script>
+	    <script src="js/scripts.js"></script>
+	    <script src="js/countdown.js"></script>
+	    <script src="js/jquery.maskedinput.js"></script>
+	    <div class="countdown">
+		    <script type="application/javascript">
+				var myCountdown1 = new Countdown({
+											 	time: 180, 
+												width:200, 
+												height:100,  
+												onComplete	: countdownComplete, 
+												rangeHi:"minute",
+												style:"flip"	
+												});
+				function countdownComplete(){
+					//$('#myModal').modal('show');
+					$('.titulo, .alternativas, .pirulas').fadeOut( "slow", function() {
+						$('.fim').fadeIn( "slow", function() {
+						  });
+					});
+				}
+// 				$('#form-questao').hide();
+			</script>
+	    </div>
+	</h:body>
+</html>

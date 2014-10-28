@@ -7,7 +7,7 @@
 	http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/admin*" access="ROLE_USER" />
+		<intercept-url pattern="/adminc*" access="ROLE_USER" />
 		<form-login 
 			login-page="/login.xhtml" 
 	        default-target-url="/admin-inicio.xhtml" 

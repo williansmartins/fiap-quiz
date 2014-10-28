@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Última</title>
+		<link href="css/estilos.css" rel="stylesheet" />
+		<link href="css/bootstrap.css" rel="stylesheet" />
+		<link href="css/demo-slideshow.css" rel="stylesheet" />
+	    <link href="css/slider.css" rel="stylesheet" />
+	    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+	</h:head>
+	<h:body styleClass="home">
+	    <div class="logo">
+	    </div>
+	    <div class="wrapper">
+	    	<h1>Quanto você conhece de Tecnologia?</h1>
+  			<h:form id="form" class="cpf">
+	            <div class="fim show">
+			     	<div class="grade">
+				    	<img src="img/fim.png" />
+				      	<h:commandButton value="re-iniciar" action="#{quizMB.reiniciar}"></h:commandButton>
+			    	</div>
+			    </div>
+            </h:form>
+	    </div>
+	    <script src="js/jquery.js"></script>
+	    <script src="js/bootstrap.js"></script>
+	    <script src="js/jquery.maskedinput.js"></script>
+	    <script src="js/scripts.js"></script>
+	</h:body>
+</html>

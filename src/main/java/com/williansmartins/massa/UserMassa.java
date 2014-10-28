@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.williansmartins.dao.JpaGenericDao;
 import com.williansmartins.dao.entity.UserDaoImpl;
-import com.williansmartins.entity.RepostaEntity;
+import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
 
 public class UserMassa {
@@ -29,11 +29,11 @@ public class UserMassa {
 		UserEntity entity = new UserEntity();
 		entity.setCpf("30580911845");
 		entity.setNome("Willians Martin");
-		List<RepostaEntity> respostas = new ArrayList<RepostaEntity>();
-		RepostaEntity r1 = new RepostaEntity(1, "A", "sim");
-		RepostaEntity r2 = new RepostaEntity(2, "B", "nao");
-		RepostaEntity r3 = new RepostaEntity(3, "C", "sim");
-		RepostaEntity r4 = new RepostaEntity(4, "A", "sim");
+		List<RespostaEntity> respostas = new ArrayList<RespostaEntity>();
+		RespostaEntity r1 = new RespostaEntity(1, "A", "sim");
+		RespostaEntity r2 = new RespostaEntity(2, "B", "nao");
+		RespostaEntity r3 = new RespostaEntity(3, "C", "sim");
+		RespostaEntity r4 = new RespostaEntity(4, "A", "sim");
 		
 		respostas.add( r1 );
 		respostas.add( r2 );

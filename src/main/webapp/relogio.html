@@ -1,0 +1,32 @@
+<html>
+<title>Relógio Analógico</title>
+<head>
+<HEAD>
+<body>
+	<script type="text/javascript">
+		var newYear = new Date();
+		newYear = new Date(newYear.getFullYear() + 1, 1 - 1, 1);
+		$('#defaultCountdown').countdown({
+			until : newYear
+		});
+
+		$('#removeCountdown').click(function() {
+			var destroy = $(this).text() === 'Remove';
+			$(this).text(destroy ? 'Re-attach' : 'Remove');
+			$('#defaultCountdown').countdown(destroy ? 'destroy' : {
+				until : newYear
+			});
+		});
+	</script>
+	<div id="defaultCountdown" class="is-countdown">
+		<span class="countdown-row countdown-show4"><span
+			class="countdown-section"><span class="countdown-amount">91</span><span
+				class="countdown-period">Days</span></span><span class="countdown-section"><span
+				class="countdown-amount">10</span><span class="countdown-period">Hours</span></span><span
+			class="countdown-section"><span class="countdown-amount">4</span><span
+				class="countdown-period">Minutes</span></span><span
+			class="countdown-section"><span class="countdown-amount">42</span><span
+				class="countdown-period">Seconds</span></span></span>
+	</div>
+</body>
+</html>

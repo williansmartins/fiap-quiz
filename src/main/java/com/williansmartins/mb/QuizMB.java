@@ -1,17 +1,20 @@
 package com.williansmartins.mb;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.williansmartins.dao.entity.QuestaoDaoImpl;
 import com.williansmartins.dao.entity.UserDaoImpl;
 import com.williansmartins.entity.QuestaoEntity;
+import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
+import com.williansmartins.util.ValidarCpf;
 
 @ManagedBean(name="quizMB")
 @SessionScoped
@@ -23,39 +26,98 @@ public class QuizMB implements Serializable{
 	private UserDaoImpl daoUser;
 	private List<QuestaoEntity> listaDeQuestoes;
 	private int indiceDaQuestao;
-	private UserEntity userBean;
-	private final String SENHA_MASTER = "secreta";
+	private UserEntity user;
 	private String senhaDigitada;
+	private String chute;
+	private List<RespostaEntity> respostas = new ArrayList<RespostaEntity>();
 	
 	public QuizMB(){
 		daoQuestao = new QuestaoDaoImpl();
-		questaoAtual = new QuestaoEntity();
+		daoUser = new UserDaoImpl();
 		listaDeQuestoes = daoQuestao.findAll();
+		indiceDaQuestao = 0;
+		questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
+		user = new UserEntity();
+		user.setRespostas(new ArrayList<RespostaEntity>() );
 	}
 	
-	public String salvar(){
-		if(questaoAtual.getId() == null){
-			daoQuestao.insert(questaoAtual);
+	public String logout(){
+        SecurityContextHolder.clearContext();
+        user = new UserEntity();
+        return "login.xhtml?faces-redirect=true";
+    }
+	
+	public String enviar(){
+		RespostaEntity resposta = new RespostaEntity();
+		
+		if( chute.charAt(0) == questaoAtual.getCorreta()  ){
+			System.out.println("acertou");
+			resposta.setAcertou("sim");
 		}else{
-			daoQuestao.update(questaoAtual);
+			System.out.println("errou");
+			resposta.setAcertou("não");
 		}
-		questaoAtual = new QuestaoEntity();
-		listaDeQuestoes = daoQuestao.findAll();
-		return "admin-clientes.xhtml?faces-redirect=true";
+
+		resposta.setNumero(questaoAtual.getId());
+		resposta.setRespondeu(chute);
+		respostas.add(resposta);
+		
+		if( indiceDaQuestao++ >= listaDeQuestoes.size()-1 ){
+			System.out.println("chegou ao fim");
+			//se chegou ao fim, pega todas as respostas e insere no banco
+			user.setRespostas(respostas);
+			daoUser.insert(user);
+			
+			return "admin-ultima.xhtml?faces-redirect=true";
+		}else{
+			System.out.println("Tem mais");
+			questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
+			return "";
+		}
 	}
 	
-	public String salvarSomente(){
-		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		indiceDaQuestao = Integer.parseInt( request.getParameter("modal-cliente:imovel_id") );
-		//entity.setInteresse(request.getParameter("modal-cliente:interesse") );
-		daoQuestao.insert(questaoAtual);
-		questaoAtual = new QuestaoEntity();
-		return "imovel.xhtml?imovel_id=" + indiceDaQuestao + "&faces-redirect=true";
+	public String pular(){
+		if( indiceDaQuestao++ >= listaDeQuestoes.size()-1 ){
+			System.out.println("chegou ao fim");
+			return "admin-ultima.xhtml?faces-redirect=true";
+		}else{
+			System.out.println("Tem mais");
+			questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
+			return "";
+		}
 	}
 	
+	public String reiniciar(){
+		indiceDaQuestao = 0;
+		daoUser.insert(user);
+		user = new UserEntity();
+		return "login.xhtml?faces-redirect=true";
+	}
+	
+	public String entrar(){
+		user.setCpf( user.getCpf().replace("-", "").replace(".", "") );
+		//verificar se existe usuário
+		if( daoUser.existeUsuario(user) ){
+			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
+		}else{
+			//verificar se o cpf é válido
+			if( true ){
+//				if( new ValidarCpf().validarCpf( user.getCpf() ) ){
+				return "admin-questao.xhtml?faces-redirect=true";
+			}else{
+				return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF invalido!";
+			}
+		}
+
+		
+	}
+	
+	//context.addMessage(null, new FacesMessage("Não te conheço"));
+	//FacesContext context = FacesContext.getCurrentInstance();
 	////// GETTERS AND SETTERS ///////////////
 	/////////////////////////////////////////
 	
+
 	public QuestaoEntity getEntity() {
 		return questaoAtual;
 	}
@@ -96,12 +158,12 @@ public class QuizMB implements Serializable{
 		this.listaDeQuestoes = listaDeQuestoes;
 	}
 
-	public UserEntity getUserBean() {
-		return userBean;
+	public UserEntity getUser() {
+		return user;
 	}
 
-	public void setUserBean(UserEntity userBean) {
-		this.userBean = userBean;
+	public void setUser(UserEntity user) {
+		this.user = user;
 	}
 
 	public String getSenhaDigitada() {
@@ -110,6 +172,14 @@ public class QuizMB implements Serializable{
 
 	public void setSenhaDigitada(String senhaDigitada) {
 		this.senhaDigitada = senhaDigitada;
+	}
+
+	public String getChute() {
+		return chute;
+	}
+
+	public void setChute(String chute) {
+		this.chute = chute;
 	}
 
 	

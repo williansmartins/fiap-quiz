@@ -18,7 +18,7 @@ public class QuestaoMassa {
 	}
 
 	@Test
-	public void inserirImovel() {
+	public void inserir() {
 		dao.insert(getEntity1());
 	}
 	
@@ -30,6 +30,7 @@ public class QuestaoMassa {
 		entity.setRespostaC("Willians");
 		entity.setRespostaD("Pedro");
 		entity.setRespostaE("Peter");
+		entity.setCorreta('d');
 		
 		return entity;
 	}

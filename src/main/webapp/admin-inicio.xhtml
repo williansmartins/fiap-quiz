@@ -7,7 +7,7 @@
     xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Imobiliária</title>
+		<title>Início</title>
 		<link href="css/estilos.css" rel="stylesheet" />
 		<link href="css/bootstrap.css" rel="stylesheet" />
 		<link href="css/demo-slideshow.css" rel="stylesheet" />
@@ -19,19 +19,33 @@
 	    </div>
 	    <div class="wrapper">
 	    	<h1>Quanto você conhece de Tecnologia?</h1>
-  			<h:form id="form-login" action="" method="post" class="cpf">
-	            <h:inputText id="nome" required="true" value="willians"  styleClass="form-control nome"/>
-	            <h:inputText id="cpf" required="true" value="305.809.118-45" styleClass="form-control cpf"/>
+  			<h:form id="form-login" class="cpf">
+	            <c:if test="#{param['error'] == true}">
+	  				<div class="alert alert-success fade in out" role="alert">
+	  					#{param['mensagem']}
+	  					<button type="button" class="close" data-dismiss="alert">
+	  						<span aria-hidden="true">&times;</span>
+	  						<span class="sr-only">Close</span>
+	  					</button>
+	  				</div>
+ 				</c:if>
+	            <h:inputText id="nome" required="true" value="#{quizMB.user.nome}"  styleClass="form-control nome" requiredMessage="É necessário preencher o nome"/>
+	            <h:inputText id="cpf" required="true" value="#{quizMB.user.cpf}" styleClass="form-control cpf" requiredMessage="É necessário preencher o cpf"/>
 	            <br />
 	            <div class="pirulas vermelha">
-	            	<span>entrar</span>
+	            	<h:commandButton value="entrar" styleClass="texto" action="#{quizMB.entrar}" image="img/pirula-vermelha.png"/>
 	            </div>
 	            <div class="pirulas verde">
-	            	<span>desistir</span>
+	            	<a href="login.xhtml"> <img src="img/pirula-verde.png" name="" class="texto" /> </a>
 	            </div>
+	            <h:messages styleClass="messages alert alert-success">
+	            	<h:message for=""></h:message>
+	            </h:messages>
             </h:form>
 	    </div>
 	    <script src="js/jquery.js"></script>
 	    <script src="js/bootstrap.js"></script>
+	    <script src="js/jquery.maskedinput.js"></script>
+	    <script src="js/scripts.js"></script>
 	</h:body>
 </html>

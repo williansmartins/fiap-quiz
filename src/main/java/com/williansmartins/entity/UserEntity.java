@@ -1,6 +1,7 @@
 package com.williansmartins.entity;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,9 +21,10 @@ public class UserEntity implements Serializable{
 	Integer id;
 	private String nome;
 	private String cpf;
-	@OneToMany(targetEntity = RepostaEntity.class, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	private Time tempo;
+	@OneToMany(targetEntity = RespostaEntity.class, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-	List<RepostaEntity> respostas;
+	List<RespostaEntity> respostas;
 	
 	public UserEntity(){
 		
@@ -52,12 +54,20 @@ public class UserEntity implements Serializable{
 		this.cpf = cpf;
 	}
 
-	public List<RepostaEntity> getRespostas() {
+	public List<RespostaEntity> getRespostas() {
 		return respostas;
 	}
 
-	public void setRespostas(List<RepostaEntity> respostas) {
+	public void setRespostas(List<RespostaEntity> respostas) {
 		this.respostas = respostas;
+	}
+
+	public Time getTempo() {
+		return tempo;
+	}
+
+	public void setTempo(Time tempo) {
+		this.tempo = tempo;
 	}
 
 	

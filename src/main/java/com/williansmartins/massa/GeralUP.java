@@ -21,7 +21,7 @@ public class GeralUP {
 	
 	@Test
 	public void up() {
-		new QuestaoMassa().inserirImovel();
+		new QuestaoMassa().inserir();
 		Assert.assertEquals(true, dao1.findAll().size() == 1);
 		new UserMassa().inserir();
 		Assert.assertEquals(true, dao2.findAll().size() == 4);
