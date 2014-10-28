@@ -25,6 +25,7 @@ body {
 }
 
 .home .wrapper #form-login{
+	display:none;
 	width: 450px;
 	margin: auto;
 	margin-top: 170px;
@@ -126,6 +127,7 @@ body {
 
 .home .wrapper #form-questao{
 /* 	outline: solid 1px red; */
+	display: none;
 	width: 920px;
 	height: 480px;
 	margin: auto;
@@ -204,4 +206,7 @@ body {
 }
 .show{
 	display: visible;
+}
+.form-ultima, .countdown{
+	display: none;
 }

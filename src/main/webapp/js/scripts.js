@@ -1,6 +1,26 @@
 $(document).ready( function(){
-	if( $("body").hasClass("home") ){
+	if( $("body").hasClass("inicio") ){
 		$("#form-login\\:cpf").mask("999.999.999-99");
+		$("#form-login").fadeIn( "slow", function() {
+		    // Animation complete.
+		  });
+	}
+	if( $("body").hasClass("login") ){
+		$("#form-login").fadeIn( "slow", function() {
+		    // Animation complete.
+		  });
+	}
+	if( $("body").hasClass("questao") ){
+		$("#form-questao").slideDown( "slow", function() {
+			  $(".countdown").fadeIn( "slow", function() {
+			    // Animation complete.
+			  });
+		  });
+	}
+	if( $("body").hasClass("ultima") ){
+		$(".form-ultima").slideDown( "slow", function() {
+		    // Animation complete.
+		  });
 	}
 	
 	//////////////////////////////////////////////////////////////////

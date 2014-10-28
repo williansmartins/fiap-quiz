@@ -3,12 +3,12 @@ package com.williansmartins.mb;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -17,6 +17,7 @@ import com.williansmartins.dao.entity.UserDaoImpl;
 import com.williansmartins.entity.QuestaoEntity;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
+import com.williansmartins.util.ValidarCpf;
 
 @ManagedBean(name="quizMB")
 @SessionScoped
@@ -66,13 +67,7 @@ public class QuizMB implements Serializable{
 		respostas.add(resposta);
 		
 		if( indiceDaQuestao++ >= listaDeQuestoes.size()-1 ){
-			System.out.println("chegou ao fim");
-			//se chegou ao fim, pega todas as respostas e insere no banco
-			user.setRespostas(respostas);
-			daoUser.insert(user);
-			user = new UserEntity();
-			respostas = new ArrayList<RespostaEntity>();
-			user.setRespostas(new ArrayList<RespostaEntity>() );
+			reiniciar();
 			FacesContext.getCurrentInstance().getExternalContext().redirect("admin-ultima.xhtml?faces-redirect=true");
 		}else{
 			System.out.println("Tem mais");
@@ -89,11 +84,7 @@ public class QuizMB implements Serializable{
 		
 		if( indiceDaQuestao++ >= listaDeQuestoes.size()-1 ){
 			System.out.println("chegou ao fim");
-			user.setRespostas(respostas);
-			daoUser.insert(user);
-			user = new UserEntity();
-			respostas = new ArrayList<RespostaEntity>();
-			user.setRespostas(new ArrayList<RespostaEntity>() );
+			reiniciar();
 			FacesContext.getCurrentInstance().getExternalContext().redirect("admin-ultima.xhtml?faces-redirect=true");
 		}else{
 			System.out.println("Tem mais");
@@ -102,8 +93,9 @@ public class QuizMB implements Serializable{
 	}
 	
 	public String reiniciar(){
-		indiceDaQuestao = 0;
+		user.setRespostas(respostas);
 		daoUser.insert(user);
+		indiceDaQuestao = 0;
 		user = new UserEntity();
 		respostas = new ArrayList<RespostaEntity>();
 		user.setRespostas(new ArrayList<RespostaEntity>() );
@@ -126,9 +118,9 @@ public class QuizMB implements Serializable{
 			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
 		}else{
 			//verificar se o cpf é válido
-			if( true ){
-//				if( new ValidarCpf().validarCpf( user.getCpf() ) ){
+			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
 				indiceDaQuestao = 0;
+				Collections.shuffle(listaDeQuestoes);
 				questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 				return "admin-questao.xhtml?faces-redirect=true";
 			}else{
