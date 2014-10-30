@@ -102,7 +102,7 @@ public class QuizMB implements Serializable{
 		return "login.xhtml?faces-redirect=true";
 	}
 
-	
+//Em caso de falha em uma das versões operacionais, o sistema passa a ex	
 	public String concluir(){
 		indiceDaQuestao = 0;
 		user = new UserEntity();
@@ -115,12 +115,14 @@ public class QuizMB implements Serializable{
 		user.setCpf( user.getCpf().replace("-", "").replace(".", "") );
 		//verificar se existe usuário
 		if( daoUser.existeUsuario(user) ){
+//			if( daoUser.existeUsuario(user) ){
 			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
 		}else{
 			//verificar se o cpf é válido
-			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
+			if( true ){
+//				if( new ValidarCpf().validarCpf( user.getCpf() ) ){
 				indiceDaQuestao = 0;
-				Collections.shuffle(listaDeQuestoes);
+//				Collections.shuffle(listaDeQuestoes);
 				questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 				return "admin-questao.xhtml?faces-redirect=true";
 			}else{

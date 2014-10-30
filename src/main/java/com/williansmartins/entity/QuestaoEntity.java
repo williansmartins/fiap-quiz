@@ -2,6 +2,7 @@ package com.williansmartins.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ public class QuestaoEntity implements Serializable {
 	@Id @GeneratedValue
 	Integer id;
 	private static final long serialVersionUID = 83908783713350043L;
+	@Column(length = 558)
 	private String pergunta;
 	private String respostaA;
 	private String respostaB;
