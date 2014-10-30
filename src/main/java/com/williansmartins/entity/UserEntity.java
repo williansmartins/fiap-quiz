@@ -27,6 +27,9 @@ public class UserEntity implements Serializable{
 	@OneToMany(targetEntity = RespostaEntity.class, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
 	List<RespostaEntity> respostas;
+	String email;
+	String telefone;
+	boolean isAluno;
 	
 	public UserEntity(){
 	}
@@ -74,6 +77,30 @@ public class UserEntity implements Serializable{
 
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public boolean isAluno() {
+		return isAluno;
+	}
+
+	public void setAluno(boolean isAluno) {
+		this.isAluno = isAluno;
 	}
 	
 }

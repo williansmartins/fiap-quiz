@@ -45,9 +45,10 @@ public class QuizMB implements Serializable{
 		user.setRespostas(new ArrayList<RespostaEntity>() );
 	}
 	
-	public String logout(){
+	public String logout() throws IOException{
         SecurityContextHolder.clearContext();
         user = new UserEntity();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml.xhtml?faces-redirect=true");
         return "login.xhtml?faces-redirect=true";
     }
 	
@@ -115,14 +116,12 @@ public class QuizMB implements Serializable{
 		user.setCpf( user.getCpf().replace("-", "").replace(".", "") );
 		//verificar se existe usuário
 		if( daoUser.existeUsuario(user) ){
-//			if( daoUser.existeUsuario(user) ){
 			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
 		}else{
 			//verificar se o cpf é válido
-			if( true ){
-//				if( new ValidarCpf().validarCpf( user.getCpf() ) ){
+			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
 				indiceDaQuestao = 0;
-//				Collections.shuffle(listaDeQuestoes);
+				Collections.shuffle(listaDeQuestoes);
 				questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 				return "admin-questao.xhtml?faces-redirect=true";
 			}else{
@@ -133,8 +132,6 @@ public class QuizMB implements Serializable{
 		
 	}
 	
-	//context.addMessage(null, new FacesMessage("Não te conheço"));
-	//FacesContext context = FacesContext.getCurrentInstance();
 	////// GETTERS AND SETTERS ///////////////
 	/////////////////////////////////////////
 	
