@@ -17,7 +17,6 @@ import com.williansmartins.dao.entity.UserDaoImpl;
 import com.williansmartins.entity.QuestaoEntity;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
-import com.williansmartins.util.ValidarCpf;
 
 @ManagedBean(name="quizMB")
 @SessionScoped
@@ -33,11 +32,13 @@ public class QuizMB implements Serializable{
 	private String senhaDigitada;
 	private String chute;
 	private List<RespostaEntity> respostas;
+	private List<UserEntity> competidores;
 	
 	public QuizMB(){
 		daoQuestao = new QuestaoDaoImpl();
 		daoUser = new UserDaoImpl();
 		listaDeQuestoes = daoQuestao.findAll();
+		competidores = daoUser.competidores();
 		indiceDaQuestao = 0;
 		questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 		user = new UserEntity();
@@ -119,7 +120,8 @@ public class QuizMB implements Serializable{
 			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
 		}else{
 			//verificar se o cpf é válido
-			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
+//			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
+			if( true ){
 				indiceDaQuestao = 0;
 				Collections.shuffle(listaDeQuestoes);
 				questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
@@ -198,6 +200,14 @@ public class QuizMB implements Serializable{
 
 	public void setChute(String chute) {
 		this.chute = chute;
+	}
+
+	public List<UserEntity> getCompetidores() {
+		return competidores;
+	}
+
+	public void setCompetidores(List<UserEntity> competidores) {
+		this.competidores = competidores;
 	}
 
 	

@@ -29,8 +29,22 @@
 	  					</button>
 	  				</div>
  				</c:if>
-	            <h:inputText id="nome" required="true" value="#{quizMB.user.nome}"  styleClass="form-control nome" requiredMessage="É necessário preencher o nome"/>
-	            <h:inputText id="cpf" required="true" value="#{quizMB.user.cpf}" styleClass="form-control cpf" requiredMessage="É necessário preencher o cpf"/>
+	            <h:inputText id="nome" required="true" value="#{quizMB.user.nome}"  styleClass="form-control input" requiredMessage="É necessário preencher o nome">
+	            	<f:passThroughAttribute name="placeholder" value="nome"/>
+	            </h:inputText>
+	            <h:inputText id="email" required="true" value="#{quizMB.user.email}"  styleClass="form-control input" requiredMessage="É necessário preencher o email">
+	            	<f:passThroughAttribute name="placeholder" value="email"/>
+	            </h:inputText>
+	            <h:inputText id="telefone" required="true" value="#{quizMB.user.telefone}"  styleClass="form-control input" requiredMessage="É necessário preencher o telefone">
+	            	<f:passThroughAttribute name="placeholder" value="telefone"/>
+	            </h:inputText>
+	            <h:inputText id="cpf" required="true" value="#{quizMB.user.cpf}" styleClass="form-control input" requiredMessage="É necessário preencher o cpf">
+	            	<f:passThroughAttribute name="placeholder" value="cpf" />
+	            </h:inputText>
+	            <p>	
+	            	<span>Sou aluno:</span>
+		            <h:selectBooleanCheckbox value="#{quizMB.user.aluno}" styleClass="form-control input check" /> 
+	            </p>
 	            <br />
 	            <div class="pirulas vermelha">
 	            	<h:commandButton value="entrar" styleClass="texto" action="#{quizMB.entrar}" image="img/pirula-vermelha.png"/>

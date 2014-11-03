@@ -1,7 +1,6 @@
 package com.williansmartins.entity;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class UserEntity implements Serializable{
 	List<RespostaEntity> respostas;
 	String email;
 	String telefone;
-	boolean isAluno;
+	boolean aluno;
 	
 	public UserEntity(){
 	}
@@ -96,11 +95,12 @@ public class UserEntity implements Serializable{
 	}
 
 	public boolean isAluno() {
-		return isAluno;
+		return aluno;
 	}
 
-	public void setAluno(boolean isAluno) {
-		this.isAluno = isAluno;
+	public void setAluno(boolean aluno) {
+		this.aluno = aluno;
 	}
+
 	
 }

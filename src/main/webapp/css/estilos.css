@@ -39,7 +39,7 @@ body {
 
 .home .wrapper #form-login.cpf{
 	width: 630px;
-	height: 336px;
+	height: 543px;
 	margin: auto;
 	margin-top: 170px;
 	background-image: url('../img/login-cpf.png');
@@ -50,14 +50,35 @@ body {
 	position: relative;
 }
 
-.home .wrapper #form-login.cpf .nome{
+.home .wrapper #form-login.cpf p{
+	color: white;
+	text-align: left;
+	margin-top: 11px;
+	font-size: 30px;
+}
+
+.home .wrapper #form-login.cpf span{
+	color: white;
+	text-align: left;
+	margin-top: 11px;
+	font-size: 30px;
+	float: left;
+}
+
+.home .wrapper #form-login.cpf .check{
+	width: 30px!important;
+	margin-left: 160px;
+}
+
+.home .wrapper #form-login.cpf .input{
 	margin-top: 20px;
 	height: 55px;
 	font-size: 36PX;
+	width: 552px;
 }
 
 .home .wrapper #form-login.cpf .cpf{
-	margin-top: 64px;
+	margin-top: 20px;
 	height: 55px;
 	font-size: 36PX;
 }
@@ -209,4 +230,7 @@ body {
 }
 .form-ultima, .countdown{
 	display: none;
+}
+.table{
+	background-color: white;
 }
