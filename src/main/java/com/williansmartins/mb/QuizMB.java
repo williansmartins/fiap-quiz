@@ -12,11 +12,13 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.williansmartins.dao.DAOJDBC;
 import com.williansmartins.dao.entity.QuestaoDaoImpl;
 import com.williansmartins.dao.entity.UserDaoImpl;
 import com.williansmartins.entity.QuestaoEntity;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
+import com.williansmartins.vo.UserVO;
 
 @ManagedBean(name="quizMB")
 @SessionScoped
@@ -32,18 +34,22 @@ public class QuizMB implements Serializable{
 	private String senhaDigitada;
 	private String chute;
 	private List<RespostaEntity> respostas;
-	private List<UserEntity> competidores;
+	private List<UserVO> competidores;
 	
 	public QuizMB(){
 		daoQuestao = new QuestaoDaoImpl();
 		daoUser = new UserDaoImpl();
 		listaDeQuestoes = daoQuestao.findAll();
-		competidores = daoUser.competidores();
+		competidores = new DAOJDBC().buscarCompetidores();
 		indiceDaQuestao = 0;
 		questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 		user = new UserEntity();
 		respostas = new ArrayList<RespostaEntity>();
 		user.setRespostas(new ArrayList<RespostaEntity>() );
+	}
+	
+	public void popularCompetidores(){
+		competidores = new DAOJDBC().buscarCompetidores();
 	}
 	
 	public String logout() throws IOException{
@@ -202,11 +208,11 @@ public class QuizMB implements Serializable{
 		this.chute = chute;
 	}
 
-	public List<UserEntity> getCompetidores() {
+	public List<UserVO> getCompetidores() {
 		return competidores;
 	}
 
-	public void setCompetidores(List<UserEntity> competidores) {
+	public void setCompetidores(List<UserVO> competidores) {
 		this.competidores = competidores;
 	}
 

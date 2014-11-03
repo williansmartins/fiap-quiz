@@ -102,7 +102,7 @@
 	    <div class="countdown">
 		    <script type="application/javascript">
 				var myCountdown1 = new Countdown({
-											 	time: 20, 
+											 	time: 5, 
 												width:200, 
 												height:100,  
 												onComplete	: countdownComplete, 
@@ -113,6 +113,7 @@
 					//$('#myModal').modal('show');
 					$('.titulo, .alternativas, .pirulas').fadeOut( "slow", function() {
 						$('.fim').fadeIn( "slow", function() {
+							setTimeout($('.titulo, .alternativas, .pirulas').fadeOut( ), 2000);
 						  });
 					});
 				}

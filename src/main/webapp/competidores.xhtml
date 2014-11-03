@@ -14,15 +14,19 @@
 	    <link href="css/slider.css" rel="stylesheet" />
 	    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
 	</h:head>
-	<h:body styleClass="home login">
+	<h:body styleClass="home login" onload="#{quizMB.popularCompetidores()}">
 	    <div class="logo">
 	    </div>
 	    <div class="wrapper">
-	    	<h1>Pontuação</h1>
+	    	<h1>Competidores</h1>
 	    	<h:dataTable value="#{quizMB.competidores}" var="o" styleClass="table table-striped">
 	    		<h:column>
 	   				<f:facet name="header">Acertos</f:facet>
-	   				13
+	   				#{o.acertos}
+	   			</h:column>
+	    		<h:column>
+	   				<f:facet name="header">Nome</f:facet>
+	   				#{o.nome}
 	   			</h:column>
 	    		<h:column>
 	   				<f:facet name="header">CPF</f:facet>

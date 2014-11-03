@@ -17,7 +17,7 @@ public class ConnectionManager {
         private static final String DATABASE = "quiz";
         private static final String STR_CON = "jdbc:mysql://localhost:3306/" + DATABASE;
         private static final String USER = "root";
-        private static final String PASSWORD = "";
+        private static final String PASSWORD = "root";
         
         private static Logger log = Logger.getLogger(ConnectionManager.class);
         
