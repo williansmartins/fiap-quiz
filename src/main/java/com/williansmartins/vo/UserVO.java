@@ -11,9 +11,11 @@ public class UserVO {
 	String telefone;
 	boolean aluno;
 	int acertos;
+	int erros;
+	int saldo;
 	
 	public UserVO(String nome, String cpf, Date created, String email,
-			String telefone, boolean aluno, int acertos) {
+			String telefone, boolean aluno, int acertos, int erros, int saldo) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -22,6 +24,8 @@ public class UserVO {
 		this.telefone = telefone;
 		this.aluno = aluno;
 		this.acertos = acertos;
+		this.erros = erros;
+		this.saldo = saldo;
 	}
 
 	public UserVO() {
@@ -82,6 +86,22 @@ public class UserVO {
 
 	public void setAcertos(int acertos) {
 		this.acertos = acertos;
+	}
+
+	public int getErros() {
+		return erros;
+	}
+
+	public void setErros(int erros) {
+		this.erros = erros;
+	}
+
+	public int getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(int saldo) {
+		this.saldo = saldo;
 	}
 	
 	

@@ -4,7 +4,18 @@
   -webkit-user-select: none;
   user-select: none;
 }
-
+@font-face {
+    font-family: myFirstFont;
+    src: url(../fonts/matrix.ttf);
+}
+@font-face {
+    font-family: matrix;
+    src: url(../fonts/matrix.ttf);
+}
+@font-face {
+    font-family: peixe;
+    src: url(../fonts/PEIXE___.ttf);
+}
 body {
 	background-image: url('../img/fundo-matrix.jpg');
 }
@@ -23,6 +34,19 @@ body {
 	top: 1px;
 	position: absolute;
 }
+.home .sair {
+	width: 110px;
+	height: 48px;
+	top: 167px;
+	position: absolute;
+	left: 130px;
+}
+.home .sair a{
+	color: white;
+	font-family: peixe;
+	font-size: 40px;
+}
+
 
 .home .wrapper #form-login{
 	display:none;
@@ -136,10 +160,20 @@ body {
 }
 
 .home .wrapper h1{
-	font-size: 50px;
+	font-size: 58px;
 	text-align: center;
 	color: rgb(44, 231, 44);
 	padding-top: 13px;
+	font-family: myFirstFont;
+	text-transform: uppercase;
+}
+.home .wrapper h1 span{
+	font-size: 58px;
+	text-align: center;
+	color: rgb(44, 231, 44);
+	padding-top: 13px;
+	font-family: arial;
+	text-transform: uppercase;
 }
 
 .messages{

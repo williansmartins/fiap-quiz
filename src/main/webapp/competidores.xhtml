@@ -25,6 +25,14 @@
 	   				#{o.acertos}
 	   			</h:column>
 	    		<h:column>
+	   				<f:facet name="header">Erros</f:facet>
+	   				#{o.erros}
+	   			</h:column>
+	    		<h:column>
+	   				<f:facet name="header">Saldo</f:facet>
+	   				#{o.saldo}
+	   			</h:column>
+	    		<h:column>
 	   				<f:facet name="header">Nome</f:facet>
 	   				#{o.nome}
 	   			</h:column>
@@ -42,7 +50,7 @@
 	   			</h:column>
 	    		<h:column>
 	   				<f:facet name="header">Sou aluno</f:facet>
-	   				#{o.aluno}
+	   				#{ (o.aluno == "true") ? "Sim" : "Não" }
 	   			</h:column>
 	    	</h:dataTable>
 	    </div>

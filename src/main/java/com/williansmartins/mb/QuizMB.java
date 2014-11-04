@@ -18,6 +18,7 @@ import com.williansmartins.dao.entity.UserDaoImpl;
 import com.williansmartins.entity.QuestaoEntity;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
+import com.williansmartins.util.EmailValidator;
 import com.williansmartins.vo.UserVO;
 
 @ManagedBean(name="quizMB")
@@ -128,10 +129,14 @@ public class QuizMB implements Serializable{
 			//verificar se o cpf é válido
 //			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
 			if( true ){
-				indiceDaQuestao = 0;
-				Collections.shuffle(listaDeQuestoes);
-				questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
-				return "admin-questao.xhtml?faces-redirect=true";
+				if(new EmailValidator().validate(user.getEmail())){
+					indiceDaQuestao = 0;
+					Collections.shuffle(listaDeQuestoes);
+					questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
+					return "admin-questao.xhtml?faces-redirect=true";
+				}else{
+					return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=Email invalido!";
+				}
 			}else{
 				return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF invalido!";
 			}

@@ -22,6 +22,25 @@ public class DAOJDBC {
 												" group by user_id " + 
 												" order by Acertos desc;";
 
+    private final static String GET_COMPETIDORES_2 = 
+    		" select a.nome, a.cpf, a.acertos, b.erros, (a.acertos - b.erros) saldo , a.email, a.telefone, a.aluno from " +
+    		" (SELECT u.nome nome, u.cpf cpf,count(r.acertou) acertos, u.email email, u.telefone telefone, u.aluno " +
+    		" FROM quiz.user u " +
+    		" LEFT JOIN quiz.resposta r " +
+    		" on acertou='sim' " +
+    		" and u.id = r.user_id " +
+    		" group by user_id) a, " +
+
+    		" (SELECT u.nome nome, u.cpf cpf,count(r.acertou) erros, u.email email, u.telefone telefone, u.aluno " +
+    		" FROM quiz.user u " +
+    		" LEFT JOIN quiz.resposta r " +
+    		" on acertou='não' " +
+    		" and u.id = r.user_id " +
+    		" group by user_id) b " +
+    		" where a.nome = b.nome " +
+    		" and a.cpf = b.cpf " + 
+    		" order by (a.acertos - b.erros) desc";
+
 	public List<UserVO> buscarCompetidores() throws PersistenceException {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -29,7 +48,7 @@ public class DAOJDBC {
         
         try {
                 conn = ConnectionManager.getConnection();
-                stmt = createStatementWithLog(conn, GET_COMPETIDORES);
+                stmt = createStatementWithLog(conn, GET_COMPETIDORES_2);
                 rs = stmt.executeQuery();
                 
                 return toVO(rs);
@@ -50,8 +69,10 @@ public class DAOJDBC {
 			String telefone = rs.getString("telefone");
 			boolean aluno = rs.getBoolean( "aluno" );
 			int acertos = rs.getInt("acertos");
+			int erros = rs.getInt("erros");
+			int saldo = rs.getInt("saldo");
 
-			lista.add(new UserVO(nome, cpf, null, email, telefone, aluno, acertos));
+			lista.add(new UserVO(nome, cpf, null, email, telefone, aluno, acertos, erros, saldo));
 		}
 		return lista;
 	}
