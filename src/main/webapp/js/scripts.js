@@ -36,7 +36,7 @@ $(document).ready( function(){
 	
 	//////////////////////////////////////////////////////////////////
 	//Bloquear o botao direito do mouse
-//	document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
+	document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
 	//////////////////////////////////////////////////////////////////
 	//FIM - Bloquear o botao direito do mouse
 	

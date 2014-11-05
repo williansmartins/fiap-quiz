@@ -19,6 +19,7 @@ import com.williansmartins.entity.QuestaoEntity;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
 import com.williansmartins.util.EmailValidator;
+import com.williansmartins.util.ValidarCpf;
 import com.williansmartins.vo.UserVO;
 
 @ManagedBean(name="quizMB")
@@ -127,8 +128,7 @@ public class QuizMB implements Serializable{
 			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
 		}else{
 			//verificar se o cpf é válido
-//			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
-			if( true ){
+			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
 				if(new EmailValidator().validate(user.getEmail())){
 					indiceDaQuestao = 0;
 					Collections.shuffle(listaDeQuestoes);

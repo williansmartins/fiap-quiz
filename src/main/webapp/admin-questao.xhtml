@@ -105,7 +105,7 @@
 	    <div class="countdown">
 		    <script type="application/javascript">
 				var myCountdown1 = new Countdown({
-											 	time: 180, 
+											 	time: 300, 
 												width:200, 
 												height:100,  
 												onComplete	: countdownComplete, 
@@ -113,14 +113,12 @@
 												style:"flip"	
 												});
 				function countdownComplete(){
-					//$('#myModal').modal('show');
 					$('.titulo, .alternativas, .pirulas').fadeOut( "slow", function() {
 						$('.fim').fadeIn( "slow", function() {
 							setTimeout($('.titulo, .alternativas, .pirulas').fadeOut( ), 2000);
 						  });
 					});
 				}
-// 				$('#form-questao').hide();
 			</script>
 	    </div>
 	</h:body>
