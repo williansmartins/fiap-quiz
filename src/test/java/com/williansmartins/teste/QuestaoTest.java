@@ -3,15 +3,14 @@ package com.williansmartins.teste;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.williansmartins.dao.entity.QuestaoDaoImpl;
 import com.williansmartins.entity.QuestaoEntity;
 import com.williansmartins.massa.QuestaoMassa;
+import com.williansmartins.vo.QuestaoVO;
 
-@SuppressWarnings("deprecation")
 public class QuestaoTest {
 	QuestaoDaoImpl dao;
 	QuestaoEntity entityMockada1;
@@ -88,6 +87,12 @@ public class QuestaoTest {
 		Assert.assertNull(dao.findById(listaEntities.get(0).getId()));
 		Assert.assertNull(dao.findById(listaEntities.get(9).getId()));
 
+	}
+	
+	@Test
+	public void buscarPorAssunto(){
+		List<QuestaoVO> lista = dao.buscarPorTema("HTML");
+		Assert.assertNotNull(lista);
 	}
 
 }

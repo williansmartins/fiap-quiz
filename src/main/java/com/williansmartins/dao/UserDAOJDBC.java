@@ -11,12 +11,12 @@ import javax.persistence.PersistenceException;
 
 import com.williansmartins.vo.UserVO;
 
-public class DAOJDBC {
+public class UserDAOJDBC {
 
     private final static String GET_COMPETIDORES = "SELECT u.nome nome, u.cpf cpf, count(r.acertou) acertos, u.email email, u.telefone telefone, u.aluno"
     		+ " aluno " +  
-												" FROM quiz.user u  " + 
-												" LEFT JOIN quiz.resposta r " + 
+												" FROM user u  " + 
+												" LEFT JOIN resposta r " + 
 												" on acertou='sim' " + 
 												" and u.id = r.user_id " + 
 												" group by user_id " + 
@@ -25,21 +25,23 @@ public class DAOJDBC {
     private final static String GET_COMPETIDORES_2 = 
     		" select a.nome, a.cpf, a.acertos, b.erros, (a.acertos - b.erros) saldo , a.email, a.telefone, a.aluno from " +
     		" (SELECT u.nome nome, u.cpf cpf,count(r.acertou) acertos, u.email email, u.telefone telefone, u.aluno " +
-    		" FROM quiz.user u " +
-    		" LEFT JOIN quiz.resposta r " +
+    		" FROM user u " +
+    		" LEFT JOIN resposta r " +
     		" on acertou='sim' " +
     		" and u.id = r.user_id " +
     		" group by user_id) a, " +
 
     		" (SELECT u.nome nome, u.cpf cpf,count(r.acertou) erros, u.email email, u.telefone telefone, u.aluno " +
-    		" FROM quiz.user u " +
-    		" LEFT JOIN quiz.resposta r " +
+    		" FROM user u " +
+    		" LEFT JOIN resposta r " +
     		" on acertou='não' " +
     		" and u.id = r.user_id " +
     		" group by user_id) b " +
     		" where a.nome = b.nome " +
     		" and a.cpf = b.cpf " + 
     		" order by (a.acertos - b.erros) desc";
+    
+    private final static String GET_COMPETIDORES_3 = "SELECT * from user"; 
 
 	public List<UserVO> buscarCompetidores() throws PersistenceException {
         Connection conn = null;
@@ -53,7 +55,7 @@ public class DAOJDBC {
                 
                 return toVO(rs);
         } catch (SQLException e) {
-                String errorMsg = "Erro ao consultar!";
+                String errorMsg = "Erro ao consultar os competidores: " + e.getMessage() ;
                 throw new PersistenceException(errorMsg, e);
         } finally {
                 ConnectionManager.closeAll(conn, stmt, rs);

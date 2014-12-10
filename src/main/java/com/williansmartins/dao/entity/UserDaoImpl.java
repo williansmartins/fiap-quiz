@@ -13,10 +13,8 @@ public class UserDaoImpl extends JpaGenericDao<UserEntity> implements IUserDao, 
 
 	private static final long serialVersionUID = 1L;
 	
-	@PersistenceContext
 	private EntityManager entityManager;
 	
-	@Override
 	public boolean existeUsuario(UserEntity user) {
 		entityManager = getEntityManager();
 		entityManager.getTransaction().begin();

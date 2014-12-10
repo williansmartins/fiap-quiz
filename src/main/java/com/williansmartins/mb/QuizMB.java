@@ -12,14 +12,14 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.williansmartins.dao.DAOJDBC;
+import com.williansmartins.dao.UserDAOJDBC;
 import com.williansmartins.dao.entity.QuestaoDaoImpl;
 import com.williansmartins.dao.entity.UserDaoImpl;
-import com.williansmartins.entity.QuestaoEntity;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
 import com.williansmartins.util.EmailValidator;
 import com.williansmartins.util.ValidarCpf;
+import com.williansmartins.vo.QuestaoVO;
 import com.williansmartins.vo.UserVO;
 
 @ManagedBean(name="quizMB")
@@ -27,10 +27,10 @@ import com.williansmartins.vo.UserVO;
 public class QuizMB implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	private QuestaoEntity questaoAtual;
+	private QuestaoVO questaoAtual;
 	private QuestaoDaoImpl daoQuestao;
 	private UserDaoImpl daoUser;
-	private List<QuestaoEntity> listaDeQuestoes;
+	private List<QuestaoVO> listaDeQuestoes;
 	private int indiceDaQuestao;
 	private UserEntity user;
 	private String senhaDigitada;
@@ -41,8 +41,9 @@ public class QuizMB implements Serializable{
 	public QuizMB(){
 		daoQuestao = new QuestaoDaoImpl();
 		daoUser = new UserDaoImpl();
-		listaDeQuestoes = daoQuestao.findAll();
-		competidores = new DAOJDBC().buscarCompetidores();
+		//listaDeQuestoes = daoQuestao.findAll();
+		//competidores = new DAOJDBC().buscarCompetidores();
+		buscarQuestoes();
 		indiceDaQuestao = 0;
 		questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 		user = new UserEntity();
@@ -51,7 +52,12 @@ public class QuizMB implements Serializable{
 	}
 	
 	public void popularCompetidores(){
-		competidores = new DAOJDBC().buscarCompetidores();
+		competidores = new UserDAOJDBC().buscarCompetidores();
+	}
+	
+	public void buscarQuestoes(  ){
+		String tema = "html";
+		listaDeQuestoes = daoQuestao.buscarPorTema( tema );
 	}
 	
 	public String logout() throws IOException{
@@ -123,12 +129,12 @@ public class QuizMB implements Serializable{
 	
 	public String entrar(){
 		user.setCpf( user.getCpf().replace("-", "").replace(".", "") );
-		//verificar se existe usuário
-		if( daoUser.existeUsuario(user) ){
+		//verificar se existe usuário - PELO CPF
+		if( false ){
 			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
 		}else{
 			//verificar se o cpf é válido
-			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
+			if( true ){
 				if(new EmailValidator().validate(user.getEmail())){
 					indiceDaQuestao = 0;
 					Collections.shuffle(listaDeQuestoes);
@@ -149,19 +155,12 @@ public class QuizMB implements Serializable{
 	/////////////////////////////////////////
 	
 
-	public QuestaoEntity getEntity() {
-		return questaoAtual;
-	}
 
-	public void setEntity(QuestaoEntity entity) {
-		this.questaoAtual = entity;
-	}
-
-	public List<QuestaoEntity> getLista() {
+	public List<QuestaoVO> getLista() {
 		return listaDeQuestoes;
 	}
 
-	public void setLista(List<QuestaoEntity> lista) {
+	public void setLista(List<QuestaoVO> lista) {
 		this.listaDeQuestoes = lista;
 	}
 
@@ -173,19 +172,19 @@ public class QuizMB implements Serializable{
 		this.indiceDaQuestao = indiceDaQuestao;
 	}
 
-	public QuestaoEntity getQuestaoAtual() {
+	public QuestaoVO getQuestaoAtual() {
 		return questaoAtual;
 	}
 
-	public void setQuestaoAtual(QuestaoEntity questaoAtual) {
+	public void setQuestaoAtual(QuestaoVO questaoAtual) {
 		this.questaoAtual = questaoAtual;
 	}
 
-	public List<QuestaoEntity> getListaDeQuestoes() {
+	public List<QuestaoVO> getListaDeQuestoes() {
 		return listaDeQuestoes;
 	}
 
-	public void setListaDeQuestoes(List<QuestaoEntity> listaDeQuestoes) {
+	public void setListaDeQuestoes(List<QuestaoVO> listaDeQuestoes) {
 		this.listaDeQuestoes = listaDeQuestoes;
 	}
 

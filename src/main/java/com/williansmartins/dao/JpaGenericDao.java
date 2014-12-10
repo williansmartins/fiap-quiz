@@ -22,7 +22,7 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 		entityManager = getEntityManager();
 	}
 
-	public void insert(T entity) {
+	public T insert(T entity) {
 		entityManager = getEntityManager();
 		try {
 			entityManager.getTransaction().begin();
@@ -34,7 +34,7 @@ public class JpaGenericDao<T extends Serializable> implements Dao<T> {
 		} finally {
 			entityManager.close();
 		}
-		
+		return entity;
 	}
 
 	public List<T> findAll() {

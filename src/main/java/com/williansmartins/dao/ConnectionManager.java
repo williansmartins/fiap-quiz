@@ -13,19 +13,20 @@ import org.apache.log4j.Logger;
 public class ConnectionManager {
 
         //Informacões para conexão com banco de dados HSQLDB.
-        private static final String STR_DRIVER = "com.mysql.jdbc.Driver";
-        private static final String DATABASE = "quiz";
-        private static final String STR_CON = "jdbc:mysql://localhost:3306/" + DATABASE;
-        private static final String USER = "root";
-        private static final String PASSWORD = "root";
+        private static final String STRING_DRIVER = "com.mysql.jdbc.Driver";
+        private static final String HOST = "pwms.com.br";
+        private static final String DATABASE = "pwmscom_quiz";
+        private static final String STRING_CON = "jdbc:mysql://" + HOST + "/" + DATABASE; 
+        private static final String USER = "pwmscom_quiz";
+        private static final String PASSWORD = "perolanegra";
         
         private static Logger log = Logger.getLogger(ConnectionManager.class);
         
         public static Connection getConnection() throws PersistenceException {
                 Connection conn = null;
                 try {
-                        Class.forName(STR_DRIVER);
-                        conn = DriverManager.getConnection(STR_CON, USER, PASSWORD);
+                        Class.forName(STRING_DRIVER);
+                        conn = DriverManager.getConnection(STRING_CON, USER, PASSWORD);
                         conn.setAutoCommit(false);
                         
                         log.debug("Aberta a conexão com banco de dados!");
