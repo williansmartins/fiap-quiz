@@ -19,6 +19,7 @@ import com.williansmartins.dao.entity.UserDaoImpl;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
 import com.williansmartins.util.EmailValidator;
+import com.williansmartins.util.ValidarCpf;
 import com.williansmartins.vo.QuestaoVO;
 import com.williansmartins.vo.UserVO;
 
@@ -58,7 +59,7 @@ public class QuizMB implements Serializable{
 	
 	public void buscarQuestoes( ){
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		tema = params.get("tema");
+		//tema = params.get("tema");
 		listaDeQuestoes = daoQuestao.buscarPorTema( tema );
 		indiceDaQuestao = 0;
 		if( listaDeQuestoes != null ){
@@ -71,8 +72,8 @@ public class QuizMB implements Serializable{
 	public String logout() throws IOException{
         SecurityContextHolder.clearContext();
         user = new UserEntity();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml?faces-redirect=true&tema="+ tema);
-        return "login.xhtml?faces-redirect=true&tema="+ tema;
+        //FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml?faces-redirect=true");
+        return "login.xhtml?faces-redirect=true";
     }
 	
 	public void enviar() throws IOException{
@@ -123,7 +124,7 @@ public class QuizMB implements Serializable{
 		user = new UserEntity();
 		respostas = new ArrayList<RespostaEntity>();
 		user.setRespostas(new ArrayList<RespostaEntity>() );
-		return "login.xhtml?faces-redirect=true&tema="+ tema;
+		return "login.xhtml?faces-redirect=true";
 	}
 
 	public String concluir(){
@@ -131,24 +132,24 @@ public class QuizMB implements Serializable{
 		user = new UserEntity();
 		respostas = new ArrayList<RespostaEntity>();
 		user.setRespostas(new ArrayList<RespostaEntity>() );
-		return "login.xhtml?faces-redirect=true&tema="+ tema;
+		return "login.xhtml?faces-redirect=true";
 	}
 	
 	public String entrar(){
 		user.setCpf( user.getCpf().replace("-", "").replace(".", "") );
 		//verificar se existe usuário - PELO CPF
-		if( false ){
-			return "admin-inicio.xhtml?faces-redirect=true&tema="+ tema + "&error=true&mensagem=CPF ja utilizado!";
+		if( daoUser.existeUsuario(user) ){
+			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
 		}else{
 			//verificar se o cpf é válido
-			if( true ){
+			if( new ValidarCpf().validarCpf( user.getCpf() ) ){
 				if(new EmailValidator().validate(user.getEmail())){
-					return "admin-questao.xhtml?faces-redirect=true&tema="+ tema;
+					return "admin-questao.xhtml?faces-redirect=true";
 				}else{
 					return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=Email invalido!";
 				}
 			}else{
-				return "admin-inicio.xhtml?faces-redirect=true&tema="+ tema + "&error=true&mensagem=CPF invalido!";
+				return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF invalido!";
 			}
 		}
 
