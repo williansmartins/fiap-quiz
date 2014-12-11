@@ -21,6 +21,7 @@ public class QuestaoEntity implements Serializable {
 	private String respostaD;
 	private String respostaE;
 	private char correta;
+	private String tema;
 	
 	public QuestaoEntity() {
 		
@@ -88,6 +89,14 @@ public class QuestaoEntity implements Serializable {
 
 	public void setCorreta(char correta) {
 		this.correta = correta;
+	}
+
+	public String getTema() {
+		return tema;
+	}
+
+	public void setTema(String tema) {
+		this.tema = tema;
 	}
 	
 }

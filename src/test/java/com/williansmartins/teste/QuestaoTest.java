@@ -44,7 +44,7 @@ public class QuestaoTest {
 		QuestaoEntity entityBanco = dao.findById(entityMockada1.getId());
 		
 		//Testar se inseriu mesmo
-		Assert.assertNotNull(entityBanco );
+		Assert.assertNotNull( entityBanco );
 		
 		//Testar se removeu a entidade	
 		dao.delete(entityMockada1.getId());

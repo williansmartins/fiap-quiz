@@ -17,11 +17,11 @@ public class QuestaoDAOJDBC {
     PreparedStatement stmt = null;
     ResultSet rs = null;
 
-	public List<QuestaoVO> buscarPorAssunto(String assunto) throws PersistenceException {
+	public List<QuestaoVO> buscarPorTema(String assunto) throws PersistenceException {
         
         try {
                 conn = ConnectionManager.getConnection();
-                stmt = createStatementWithLog(conn, "SELECT * from questao where assunto = '" + assunto + "'");
+                stmt = createStatementWithLog(conn, "SELECT * from questao where tema = '" + assunto + "'");
                 rs = stmt.executeQuery();
                 
                 return toVO(rs);

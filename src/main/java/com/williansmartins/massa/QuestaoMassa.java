@@ -31,6 +31,7 @@ public class QuestaoMassa {
 		entity.setRespostaD("Pedro");
 		entity.setRespostaE("Peter");
 		entity.setCorreta('d');
+		entity.setTema("geral");
 		
 		return entity;
 	}

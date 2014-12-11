@@ -41,10 +41,10 @@
 	            <h:inputText id="cpf" required="true" value="#{quizMB.user.cpf}" styleClass="form-control input" requiredMessage="É necessário preencher o cpf">
 	            	<f:passThroughAttribute name="placeholder" value="cpf" />
 	            </h:inputText>
-	            <p>	
-	            	<span>Sou aluno:</span>
-		            <h:selectBooleanCheckbox value="#{quizMB.user.aluno}" styleClass="form-control input check" /> 
-	            </p>
+	            <h:selectOneMenu value="#{quizMB.tema}" styleClass="form-control input">
+				   	<f:selectItem itemValue="html" itemLabel="HTML" />
+				   	<f:selectItem itemValue="fiap-next" itemLabel="FIAP NEXT" />
+				</h:selectOneMenu>
 	            <br />
 	            <div class="pirulas vermelha">
 	            	<h:commandButton value="entrar" styleClass="texto" action="#{quizMB.entrar}" image="img/pirula-vermelha.png"/>

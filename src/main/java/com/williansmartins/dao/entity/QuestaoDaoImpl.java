@@ -15,7 +15,7 @@ public class QuestaoDaoImpl extends JpaGenericDao<QuestaoEntity> implements IQue
 
 	public List<QuestaoVO> buscarPorTema(String tema) {
 		jdbc = new QuestaoDAOJDBC();
-		List<QuestaoVO> lista = jdbc.buscarPorAssunto( tema );
+		List<QuestaoVO> lista = jdbc.buscarPorTema( tema );
 		return lista;
 	}
 }

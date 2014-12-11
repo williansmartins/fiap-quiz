@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +19,6 @@ import com.williansmartins.dao.entity.UserDaoImpl;
 import com.williansmartins.entity.RespostaEntity;
 import com.williansmartins.entity.UserEntity;
 import com.williansmartins.util.EmailValidator;
-import com.williansmartins.util.ValidarCpf;
 import com.williansmartins.vo.QuestaoVO;
 import com.williansmartins.vo.UserVO;
 
@@ -37,15 +37,16 @@ public class QuizMB implements Serializable{
 	private String chute;
 	private List<RespostaEntity> respostas;
 	private List<UserVO> competidores;
+	private String tema;
 	
 	public QuizMB(){
 		daoQuestao = new QuestaoDaoImpl();
 		daoUser = new UserDaoImpl();
 		//listaDeQuestoes = daoQuestao.findAll();
 		//competidores = new DAOJDBC().buscarCompetidores();
-		buscarQuestoes();
+//		questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
+		//buscarQuestoes();
 		indiceDaQuestao = 0;
-		questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
 		user = new UserEntity();
 		respostas = new ArrayList<RespostaEntity>();
 		user.setRespostas(new ArrayList<RespostaEntity>() );
@@ -55,16 +56,23 @@ public class QuizMB implements Serializable{
 		competidores = new UserDAOJDBC().buscarCompetidores();
 	}
 	
-	public void buscarQuestoes(  ){
-		String tema = "html";
+	public void buscarQuestoes( ){
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		tema = params.get("tema");
 		listaDeQuestoes = daoQuestao.buscarPorTema( tema );
+		indiceDaQuestao = 0;
+		if( listaDeQuestoes != null ){
+			questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
+			Collections.shuffle(listaDeQuestoes);
+		}
+		
 	}
 	
 	public String logout() throws IOException{
         SecurityContextHolder.clearContext();
         user = new UserEntity();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml.xhtml?faces-redirect=true");
-        return "login.xhtml?faces-redirect=true";
+        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml?faces-redirect=true&tema="+ tema);
+        return "login.xhtml?faces-redirect=true&tema="+ tema;
     }
 	
 	public void enviar() throws IOException{
@@ -115,36 +123,32 @@ public class QuizMB implements Serializable{
 		user = new UserEntity();
 		respostas = new ArrayList<RespostaEntity>();
 		user.setRespostas(new ArrayList<RespostaEntity>() );
-		return "login.xhtml?faces-redirect=true";
+		return "login.xhtml?faces-redirect=true&tema="+ tema;
 	}
 
-//Em caso de falha em uma das versões operacionais, o sistema passa a ex	
 	public String concluir(){
 		indiceDaQuestao = 0;
 		user = new UserEntity();
 		respostas = new ArrayList<RespostaEntity>();
 		user.setRespostas(new ArrayList<RespostaEntity>() );
-		return "login.xhtml?faces-redirect=true";
+		return "login.xhtml?faces-redirect=true&tema="+ tema;
 	}
 	
 	public String entrar(){
 		user.setCpf( user.getCpf().replace("-", "").replace(".", "") );
 		//verificar se existe usuário - PELO CPF
 		if( false ){
-			return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF ja utilizado!";
+			return "admin-inicio.xhtml?faces-redirect=true&tema="+ tema + "&error=true&mensagem=CPF ja utilizado!";
 		}else{
 			//verificar se o cpf é válido
 			if( true ){
 				if(new EmailValidator().validate(user.getEmail())){
-					indiceDaQuestao = 0;
-					Collections.shuffle(listaDeQuestoes);
-					questaoAtual = listaDeQuestoes.get( indiceDaQuestao );
-					return "admin-questao.xhtml?faces-redirect=true";
+					return "admin-questao.xhtml?faces-redirect=true&tema="+ tema;
 				}else{
 					return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=Email invalido!";
 				}
 			}else{
-				return "admin-inicio.xhtml?faces-redirect=true&error=true&mensagem=CPF invalido!";
+				return "admin-inicio.xhtml?faces-redirect=true&tema="+ tema + "&error=true&mensagem=CPF invalido!";
 			}
 		}
 
@@ -218,6 +222,14 @@ public class QuizMB implements Serializable{
 
 	public void setCompetidores(List<UserVO> competidores) {
 		this.competidores = competidores;
+	}
+
+	public String getTema() {
+		return tema;
+	}
+
+	public void setTema(String tema) {
+		this.tema = tema;
 	}
 
 	
